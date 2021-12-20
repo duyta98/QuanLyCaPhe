@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QL_QuanCF
 {
-    public partial class FKetca : Form
+    public partial class fShiftClose : Form
     {
-        public FKetca()
+        public fShiftClose()
         {
             InitializeComponent();
         }

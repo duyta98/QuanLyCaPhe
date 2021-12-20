@@ -1,6 +1,6 @@
 ﻿namespace QL_QuanCF
 {
-    partial class FKetca
+    partial class fShiftClose
     {
         /// <summary>
         /// Required designer variable.

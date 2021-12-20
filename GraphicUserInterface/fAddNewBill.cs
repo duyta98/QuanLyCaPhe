@@ -10,13 +10,11 @@ using System.Windows.Forms;
 
 namespace QL_QuanCF
 {
-    public partial class FThemBan : Form
+    public partial class fAddNewBill : Form
     {
-        public FThemBan()
+        public fAddNewBill()
         {
             InitializeComponent();
         }
-
-
     }
 }

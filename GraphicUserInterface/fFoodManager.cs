@@ -1,18 +1,12 @@
-﻿using QL_QuanCF.Connections;
+﻿using QL_QuanCF.DataAccessObject;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QL_QuanCF
 {
-    public partial class FThucDon : Form
+    public partial class fFoodManager : Form
     {
 
         #region Events
@@ -29,11 +23,11 @@ namespace QL_QuanCF
                 }
 
                 SqlCommand sqlCommand = new SqlCommand(strThem, sqlConnection);
-                sqlCommand.Parameters.AddWithValue("@id", txbMamon.Text);
-                sqlCommand.Parameters.AddWithValue("@ten", txbTenmon.Text);
-                sqlCommand.Parameters.AddWithValue("@dvt", cbbDvt.SelectedItem.ToString());
-                sqlCommand.Parameters.AddWithValue("@gia", txbGia.Text);
-                sqlCommand.Parameters.AddWithValue("@idLoai", cbbMaloai.SelectedItem.ToString());
+                sqlCommand.Parameters.AddWithValue("@id", txbIDFood.Text);
+                sqlCommand.Parameters.AddWithValue("@ten", txbName.Text);
+                sqlCommand.Parameters.AddWithValue("@dvt", cbbUnit.SelectedItem.ToString());
+                sqlCommand.Parameters.AddWithValue("@gia", txbCost.Text);
+                sqlCommand.Parameters.AddWithValue("@idLoai", cbbFoodCate.SelectedItem.ToString());
                 sqlCommand.ExecuteNonQuery();
                 sqlConnection.Close();
                 FThucDon_Load();
@@ -63,11 +57,11 @@ namespace QL_QuanCF
                 }
 
                 SqlCommand sqlCommand = new SqlCommand(strSua, sqlConnection);
-                sqlCommand.Parameters.AddWithValue("@id", txbMamon.Text);
-                sqlCommand.Parameters.AddWithValue("@ten", txbTenmon.Text);
-                sqlCommand.Parameters.AddWithValue("@dvt", cbbDvt.SelectedItem.ToString());
-                sqlCommand.Parameters.AddWithValue("@gia", txbGia.Text);
-                sqlCommand.Parameters.AddWithValue("@idLoai", cbbMaloai.SelectedItem.ToString());
+                sqlCommand.Parameters.AddWithValue("@id", txbIDFood.Text);
+                sqlCommand.Parameters.AddWithValue("@ten", txbName.Text);
+                sqlCommand.Parameters.AddWithValue("@dvt", cbbUnit.SelectedItem.ToString());
+                sqlCommand.Parameters.AddWithValue("@gia", txbCost.Text);
+                sqlCommand.Parameters.AddWithValue("@idLoai", cbbFoodCate.SelectedItem.ToString());
 
                 sqlCommand.ExecuteNonQuery();
                 sqlConnection.Close();
@@ -108,17 +102,17 @@ namespace QL_QuanCF
 
         private void DtgvMon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            txbMamon.Text = dtgvMon.CurrentRow.Cells[0].Value.ToString();
-            txbTenmon.Text = dtgvMon.CurrentRow.Cells[1].Value.ToString();
-            cbbDvt.Text = dtgvMon.CurrentRow.Cells[2].Value.ToString();
-            txbGia.Text = dtgvMon.CurrentRow.Cells[3].Value.ToString();
-            cbbMaloai.Text = dtgvMon.CurrentRow.Cells[4].Value.ToString();
+            txbIDFood.Text = dtgvMon.CurrentRow.Cells[0].Value.ToString();
+            txbName.Text = dtgvMon.CurrentRow.Cells[1].Value.ToString();
+            cbbUnit.Text = dtgvMon.CurrentRow.Cells[2].Value.ToString();
+            txbCost.Text = dtgvMon.CurrentRow.Cells[3].Value.ToString();
+            cbbFoodCate.Text = dtgvMon.CurrentRow.Cells[4].Value.ToString();
         }
         #endregion
 
         #region Method
 
-        public FThucDon()
+        public fFoodManager()
         {
             InitializeComponent();
             FThucDon_Load();
@@ -143,14 +137,14 @@ namespace QL_QuanCF
         private void cbbDVT_Load()
         {
             string sqlString = "SELECT DISTINCT DVT FROM dbo.MON";
-            cbbDvt.DataSource = Provider.Instance.ExecuteQuery(sqlString);
-            cbbDvt.DisplayMember = "DVT";
+            cbbUnit.DataSource = Provider.Instance.ExecuteQuery(sqlString);
+            cbbUnit.DisplayMember = "DVT";
         }
         private void cbbIDLoai_Load()
         {
             string sqlString = "SELECT DISTINCT IDLOAIMON FROM dbo.MON";
-            cbbMaloai.DataSource = Provider.Instance.ExecuteQuery(sqlString);
-            cbbMaloai.DisplayMember = "IDLOAIMON";
+            cbbFoodCate.DataSource = Provider.Instance.ExecuteQuery(sqlString);
+            cbbFoodCate.DisplayMember = "IDLOAIMON";
         }
 
         private void cbbDanhmuc_Load()

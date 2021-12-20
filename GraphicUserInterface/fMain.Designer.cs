@@ -2,7 +2,7 @@
 
 namespace QL_QuanCF
 {
-    partial class FMain
+    partial class fMain
     {
         /// <summary>
         /// Required designer variable.
@@ -39,19 +39,18 @@ namespace QL_QuanCF
             this.thựcĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TaikhoanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thôngTinTàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chuyểnTàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.côngCụToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnThemban = new System.Windows.Forms.Button();
-            this.cbbLoaiBan = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnTaiban = new System.Windows.Forms.Button();
+            this.btnBar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.flpBan = new System.Windows.Forms.FlowLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnMangve = new System.Windows.Forms.Button();
-            this.btnGiaohang = new System.Windows.Forms.Button();
-            this.btnDatcho = new System.Windows.Forms.Button();
+            this.btnTakeAway = new System.Windows.Forms.Button();
+            this.btnReser = new System.Windows.Forms.Button();
+            this.btnShip = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
@@ -71,9 +70,10 @@ namespace QL_QuanCF
             this.txbTimkiem.Name = "txbTimkiem";
             this.txbTimkiem.Size = new System.Drawing.Size(289, 26);
             this.txbTimkiem.TabIndex = 17;
-            this.txbTimkiem.Text = "Nhập số bàn";
-            this.txbTimkiem.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TxbTimkiem_MouseClick);
-
+            this.txbTimkiem.Text = "Nhập số bàn, món ăn, nước uống,...";
+            this.txbTimkiem.Enter += new System.EventHandler(this.txbTimkiem_Enter);
+            this.txbTimkiem.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txbTimkiem_KeyDown);
+            this.txbTimkiem.Leave += new System.EventHandler(this.txbTimkiem_Leave);
             // 
             // menuStrip1
             // 
@@ -139,8 +139,8 @@ namespace QL_QuanCF
             // 
             this.TaikhoanToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.thôngTinTàiKhoảnToolStripMenuItem,
-            this.đăngXuấtToolStripMenuItem,
-            this.chuyểnTàiKhoảnToolStripMenuItem});
+            this.chuyểnTàiKhoảnToolStripMenuItem,
+            this.đăngXuấtToolStripMenuItem});
             this.TaikhoanToolStripMenuItem.Name = "TaikhoanToolStripMenuItem";
             this.TaikhoanToolStripMenuItem.Size = new System.Drawing.Size(99, 23);
             this.TaikhoanToolStripMenuItem.Text = "Tài Khoản";
@@ -152,18 +152,18 @@ namespace QL_QuanCF
             this.thôngTinTàiKhoảnToolStripMenuItem.Text = "Thông tin tài khoản";
             this.thôngTinTàiKhoảnToolStripMenuItem.Click += new System.EventHandler(this.ThôngTinTàiKhoảnToolStripMenuItem_Click);
             // 
+            // chuyểnTàiKhoảnToolStripMenuItem
+            // 
+            this.chuyểnTàiKhoảnToolStripMenuItem.Name = "chuyểnTàiKhoảnToolStripMenuItem";
+            this.chuyểnTàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(225, 24);
+            this.chuyểnTàiKhoảnToolStripMenuItem.Text = "Chuyển tài khoản";
+            // 
             // đăngXuấtToolStripMenuItem
             // 
             this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
             this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(225, 24);
             this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
             this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.ĐăngXuấtToolStripMenuItem_Click);
-            // 
-            // chuyểnTàiKhoảnToolStripMenuItem
-            // 
-            this.chuyểnTàiKhoảnToolStripMenuItem.Name = "chuyểnTàiKhoảnToolStripMenuItem";
-            this.chuyểnTàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(225, 24);
-            this.chuyểnTàiKhoảnToolStripMenuItem.Text = "Chuyển tài khoản";
             // 
             // côngCụToolStripMenuItem
             // 
@@ -190,56 +190,32 @@ namespace QL_QuanCF
             this.btnThemban.UseVisualStyleBackColor = false;
             this.btnThemban.Click += new System.EventHandler(this.BtnThemban_Click);
             // 
-            // cbbLoaiBan
-            // 
-            this.cbbLoaiBan.AllowDrop = true;
-            this.cbbLoaiBan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.cbbLoaiBan.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbbLoaiBan.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbbLoaiBan.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.cbbLoaiBan.DropDownHeight = 100;
-            this.cbbLoaiBan.DropDownWidth = 96;
-            this.cbbLoaiBan.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbLoaiBan.ForeColor = System.Drawing.Color.Black;
-            this.cbbLoaiBan.FormattingEnabled = true;
-            this.cbbLoaiBan.IntegralHeight = false;
-            this.cbbLoaiBan.ItemHeight = 18;
-            this.cbbLoaiBan.Items.AddRange(new object[] {
-            "Tại bàn",
-            "Mang về",
-            "Giao hàng",
-            "Đặt chỗ"});
-            this.cbbLoaiBan.Location = new System.Drawing.Point(145, 8);
-            this.cbbLoaiBan.Name = "cbbLoaiBan";
-            this.cbbLoaiBan.Size = new System.Drawing.Size(133, 26);
-            this.cbbLoaiBan.TabIndex = 8;
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.btnThemban);
-            this.panel1.Controls.Add(this.cbbLoaiBan);
             this.panel1.Location = new System.Drawing.Point(1060, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(289, 42);
             this.panel1.TabIndex = 9;
             // 
-            // btnTaiban
+            // btnBar
             // 
-            this.btnTaiban.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTaiban.BackColor = System.Drawing.Color.Indigo;
-            this.btnTaiban.FlatAppearance.BorderSize = 0;
-            this.btnTaiban.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTaiban.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.btnTaiban.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnTaiban.Location = new System.Drawing.Point(1, 0);
-            this.btnTaiban.Margin = new System.Windows.Forms.Padding(0);
-            this.btnTaiban.Name = "btnTaiban";
-            this.btnTaiban.Size = new System.Drawing.Size(141, 33);
-            this.btnTaiban.TabIndex = 10;
-            this.btnTaiban.Text = "Tại bàn";
-            this.btnTaiban.UseVisualStyleBackColor = false;
+            this.btnBar.BackColor = System.Drawing.Color.Indigo;
+            this.btnBar.FlatAppearance.BorderSize = 0;
+            this.btnBar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBar.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.btnBar.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnBar.Location = new System.Drawing.Point(1, 0);
+            this.btnBar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnBar.Name = "btnBar";
+            this.btnBar.Size = new System.Drawing.Size(141, 33);
+            this.btnBar.TabIndex = 10;
+            this.btnBar.Text = "Tại bàn";
+            this.btnBar.UseVisualStyleBackColor = false;
+            this.btnBar.Click += new System.EventHandler(this.btnBar_Click);
             // 
             // panel2
             // 
@@ -250,7 +226,7 @@ namespace QL_QuanCF
             this.panel2.Controls.Add(this.flpBan);
             this.panel2.Location = new System.Drawing.Point(0, 77);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1349, 584);
+            this.panel2.Size = new System.Drawing.Size(1349, 569);
             this.panel2.TabIndex = 13;
             // 
             // flpBan
@@ -259,79 +235,82 @@ namespace QL_QuanCF
             this.flpBan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpBan.Location = new System.Drawing.Point(0, 0);
             this.flpBan.Name = "flpBan";
-            this.flpBan.Size = new System.Drawing.Size(1349, 584);
+            this.flpBan.Size = new System.Drawing.Size(1349, 569);
             this.flpBan.TabIndex = 0;
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.btnMangve);
-            this.panel3.Controls.Add(this.btnGiaohang);
-            this.panel3.Controls.Add(this.btnDatcho);
-            this.panel3.Controls.Add(this.btnTaiban);
+            this.panel3.Controls.Add(this.btnTakeAway);
+            this.panel3.Controls.Add(this.btnReser);
+            this.panel3.Controls.Add(this.btnShip);
+            this.panel3.Controls.Add(this.btnBar);
             this.panel3.Location = new System.Drawing.Point(0, 41);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1349, 33);
             this.panel3.TabIndex = 14;
             // 
-            // btnMangve
+            // btnTakeAway
             // 
-            this.btnMangve.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnTakeAway.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMangve.BackColor = System.Drawing.Color.Indigo;
-            this.btnMangve.FlatAppearance.BorderSize = 0;
-            this.btnMangve.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMangve.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.btnMangve.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnMangve.Location = new System.Drawing.Point(145, 0);
-            this.btnMangve.Margin = new System.Windows.Forms.Padding(0);
-            this.btnMangve.Name = "btnMangve";
-            this.btnMangve.Size = new System.Drawing.Size(141, 33);
-            this.btnMangve.TabIndex = 13;
-            this.btnMangve.Text = "Mang về";
-            this.btnMangve.UseVisualStyleBackColor = false;
+            this.btnTakeAway.BackColor = System.Drawing.Color.Indigo;
+            this.btnTakeAway.FlatAppearance.BorderSize = 0;
+            this.btnTakeAway.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTakeAway.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.btnTakeAway.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnTakeAway.Location = new System.Drawing.Point(145, 0);
+            this.btnTakeAway.Margin = new System.Windows.Forms.Padding(0);
+            this.btnTakeAway.Name = "btnTakeAway";
+            this.btnTakeAway.Size = new System.Drawing.Size(141, 33);
+            this.btnTakeAway.TabIndex = 13;
+            this.btnTakeAway.Text = "Mang về";
+            this.btnTakeAway.UseVisualStyleBackColor = false;
+            this.btnTakeAway.Click += new System.EventHandler(this.btnTakeAway_Click);
             // 
-            // btnGiaohang
+            // btnReser
             // 
-            this.btnGiaohang.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnReser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGiaohang.BackColor = System.Drawing.Color.Indigo;
-            this.btnGiaohang.FlatAppearance.BorderSize = 0;
-            this.btnGiaohang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGiaohang.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.btnGiaohang.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnGiaohang.Location = new System.Drawing.Point(289, 0);
-            this.btnGiaohang.Margin = new System.Windows.Forms.Padding(0);
-            this.btnGiaohang.Name = "btnGiaohang";
-            this.btnGiaohang.Size = new System.Drawing.Size(141, 33);
-            this.btnGiaohang.TabIndex = 12;
-            this.btnGiaohang.Text = "Giao hàng";
-            this.btnGiaohang.UseVisualStyleBackColor = false;
+            this.btnReser.BackColor = System.Drawing.Color.Indigo;
+            this.btnReser.FlatAppearance.BorderSize = 0;
+            this.btnReser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReser.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.btnReser.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnReser.Location = new System.Drawing.Point(289, 0);
+            this.btnReser.Margin = new System.Windows.Forms.Padding(0);
+            this.btnReser.Name = "btnReser";
+            this.btnReser.Size = new System.Drawing.Size(141, 33);
+            this.btnReser.TabIndex = 12;
+            this.btnReser.Text = "Đặt chỗ";
+            this.btnReser.UseVisualStyleBackColor = false;
+            this.btnReser.Click += new System.EventHandler(this.btnReser_Click);
             // 
-            // btnDatcho
+            // btnShip
             // 
-            this.btnDatcho.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnShip.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDatcho.BackColor = System.Drawing.Color.Indigo;
-            this.btnDatcho.FlatAppearance.BorderSize = 0;
-            this.btnDatcho.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDatcho.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.btnDatcho.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnDatcho.Location = new System.Drawing.Point(433, 0);
-            this.btnDatcho.Margin = new System.Windows.Forms.Padding(0);
-            this.btnDatcho.Name = "btnDatcho";
-            this.btnDatcho.Size = new System.Drawing.Size(141, 33);
-            this.btnDatcho.TabIndex = 11;
-            this.btnDatcho.Text = "Đặt chỗ";
-            this.btnDatcho.UseVisualStyleBackColor = false;
+            this.btnShip.BackColor = System.Drawing.Color.Indigo;
+            this.btnShip.FlatAppearance.BorderSize = 0;
+            this.btnShip.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShip.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.btnShip.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnShip.Location = new System.Drawing.Point(433, 0);
+            this.btnShip.Margin = new System.Windows.Forms.Padding(0);
+            this.btnShip.Name = "btnShip";
+            this.btnShip.Size = new System.Drawing.Size(141, 33);
+            this.btnShip.TabIndex = 11;
+            this.btnShip.Text = "Giao hàng";
+            this.btnShip.UseVisualStyleBackColor = false;
+            this.btnShip.Click += new System.EventHandler(this.btnShip_Click);
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.Location = new System.Drawing.Point(12, 669);
+            this.linkLabel1.Location = new System.Drawing.Point(12, 654);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(61, 18);
             this.linkLabel1.TabIndex = 15;
@@ -348,13 +327,13 @@ namespace QL_QuanCF
             this.label2.TabIndex = 16;
             this.label2.Text = "Tìm kiếm";
             // 
-            // FMain
+            // fMain
             // 
             this.AccessibleName = "flpBan";
             this.AllowDrop = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.MintCream;
-            this.ClientSize = new System.Drawing.Size(1350, 696);
+            this.ClientSize = new System.Drawing.Size(1350, 681);
             this.Controls.Add(this.txbTimkiem);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.linkLabel1);
@@ -368,8 +347,7 @@ namespace QL_QuanCF
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximizeBox = false;
-            this.Name = "FMain";
+            this.Name = "fMain";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.RightToLeftLayout = true;
             this.ShowIcon = false;
@@ -399,14 +377,13 @@ namespace QL_QuanCF
         private System.Windows.Forms.ToolStripMenuItem thựcĐơnToolStripMenuItem;
         private System.Windows.Forms.Button btnThemban;
         private System.Windows.Forms.ToolStripMenuItem chuyểnTàiKhoảnToolStripMenuItem;
-        private System.Windows.Forms.ComboBox cbbLoaiBan;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnTaiban;
+        private System.Windows.Forms.Button btnBar;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button btnMangve;
-        private System.Windows.Forms.Button btnGiaohang;
-        private System.Windows.Forms.Button btnDatcho;
+        private System.Windows.Forms.Button btnTakeAway;
+        private System.Windows.Forms.Button btnReser;
+        private System.Windows.Forms.Button btnShip;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txbTimkiem;

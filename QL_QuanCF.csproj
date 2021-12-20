@@ -48,78 +48,120 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataAccessObject\BanDTO.cs" />
-    <Compile Include="DataAccessObject\MonDTO.cs" />
-    <Compile Include="DataObject\Ban.cs" />
-    <Compile Include="DataObject\Mon.cs" />
-    <Compile Include="FThucDon.cs">
+    <Compile Include="DataAccessObject\Category.cs" />
+    <Compile Include="DataTransferObject\CategoryDTO.cs" />
+    <Compile Include="DataTransferObject\ListBillInfoDTO.cs" />
+    <Compile Include="DataAccessObject\Table.cs" />
+    <Compile Include="DataAccessObject\Bill.cs" />
+    <Compile Include="DataAccessObject\ListBillInfo.cs" />
+    <Compile Include="DataAccessObject\Food.cs" />
+    <Compile Include="DataTransferObject\TableDTO.cs" />
+    <Compile Include="DataTransferObject\BillDTO.cs" />
+    <Compile Include="DataTransferObject\FoodDTO.cs" />
+    <Compile Include="GraphicUserInterface\fAddSeveralQuantityFood.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FThucDon.Designer.cs">
-      <DependentUpon>FThucDon.cs</DependentUpon>
+    <Compile Include="GraphicUserInterface\fAddSeveralQuantityFood.Designer.cs">
+      <DependentUpon>fAddSeveralQuantityFood.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GraphicUserInterface\fModifyQuantityFood.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GraphicUserInterface\fModifyQuantityFood.Designer.cs">
+      <DependentUpon>fModifyQuantityFood.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GraphicUserInterface\fBill_Info.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GraphicUserInterface\fBill_Info.Designer.cs">
+      <DependentUpon>fBill_Info.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GraphicUserInterface\fPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GraphicUserInterface\fPayment.Designer.cs">
+      <DependentUpon>fPayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GraphicUserInterface\fFoodManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GraphicUserInterface\fFoodManager.Designer.cs">
+      <DependentUpon>fFoodManager.cs</DependentUpon>
     </Compile>
     <Compile Include="DataAccessObject\Provider.cs" />
-    <Compile Include="FKetca.cs">
+    <Compile Include="GraphicUserInterface\fShiftClose.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FKetca.Designer.cs">
-      <DependentUpon>FKetca.cs</DependentUpon>
+    <Compile Include="GraphicUserInterface\fShiftClose.Designer.cs">
+      <DependentUpon>fShiftClose.cs</DependentUpon>
     </Compile>
-    <Compile Include="FLogin.cs">
+    <Compile Include="GraphicUserInterface\fLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FLogin.Designer.cs">
-      <DependentUpon>FLogin.cs</DependentUpon>
+    <Compile Include="GraphicUserInterface\fLogin.Designer.cs">
+      <DependentUpon>fLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="FMain.cs">
+    <Compile Include="GraphicUserInterface\fMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FMain.Designer.cs">
-      <DependentUpon>FMain.cs</DependentUpon>
+    <Compile Include="GraphicUserInterface\fMain.Designer.cs">
+      <DependentUpon>fMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FAccountInfo.cs">
+    <Compile Include="GraphicUserInterface\fAccountInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FAccountInfo.Designer.cs">
-      <DependentUpon>FAccountInfo.cs</DependentUpon>
+    <Compile Include="GraphicUserInterface\fAccountInfo.Designer.cs">
+      <DependentUpon>fAccountInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="FNhanVien.cs">
+    <Compile Include="GraphicUserInterface\fStaffManager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FNhanVien.Designer.cs">
-      <DependentUpon>FNhanVien.cs</DependentUpon>
+    <Compile Include="GraphicUserInterface\fStaffManager.Designer.cs">
+      <DependentUpon>fStaffManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="FThemBan.cs">
+    <Compile Include="GraphicUserInterface\fAddNewBill.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FThemBan.Designer.cs">
-      <DependentUpon>FThemBan.cs</DependentUpon>
+    <Compile Include="GraphicUserInterface\fAddNewBill.Designer.cs">
+      <DependentUpon>fAddNewBill.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FKetca.resx">
-      <DependentUpon>FKetca.cs</DependentUpon>
+    <EmbeddedResource Include="GraphicUserInterface\fAddSeveralQuantityFood.resx">
+      <DependentUpon>fAddSeveralQuantityFood.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FLogin.resx">
-      <DependentUpon>FLogin.cs</DependentUpon>
+    <EmbeddedResource Include="GraphicUserInterface\fModifyQuantityFood.resx">
+      <DependentUpon>fModifyQuantityFood.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FMain.resx">
-      <DependentUpon>FMain.cs</DependentUpon>
+    <EmbeddedResource Include="GraphicUserInterface\fBill_Info.resx">
+      <DependentUpon>fBill_Info.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FMain.vi-VN.resx">
-      <DependentUpon>FMain.cs</DependentUpon>
+    <EmbeddedResource Include="GraphicUserInterface\fShiftClose.resx">
+      <DependentUpon>fShiftClose.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FAccountInfo.resx">
-      <DependentUpon>FAccountInfo.cs</DependentUpon>
+    <EmbeddedResource Include="GraphicUserInterface\fLogin.resx">
+      <DependentUpon>fLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FNhanVien.resx">
-      <DependentUpon>FNhanVien.cs</DependentUpon>
+    <EmbeddedResource Include="GraphicUserInterface\fMain.resx">
+      <DependentUpon>fMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FThemBan.resx">
-      <DependentUpon>FThemBan.cs</DependentUpon>
+    <EmbeddedResource Include="GraphicUserInterface\fMain.vi-VN.resx">
+      <DependentUpon>fMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FThucDon.resx">
-      <DependentUpon>FThucDon.cs</DependentUpon>
+    <EmbeddedResource Include="GraphicUserInterface\fAccountInfo.resx">
+      <DependentUpon>fAccountInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphicUserInterface\fStaffManager.resx">
+      <DependentUpon>fStaffManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphicUserInterface\fPayment.resx">
+      <DependentUpon>fPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphicUserInterface\fAddNewBill.resx">
+      <DependentUpon>fAddNewBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphicUserInterface\fFoodManager.resx">
+      <DependentUpon>fFoodManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

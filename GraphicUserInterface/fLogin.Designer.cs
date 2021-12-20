@@ -1,6 +1,6 @@
 ﻿namespace QL_QuanCF
 {
-    partial class FLogin
+    partial class fLogin
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSignUp = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnDangNhap = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -37,6 +38,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.txbUser = new System.Windows.Forms.TextBox();
             this.lUser = new System.Windows.Forms.Label();
+            this.lbForgotPassword = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -44,14 +46,34 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnSignUp);
             this.panel1.Controls.Add(this.btnThoat);
             this.panel1.Controls.Add(this.btnDangNhap);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(8, 9);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(440, 156);
+            this.panel1.Size = new System.Drawing.Size(440, 194);
             this.panel1.TabIndex = 0;
+            // 
+            // btnSignUp
+            // 
+            this.btnSignUp.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btnSignUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnSignUp.FlatAppearance.BorderColor = System.Drawing.SystemColors.HighlightText;
+            this.btnSignUp.FlatAppearance.BorderSize = 0;
+            this.btnSignUp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DodgerBlue;
+            this.btnSignUp.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSignUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSignUp.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSignUp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSignUp.Location = new System.Drawing.Point(157, 145);
+            this.btnSignUp.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSignUp.Name = "btnSignUp";
+            this.btnSignUp.Size = new System.Drawing.Size(126, 33);
+            this.btnSignUp.TabIndex = 5;
+            this.btnSignUp.Text = "Đăng ký";
+            this.btnSignUp.UseVisualStyleBackColor = false;
             // 
             // btnThoat
             // 
@@ -60,9 +82,9 @@
             this.btnThoat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnThoat.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThoat.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnThoat.Location = new System.Drawing.Point(223, 112);
+            this.btnThoat.Location = new System.Drawing.Point(295, 145);
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(139, 33);
+            this.btnThoat.Size = new System.Drawing.Size(124, 33);
             this.btnThoat.TabIndex = 4;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = false;
@@ -79,10 +101,10 @@
             this.btnDangNhap.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDangNhap.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDangNhap.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDangNhap.Location = new System.Drawing.Point(65, 112);
+            this.btnDangNhap.Location = new System.Drawing.Point(18, 145);
             this.btnDangNhap.Margin = new System.Windows.Forms.Padding(0);
             this.btnDangNhap.Name = "btnDangNhap";
-            this.btnDangNhap.Size = new System.Drawing.Size(141, 33);
+            this.btnDangNhap.Size = new System.Drawing.Size(126, 33);
             this.btnDangNhap.TabIndex = 3;
             this.btnDangNhap.Text = "Đăng Nhập";
             this.btnDangNhap.UseVisualStyleBackColor = false;
@@ -90,29 +112,31 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.lbForgotPassword);
             this.panel3.Controls.Add(this.txbPassword);
             this.panel3.Controls.Add(this.lPassword);
             this.panel3.Location = new System.Drawing.Point(7, 52);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(424, 41);
+            this.panel3.Size = new System.Drawing.Size(424, 87);
             this.panel3.TabIndex = 1;
             // 
             // txbPassword
             // 
             this.txbPassword.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txbPassword.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.HistoryList;
+            this.txbPassword.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbPassword.Location = new System.Drawing.Point(143, 10);
             this.txbPassword.Name = "txbPassword";
-            this.txbPassword.Size = new System.Drawing.Size(269, 20);
+            this.txbPassword.Size = new System.Drawing.Size(269, 26);
             this.txbPassword.TabIndex = 2;
-            this.txbPassword.Text = "123456";
+            this.txbPassword.Text = "staff01";
             this.txbPassword.UseSystemPasswordChar = true;
             // 
             // lPassword
             // 
             this.lPassword.AutoSize = true;
             this.lPassword.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lPassword.Location = new System.Drawing.Point(7, 9);
+            this.lPassword.Location = new System.Drawing.Point(7, 13);
             this.lPassword.Name = "lPassword";
             this.lPassword.Size = new System.Drawing.Size(84, 19);
             this.lPassword.TabIndex = 0;
@@ -131,32 +155,43 @@
             // 
             this.txbUser.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txbUser.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.HistoryList;
+            this.txbUser.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbUser.Location = new System.Drawing.Point(143, 10);
             this.txbUser.Name = "txbUser";
-            this.txbUser.Size = new System.Drawing.Size(269, 20);
+            this.txbUser.Size = new System.Drawing.Size(269, 26);
             this.txbUser.TabIndex = 1;
-            this.txbUser.Text = "admin";
+            this.txbUser.Text = "staff01";
             // 
             // lUser
             // 
             this.lUser.AutoSize = true;
             this.lUser.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lUser.Location = new System.Drawing.Point(7, 11);
+            this.lUser.Location = new System.Drawing.Point(7, 13);
             this.lUser.Name = "lUser";
             this.lUser.Size = new System.Drawing.Size(130, 19);
             this.lUser.TabIndex = 0;
             this.lUser.Text = "Tên đăng nhập:";
             // 
-            // FLogin
+            // lbForgotPassword
+            // 
+            this.lbForgotPassword.AutoSize = true;
+            this.lbForgotPassword.Location = new System.Drawing.Point(332, 54);
+            this.lbForgotPassword.Name = "lbForgotPassword";
+            this.lbForgotPassword.Size = new System.Drawing.Size(80, 13);
+            this.lbForgotPassword.TabIndex = 6;
+            this.lbForgotPassword.TabStop = true;
+            this.lbForgotPassword.Text = "Quên mật khẩu";
+            // 
+            // fLogin
             // 
             this.AcceptButton = this.btnDangNhap;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.CancelButton = this.btnThoat;
-            this.ClientSize = new System.Drawing.Size(453, 183);
+            this.ClientSize = new System.Drawing.Size(453, 215);
             this.Controls.Add(this.panel1);
-            this.Name = "FLogin";
+            this.Name = "fLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng Nhập";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FLogin_FormClosing);
@@ -180,6 +215,8 @@
         private System.Windows.Forms.Label lUser;
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.Button btnDangNhap;
+        private System.Windows.Forms.Button btnSignUp;
+        private System.Windows.Forms.LinkLabel lbForgotPassword;
     }
 }
 

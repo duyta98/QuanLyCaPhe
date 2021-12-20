@@ -1,6 +1,6 @@
 ﻿namespace QL_QuanCF
 {
-    partial class FThemBan
+    partial class fAddNewBill
     {
         /// <summary>
         /// Required designer variable.
