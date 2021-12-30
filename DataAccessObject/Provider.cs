@@ -21,8 +21,6 @@ namespace QL_QuanCF.DataAccessObject
             private set { instance = value; }
         }
 
-        
-
         private Provider() { }
         public DataTable ExecuteQuery(string Query, object[] parameter = null)
         {

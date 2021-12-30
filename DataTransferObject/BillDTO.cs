@@ -16,6 +16,8 @@ namespace QL_QuanCF.DataTransferObject
         private string idAcc;
         private double amount;
         private int status;
+        private int idPromotion;
+        private int idShift;
 
         public BillDTO(DataRow dataRow )
         {
@@ -27,17 +29,21 @@ namespace QL_QuanCF.DataTransferObject
             idAcc = dataRow["IDACC"].ToString();
             amount = double.Parse(dataRow["AMOUNT"].ToString());
             status = (int)dataRow["STATUSBILL"];
+            if (dataRow["IDPROMOTION"].ToString() != "")
+                idPromotion = int.Parse(dataRow["IDPROMOTION"].ToString());
+            idShift = (int)dataRow["IDSHIFT"];
         }
 
-        public BillDTO(int ID, DateTime? checkIn, DateTime? checkOut, int idTable, string idAcc, double amount, int status)
+        public BillDTO(int ID, DateTime? checkIn, DateTime? checkOut, int idTable, string idAcc, double amount, int status, int idShift)
         {
-            this.id = ID;
+            id = ID;
             this.checkIn = checkIn;
             this.checkOut = checkOut;
             this.idTable = idTable;
             this.idAcc = idAcc;
             this.amount = amount;
             this.status = status;
+            this.idShift = idShift;
         }
 
         public int ID { get => id; set => id = value; }
@@ -47,5 +53,7 @@ namespace QL_QuanCF.DataTransferObject
         public string IdAcc { get => idAcc; set => idAcc = value; }
         public double Amount { get => amount; set => amount = value; }
         public int Status { get => status; set => status = value; }
+        public int IdPromotion { get => idPromotion; set => idPromotion = value; }
+        public int IdShift { get => idShift; set => idShift = value; }
     }
 }

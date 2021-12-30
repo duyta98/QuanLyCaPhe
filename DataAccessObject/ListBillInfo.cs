@@ -36,5 +36,13 @@ namespace QL_QuanCF.DataAccessObject
         {
             Provider.Instance.ExecuteNonQuery("spDelAllBillInfo @idBill", new object[] { idBill });
         }
+        public void switchTable(int idTab1, int idTab2)
+        {
+            Provider.Instance.ExecuteNonQuery("uspSwitchTable @idTab1 , @idTab2", new object[] { idTab1,idTab2 });
+        }
+        public void MergeTable(int idTab1, int idTab2)
+        {
+            Provider.Instance.ExecuteNonQuery("uspMergeTable @idTab1 , @idTab2", new object[] { idTab1, idTab2 });
+        }
     }
 }

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using QL_QuanCF.DataAccessObject;
 using QL_QuanCF.DataTransferObject;
+using QL_QuanCF.GraphicUserInterface;
 
 namespace QL_QuanCF
 {
@@ -21,6 +21,8 @@ namespace QL_QuanCF
         private TableDTO table;
         private int billID;
         private readonly string user;
+        public int idShift;
+
         #endregion
         #region Method
         private void SetListBillInfo(List<ListBillInfo> value)
@@ -44,7 +46,7 @@ namespace QL_QuanCF
         {
             lsvBillInfo.Items.Clear();
             billID = Bill.Instance.getIDBillUncheckOutByIDTable(table.ID);
-            List<ListBillInfoDTO> list = DataAccessObject.ListBillInfo.Instance.GetAllBillInfo(billID);
+            List<ListBillInfoDTO> list = ListBillInfo.Instance.GetAllBillInfo(billID);
             int i = 0;
             foreach (ListBillInfoDTO item in list)
             {
@@ -147,10 +149,9 @@ namespace QL_QuanCF
         {
             foreach (ListViewItem lsvi in lsvBillInfo.Items)
             {
-
                 int idFood = int.Parse(lsvi.Tag.ToString());
                 int count = int.Parse(lsvi.SubItems[2].Text.ToString());
-                DataAccessObject.ListBillInfo.Instance.insertBillInfo(billID, idFood, count);
+                ListBillInfo.Instance.insertBillInfo(billID, idFood, count);
             }
         }
         public void AddMoreFoodQuantity(FoodDTO item, int newcount)
@@ -193,8 +194,41 @@ namespace QL_QuanCF
                 lsvBillInfo.SelectedItems[0].SubItems[2].Text = newcount.ToString();
             }
         }
-        #endregion
-        #region Events
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.F8)
+            {
+                Pay();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void Pay()
+        {
+            if (billID == -1)//Thêm mới bill
+            {
+                if (IsEmpty())
+                {
+                    return;
+                }
+
+                Bill.Instance.insertBill(table.ID, user,idShift);
+                billID = Bill.Instance.getIDBillUncheckOutByIDTable(table.ID);//Get new Bill ID
+                Table.Instance.updateTableWhenCreateBill(int.Parse(txtAmountTab.Text), table.ID);
+            }
+            else//Nếu không thì xóa hết các bản ghi để thêm mới lại
+            {
+                ListBillInfo.Instance.dellAllBillInfo(billID);
+            }
+            UpdateBillInfoFromListViewToDataBase();//Thêm mới lại các chi tiết hóa đơn
+            Bill.Instance.updateAmountQuest(int.Parse(txtAmountTab.Text), table.ID);
+
+            Bill.Instance.CalAmountBill(billID);
+            
+            ChangePropBtnTabToCheckIn();
+            
+        }
         private void fBill_Info_Load(object sender, System.EventArgs e)
         {
             LoadBillInfo(billID);
@@ -205,13 +239,21 @@ namespace QL_QuanCF
             lsvBillInfo.ContextMenuStrip = cmsFoodListview;
         }
 
+        #endregion
+        #region Events
+
         private void btnPay_Click(object sender, EventArgs e)
         {
+            if (IsEmpty())
+                return;
+            Pay();
             if (billID == -1)
                 return;
+            
             fPayment payment = new fPayment(table);
             payment.frmbi = this;
-            payment.ShowDialog();
+            Hide();
+            payment.Show();
         }
 
         private void cbbCate_SelectedIndexChanged(object sender, EventArgs e)
@@ -234,39 +276,22 @@ namespace QL_QuanCF
 
         private void btnSaveBill_Click(object sender, EventArgs e)
         {
-
-            if (billID == -1)//Not exists Bill. InsertBill
-            {
-                if (IsEmpty())
-                {
-                    return;
-                }
-
-                Bill.Instance.insertBill(table.ID, user);
-                billID = Bill.Instance.getIDBillUncheckOutByIDTable(table.ID);//Get new Bill ID
-                Table.Instance.updateTableWhenCreateBill(int.Parse(txtAmountTab.Text), table.ID);
-
-            }
-            else//Nếu không thì xóa hết các bản ghi để thêm mới lại
-            {
-                ListBillInfo.Instance.dellAllBillInfo(billID);
-            }
-            UpdateBillInfoFromListViewToDataBase();//Thêm mới lại các chi tiết hóa đơn
-            Bill.Instance.updateAmountQuest(int.Parse(txtAmountTab.Text), table.ID);
-
-            double amount = Bill.Instance.CalAmountBill(billID);
-            Bill.Instance.updateAmountBill(amount, billID);
-            ChangePropBtnTabToCheckIn();
+            if (IsEmpty())
+                return;
+            Pay();
+            
             Close();
         }
         public void ChangePropBtnTabToCheckIn()
         {
-            btParent.Text = table.TabName + Environment.NewLine + "Có người";
+            table.Status = "Có người";
+            btParent.Text = table.TabName + Environment.NewLine + table.Status;
             btParent.BackColor = Color.BlueViolet;
         }
         public void ChangePropBtnTabToCheckOut()
         {
-            btParent.Text = table.TabName + Environment.NewLine + "Trống";
+            table.Status = "Trống";
+            btParent.Text = table.TabName + Environment.NewLine + table.Status;
             btParent.BackColor = Color.White;
         }
         private void txtTableNumber_KeyPress(object sender, KeyPressEventArgs e)
@@ -301,7 +326,6 @@ namespace QL_QuanCF
             frm.ShowDialog();
         }
 
-
         private void cmsFoodFLP_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
             ctrl = ((ContextMenuStrip)sender).SourceControl;
@@ -321,8 +345,25 @@ namespace QL_QuanCF
             frm.parent = this;
             frm.ShowDialog();
         }
-        #endregion
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            if (billID != -1)
+            {
+                ChangePropBtnTabToCheckIn();
+            }
+            else
+            {
+                ChangePropBtnTabToCheckOut();
+            }
+            Close();
+        }
 
+        private void fBill_Info_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            parent.Show();
+        }
+
+        #endregion
 
     }
 }

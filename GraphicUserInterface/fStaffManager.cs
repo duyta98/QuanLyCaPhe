@@ -12,7 +12,7 @@ namespace QL_QuanCF
         public fStaffManager()
         {
             InitializeComponent();
-            FNhanVien_Load();
+            
         }
 
         private void FNhanVien_Load()
@@ -149,6 +149,11 @@ namespace QL_QuanCF
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fStaffManager_Load(object sender, EventArgs e)
         {
 
         }

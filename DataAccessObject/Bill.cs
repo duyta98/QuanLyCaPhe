@@ -29,9 +29,9 @@ namespace QL_QuanCF.DataAccessObject
             }    
             return -1;
         }
-        public void insertBill(int idTab, string user)
+        public void insertBill(int idTab, string user, int idShift)
         {
-            Provider.Instance.ExecuteNonQuery("spInsertBill @idTable , @user", new object[] { idTab, user });
+            Provider.Instance.ExecuteNonQuery("spInsertBill @idTable , @user , @idShift", new object[] { idTab, user, idShift});
         }
         /// <summary>
         /// Update Amount Quest in a Table
@@ -43,15 +43,11 @@ namespace QL_QuanCF.DataAccessObject
             Provider.Instance.ExecuteNonQuery("Update TAB SET AMOUNTTAB = @amount where ID = @id", new object[] { amount, id });
         }
 
-        public double CalAmountBill(int idBill)
+        public void CalAmountBill(int idBill)
         {
-            object ob = Provider.Instance.ExecuteScalar("spCalculateAmountBill @idBill", new object[] { idBill });
-            return double.Parse(ob.ToString());
+            Provider.Instance.ExecuteQuery("uspCalAmountBill @idBill", new object[] { idBill });
         }
 
-        public void updateAmountBill(double amount, int id)
-        {
-            Provider.Instance.ExecuteNonQuery("spUpdateAmountOfBill @Amount , @idBill", new object[] { amount, id });
-        }
+        
     }
 }

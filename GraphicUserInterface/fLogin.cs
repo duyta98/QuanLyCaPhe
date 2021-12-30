@@ -33,16 +33,22 @@ namespace QL_QuanCF
             if (IsCorrectAccount(txbUser.Text, txbPassword.Text))
             {
                 fMain f = new fMain(txbUser.Text);
-                this.Hide();
-                f.ShowDialog();
-                this.Show();
+                f.idShift = getIDShiftFromUser(txbUser.Text);
+                Hide();
+                f.parent = this;
+                f.Show();
+                
             }
             else
                 MessageBox.Show("Sai tên tài khoản hoặc mật khẩu.","Thông báo",MessageBoxButtons.OK);
         }
 
-        
-        
+        private int getIDShiftFromUser(string user)
+        {
+            int id = Shift.Instance.getIDShiftFromUser(user);
+            return id;
+        }
+
         private bool IsCorrectAccount(string pID, string pPass)
         {
             string query = "spLogin @username , @password";

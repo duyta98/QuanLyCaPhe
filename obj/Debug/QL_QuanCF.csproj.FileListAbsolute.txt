@@ -40,3 +40,5 @@ C:\Users\Duy\Desktop\QuanLyCaPhe\obj\Debug\QL_QuanCF.fShiftClose.resources
 C:\Users\Duy\Desktop\QuanLyCaPhe\obj\Debug\QL_QuanCF.fStaffManager.resources
 C:\Users\Duy\Desktop\QuanLyCaPhe\obj\Debug\QL_QuanCF.fAddNewBill.resources
 C:\Users\Duy\Desktop\QuanLyCaPhe\obj\Debug\QL_QuanCF.fFoodManager.resources
+C:\Users\Duy\Desktop\QuanLyCaPhe\obj\Debug\QL_QuanCF.GraphicUserInterface.fPromotions.resources
+C:\Users\Duy\Desktop\QuanLyCaPhe\obj\Debug\QL_QuanCF.GraphicUserInterface.fSwitchTable.resources

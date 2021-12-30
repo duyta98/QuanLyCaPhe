@@ -43,9 +43,8 @@ namespace QL_QuanCF
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.btnSaveBill = new System.Windows.Forms.Button();
-            this.btnPromotion = new System.Windows.Forms.Button();
-            this.lbPromotion = new System.Windows.Forms.Label();
             this.btnPay = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
             this.btnDropTable = new System.Windows.Forms.Button();
@@ -92,9 +91,9 @@ namespace QL_QuanCF
             // txtAmountTab
             // 
             this.txtAmountTab.Font = new System.Drawing.Font("Arial", 16F);
-            this.txtAmountTab.Location = new System.Drawing.Point(399, 27);
+            this.txtAmountTab.Location = new System.Drawing.Point(386, 27);
             this.txtAmountTab.Name = "txtAmountTab";
-            this.txtAmountTab.Size = new System.Drawing.Size(39, 32);
+            this.txtAmountTab.Size = new System.Drawing.Size(52, 32);
             this.txtAmountTab.TabIndex = 3;
             this.txtAmountTab.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAmountTab.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTableNumber_KeyPress);
@@ -103,7 +102,7 @@ namespace QL_QuanCF
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 16F);
-            this.label2.Location = new System.Drawing.Point(290, 30);
+            this.label2.Location = new System.Drawing.Point(277, 30);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(103, 25);
             this.label2.TabIndex = 2;
@@ -136,7 +135,7 @@ namespace QL_QuanCF
             this.panel3.Location = new System.Drawing.Point(726, 83);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(448, 478);
+            this.panel3.Size = new System.Drawing.Size(448, 448);
             this.panel3.TabIndex = 3;
             // 
             // lsvBillInfo
@@ -155,7 +154,7 @@ namespace QL_QuanCF
             this.lsvBillInfo.Location = new System.Drawing.Point(0, 0);
             this.lsvBillInfo.MultiSelect = false;
             this.lsvBillInfo.Name = "lsvBillInfo";
-            this.lsvBillInfo.Size = new System.Drawing.Size(448, 476);
+            this.lsvBillInfo.Size = new System.Drawing.Size(448, 441);
             this.lsvBillInfo.TabIndex = 0;
             this.lsvBillInfo.UseCompatibleStateImageBehavior = false;
             this.lsvBillInfo.View = System.Windows.Forms.View.Details;
@@ -185,17 +184,31 @@ namespace QL_QuanCF
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel4.Controls.Add(this.btnCancel);
             this.panel4.Controls.Add(this.btnSaveBill);
-            this.panel4.Controls.Add(this.btnPromotion);
-            this.panel4.Controls.Add(this.lbPromotion);
             this.panel4.Controls.Add(this.btnPay);
             this.panel4.Controls.Add(this.btnPrint);
             this.panel4.Controls.Add(this.btnDropTable);
-            this.panel4.Location = new System.Drawing.Point(726, 558);
+            this.panel4.Location = new System.Drawing.Point(726, 523);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(448, 95);
+            this.panel4.Size = new System.Drawing.Size(448, 130);
             this.panel4.TabIndex = 3;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.Orange;
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnCancel.Location = new System.Drawing.Point(167, 71);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(103, 36);
+            this.btnCancel.TabIndex = 9;
+            this.btnCancel.Text = "Trở về";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSaveBill
             // 
@@ -203,43 +216,21 @@ namespace QL_QuanCF
             this.btnSaveBill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveBill.Font = new System.Drawing.Font("Arial", 16F);
             this.btnSaveBill.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnSaveBill.Location = new System.Drawing.Point(295, 14);
+            this.btnSaveBill.Location = new System.Drawing.Point(12, 16);
             this.btnSaveBill.Name = "btnSaveBill";
-            this.btnSaveBill.Size = new System.Drawing.Size(143, 35);
+            this.btnSaveBill.Size = new System.Drawing.Size(126, 35);
             this.btnSaveBill.TabIndex = 5;
             this.btnSaveBill.Text = "Lưu HĐ";
             this.btnSaveBill.UseVisualStyleBackColor = false;
             this.btnSaveBill.Click += new System.EventHandler(this.btnSaveBill_Click);
             // 
-            // btnPromotion
-            // 
-            this.btnPromotion.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnPromotion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPromotion.Font = new System.Drawing.Font("Arial", 16F);
-            this.btnPromotion.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnPromotion.Location = new System.Drawing.Point(163, 14);
-            this.btnPromotion.Name = "btnPromotion";
-            this.btnPromotion.Size = new System.Drawing.Size(126, 35);
-            this.btnPromotion.TabIndex = 4;
-            this.btnPromotion.Text = "Chọn KM";
-            this.btnPromotion.UseVisualStyleBackColor = false;
-            // 
-            // lbPromotion
-            // 
-            this.lbPromotion.AutoSize = true;
-            this.lbPromotion.Font = new System.Drawing.Font("Arial", 16F);
-            this.lbPromotion.Location = new System.Drawing.Point(7, 18);
-            this.lbPromotion.Name = "lbPromotion";
-            this.lbPromotion.Size = new System.Drawing.Size(124, 25);
-            this.lbPromotion.TabIndex = 3;
-            this.lbPromotion.Text = "Khuyến mãi";
-            // 
             // btnPay
             // 
             this.btnPay.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnPay.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnPay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPay.Font = new System.Drawing.Font("Arial", 16F);
-            this.btnPay.Location = new System.Drawing.Point(295, 55);
+            this.btnPay.Location = new System.Drawing.Point(295, 71);
             this.btnPay.Name = "btnPay";
             this.btnPay.Size = new System.Drawing.Size(143, 36);
             this.btnPay.TabIndex = 8;
@@ -252,7 +243,7 @@ namespace QL_QuanCF
             this.btnPrint.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrint.Font = new System.Drawing.Font("Arial", 16F);
-            this.btnPrint.Location = new System.Drawing.Point(163, 55);
+            this.btnPrint.Location = new System.Drawing.Point(12, 71);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(126, 36);
             this.btnPrint.TabIndex = 7;
@@ -264,7 +255,7 @@ namespace QL_QuanCF
             this.btnDropTable.BackColor = System.Drawing.Color.Coral;
             this.btnDropTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDropTable.Font = new System.Drawing.Font("Arial", 16F);
-            this.btnDropTable.Location = new System.Drawing.Point(12, 55);
+            this.btnDropTable.Location = new System.Drawing.Point(293, 15);
             this.btnDropTable.Name = "btnDropTable";
             this.btnDropTable.Size = new System.Drawing.Size(145, 36);
             this.btnDropTable.TabIndex = 6;
@@ -371,6 +362,7 @@ namespace QL_QuanCF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(1176, 661);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -384,12 +376,12 @@ namespace QL_QuanCF
             this.Name = "fBill_Info";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fBill_Info";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.fBill_Info_FormClosed);
             this.Load += new System.EventHandler(this.fBill_Info_Load);
             this.panelBill.ResumeLayout(false);
             this.panelBill.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.cmsFoodFLP.ResumeLayout(false);
@@ -418,8 +410,6 @@ namespace QL_QuanCF
         private System.Windows.Forms.Button btnPay;
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Button btnDropTable;
-        private System.Windows.Forms.Button btnPromotion;
-        private System.Windows.Forms.Label lbPromotion;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.Button btnSaveBill;
         private System.Windows.Forms.Label label3;
@@ -429,5 +419,6 @@ namespace QL_QuanCF
         private System.Windows.Forms.ContextMenuStrip cmsFoodListview;
         private System.Windows.Forms.ToolStripMenuItem xóaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem thayĐổiSốLượngToolStripMenuItem;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

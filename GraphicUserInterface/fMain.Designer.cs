@@ -30,6 +30,8 @@ namespace QL_QuanCF
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fMain));
             this.txbTimkiem = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.quảnLýToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,21 +44,31 @@ namespace QL_QuanCF
             this.chuyểnTàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.côngCụToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.giúpĐỡToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnThemban = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.btnBar = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.flpBan = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnlTable = new System.Windows.Forms.Panel();
+            this.flpTable = new System.Windows.Forms.FlowLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnTakeAway = new System.Windows.Forms.Button();
-            this.btnReser = new System.Windows.Forms.Button();
             this.btnShip = new System.Windows.Forms.Button();
+            this.btnReser = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
+            this.cmsTable = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.chuyểnBànToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gộpBànToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.inHóaĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hủyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.thanhToánToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.pnlTable.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.cmsTable.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // txbTimkiem
@@ -64,11 +76,11 @@ namespace QL_QuanCF
             this.txbTimkiem.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txbTimkiem.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txbTimkiem.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txbTimkiem.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbTimkiem.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbTimkiem.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.txbTimkiem.Location = new System.Drawing.Point(754, 8);
+            this.txbTimkiem.Location = new System.Drawing.Point(118, 0);
             this.txbTimkiem.Name = "txbTimkiem";
-            this.txbTimkiem.Size = new System.Drawing.Size(289, 26);
+            this.txbTimkiem.Size = new System.Drawing.Size(400, 35);
             this.txbTimkiem.TabIndex = 17;
             this.txbTimkiem.Text = "Nhập số bàn, món ăn, nước uống,...";
             this.txbTimkiem.Enter += new System.EventHandler(this.txbTimkiem_Enter);
@@ -77,10 +89,6 @@ namespace QL_QuanCF
             // 
             // menuStrip1
             // 
-            this.menuStrip1.AllowDrop = true;
-            this.menuStrip1.AllowMerge = false;
-            this.menuStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.menuStrip1.BackColor = System.Drawing.Color.MintCream;
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
@@ -88,13 +96,12 @@ namespace QL_QuanCF
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.quảnLýToolStripMenuItem,
             this.TaikhoanToolStripMenuItem,
-            this.côngCụToolStripMenuItem});
-            this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.côngCụToolStripMenuItem,
+            this.giúpĐỡToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(-8, -1);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.menuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.menuStrip1.Size = new System.Drawing.Size(276, 27);
+            this.menuStrip1.Size = new System.Drawing.Size(424, 27);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "Menu";
             // 
@@ -105,12 +112,14 @@ namespace QL_QuanCF
             this.nhânViênToolStripMenuItem,
             this.hóaĐơnToolStripMenuItem,
             this.thựcĐơnToolStripMenuItem});
+            this.quảnLýToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("quảnLýToolStripMenuItem.Image")));
             this.quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
-            this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(85, 23);
+            this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(101, 23);
             this.quảnLýToolStripMenuItem.Text = "Quản Lý";
             // 
             // doanhThuToolStripMenuItem
             // 
+            this.doanhThuToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("doanhThuToolStripMenuItem.Image")));
             this.doanhThuToolStripMenuItem.Name = "doanhThuToolStripMenuItem";
             this.doanhThuToolStripMenuItem.Size = new System.Drawing.Size(158, 24);
             this.doanhThuToolStripMenuItem.Text = "Doanh thu";
@@ -141,8 +150,9 @@ namespace QL_QuanCF
             this.thôngTinTàiKhoảnToolStripMenuItem,
             this.chuyểnTàiKhoảnToolStripMenuItem,
             this.đăngXuấtToolStripMenuItem});
+            this.TaikhoanToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("TaikhoanToolStripMenuItem.Image")));
             this.TaikhoanToolStripMenuItem.Name = "TaikhoanToolStripMenuItem";
-            this.TaikhoanToolStripMenuItem.Size = new System.Drawing.Size(99, 23);
+            this.TaikhoanToolStripMenuItem.Size = new System.Drawing.Size(115, 23);
             this.TaikhoanToolStripMenuItem.Text = "Tài Khoản";
             // 
             // thôngTinTàiKhoảnToolStripMenuItem
@@ -167,48 +177,44 @@ namespace QL_QuanCF
             // 
             // côngCụToolStripMenuItem
             // 
+            this.côngCụToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("côngCụToolStripMenuItem.Image")));
             this.côngCụToolStripMenuItem.Name = "côngCụToolStripMenuItem";
-            this.côngCụToolStripMenuItem.Size = new System.Drawing.Size(86, 23);
+            this.côngCụToolStripMenuItem.Size = new System.Drawing.Size(102, 23);
             this.côngCụToolStripMenuItem.Text = "Công cụ";
+            // 
+            // giúpĐỡToolStripMenuItem
+            // 
+            this.giúpĐỡToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("giúpĐỡToolStripMenuItem.Image")));
+            this.giúpĐỡToolStripMenuItem.Name = "giúpĐỡToolStripMenuItem";
+            this.giúpĐỡToolStripMenuItem.Size = new System.Drawing.Size(98, 23);
+            this.giúpĐỡToolStripMenuItem.Text = "Giúp đỡ";
             // 
             // btnThemban
             // 
-            this.btnThemban.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnThemban.BackColor = System.Drawing.Color.Blue;
             this.btnThemban.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnThemban.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnThemban.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnThemban.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.btnThemban.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThemban.ForeColor = System.Drawing.Color.White;
-            this.btnThemban.Location = new System.Drawing.Point(0, 0);
+            this.btnThemban.Location = new System.Drawing.Point(1133, 35);
             this.btnThemban.Name = "btnThemban";
             this.btnThemban.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnThemban.Size = new System.Drawing.Size(144, 42);
+            this.btnThemban.Size = new System.Drawing.Size(83, 38);
             this.btnThemban.TabIndex = 4;
             this.btnThemban.Text = "Thêm";
             this.btnThemban.UseVisualStyleBackColor = false;
             this.btnThemban.Click += new System.EventHandler(this.BtnThemban_Click);
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnThemban);
-            this.panel1.Location = new System.Drawing.Point(1060, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(289, 42);
-            this.panel1.TabIndex = 9;
-            // 
             // btnBar
             // 
-            this.btnBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnBar.BackColor = System.Drawing.Color.Indigo;
             this.btnBar.FlatAppearance.BorderSize = 0;
             this.btnBar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBar.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.btnBar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnBar.Location = new System.Drawing.Point(1, 0);
+            this.btnBar.Location = new System.Drawing.Point(0, 0);
             this.btnBar.Margin = new System.Windows.Forms.Padding(0);
             this.btnBar.Name = "btnBar";
             this.btnBar.Size = new System.Drawing.Size(141, 33);
@@ -217,49 +223,47 @@ namespace QL_QuanCF
             this.btnBar.UseVisualStyleBackColor = false;
             this.btnBar.Click += new System.EventHandler(this.btnBar_Click);
             // 
-            // panel2
+            // pnlTable
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.pnlTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.panel2.Controls.Add(this.flpBan);
-            this.panel2.Location = new System.Drawing.Point(0, 77);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1349, 569);
-            this.panel2.TabIndex = 13;
+            this.pnlTable.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.pnlTable.Controls.Add(this.flpTable);
+            this.pnlTable.Location = new System.Drawing.Point(0, 75);
+            this.pnlTable.Name = "pnlTable";
+            this.pnlTable.Size = new System.Drawing.Size(1350, 583);
+            this.pnlTable.TabIndex = 13;
             // 
-            // flpBan
+            // flpTable
             // 
-            this.flpBan.AutoScroll = true;
-            this.flpBan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpBan.Location = new System.Drawing.Point(0, 0);
-            this.flpBan.Name = "flpBan";
-            this.flpBan.Size = new System.Drawing.Size(1349, 569);
-            this.flpBan.TabIndex = 0;
+            this.flpTable.AutoScroll = true;
+            this.flpTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpTable.Location = new System.Drawing.Point(0, 0);
+            this.flpTable.Name = "flpTable";
+            this.flpTable.Size = new System.Drawing.Size(1350, 583);
+            this.flpTable.TabIndex = 0;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.btnTakeAway);
-            this.panel3.Controls.Add(this.btnReser);
             this.panel3.Controls.Add(this.btnShip);
+            this.panel3.Controls.Add(this.btnReser);
             this.panel3.Controls.Add(this.btnBar);
-            this.panel3.Location = new System.Drawing.Point(0, 41);
+            this.panel3.Location = new System.Drawing.Point(0, 39);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1349, 33);
+            this.panel3.Size = new System.Drawing.Size(573, 33);
             this.panel3.TabIndex = 14;
             // 
             // btnTakeAway
             // 
-            this.btnTakeAway.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTakeAway.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnTakeAway.BackColor = System.Drawing.Color.Indigo;
             this.btnTakeAway.FlatAppearance.BorderSize = 0;
             this.btnTakeAway.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTakeAway.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.btnTakeAway.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnTakeAway.Location = new System.Drawing.Point(145, 0);
+            this.btnTakeAway.Location = new System.Drawing.Point(144, 0);
             this.btnTakeAway.Margin = new System.Windows.Forms.Padding(0);
             this.btnTakeAway.Name = "btnTakeAway";
             this.btnTakeAway.Size = new System.Drawing.Size(141, 33);
@@ -268,36 +272,15 @@ namespace QL_QuanCF
             this.btnTakeAway.UseVisualStyleBackColor = false;
             this.btnTakeAway.Click += new System.EventHandler(this.btnTakeAway_Click);
             // 
-            // btnReser
-            // 
-            this.btnReser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReser.BackColor = System.Drawing.Color.Indigo;
-            this.btnReser.FlatAppearance.BorderSize = 0;
-            this.btnReser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReser.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.btnReser.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnReser.Location = new System.Drawing.Point(289, 0);
-            this.btnReser.Margin = new System.Windows.Forms.Padding(0);
-            this.btnReser.Name = "btnReser";
-            this.btnReser.Size = new System.Drawing.Size(141, 33);
-            this.btnReser.TabIndex = 12;
-            this.btnReser.Text = "Đặt chỗ";
-            this.btnReser.UseVisualStyleBackColor = false;
-            this.btnReser.Click += new System.EventHandler(this.btnReser_Click);
-            // 
             // btnShip
             // 
-            this.btnShip.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnShip.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnShip.BackColor = System.Drawing.Color.Indigo;
             this.btnShip.FlatAppearance.BorderSize = 0;
             this.btnShip.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShip.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.btnShip.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnShip.Location = new System.Drawing.Point(433, 0);
+            this.btnShip.Location = new System.Drawing.Point(432, 0);
             this.btnShip.Margin = new System.Windows.Forms.Padding(0);
             this.btnShip.Name = "btnShip";
             this.btnShip.Size = new System.Drawing.Size(141, 33);
@@ -306,11 +289,29 @@ namespace QL_QuanCF
             this.btnShip.UseVisualStyleBackColor = false;
             this.btnShip.Click += new System.EventHandler(this.btnShip_Click);
             // 
+            // btnReser
+            // 
+            this.btnReser.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnReser.BackColor = System.Drawing.Color.Indigo;
+            this.btnReser.FlatAppearance.BorderSize = 0;
+            this.btnReser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReser.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.btnReser.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnReser.Location = new System.Drawing.Point(288, 0);
+            this.btnReser.Margin = new System.Windows.Forms.Padding(0);
+            this.btnReser.Name = "btnReser";
+            this.btnReser.Size = new System.Drawing.Size(141, 33);
+            this.btnReser.TabIndex = 12;
+            this.btnReser.Text = "Đặt chỗ";
+            this.btnReser.UseVisualStyleBackColor = false;
+            this.btnReser.Click += new System.EventHandler(this.btnReser_Click);
+            // 
             // linkLabel1
             // 
+            this.linkLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.Location = new System.Drawing.Point(12, 654);
+            this.linkLabel1.Location = new System.Drawing.Point(4, 7);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(61, 18);
             this.linkLabel1.TabIndex = 15;
@@ -320,44 +321,108 @@ namespace QL_QuanCF
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(671, 13);
+            this.label2.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(3, 3);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 19);
+            this.label2.Size = new System.Drawing.Size(109, 27);
             this.label2.TabIndex = 16;
             this.label2.Text = "Tìm kiếm";
+            // 
+            // cmsTable
+            // 
+            this.cmsTable.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.chuyểnBànToolStripMenuItem,
+            this.gộpBànToolStripMenuItem,
+            this.inHóaĐơnToolStripMenuItem,
+            this.hủyToolStripMenuItem,
+            this.thanhToánToolStripMenuItem});
+            this.cmsTable.Name = "cmsTable";
+            this.cmsTable.Size = new System.Drawing.Size(139, 114);
+            this.cmsTable.Opening += new System.ComponentModel.CancelEventHandler(this.cmsTable_Opening);
+            // 
+            // chuyểnBànToolStripMenuItem
+            // 
+            this.chuyểnBànToolStripMenuItem.Name = "chuyểnBànToolStripMenuItem";
+            this.chuyểnBànToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.chuyểnBànToolStripMenuItem.Text = "Chuyển bàn";
+            this.chuyểnBànToolStripMenuItem.Click += new System.EventHandler(this.chuyểnBànToolStripMenuItem_Click);
+            // 
+            // gộpBànToolStripMenuItem
+            // 
+            this.gộpBànToolStripMenuItem.Name = "gộpBànToolStripMenuItem";
+            this.gộpBànToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.gộpBànToolStripMenuItem.Text = "Gộp bàn";
+            this.gộpBànToolStripMenuItem.Click += new System.EventHandler(this.gộpBànToolStripMenuItem_Click);
+            // 
+            // inHóaĐơnToolStripMenuItem
+            // 
+            this.inHóaĐơnToolStripMenuItem.Name = "inHóaĐơnToolStripMenuItem";
+            this.inHóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.inHóaĐơnToolStripMenuItem.Text = "In hóa đơn";
+            // 
+            // hủyToolStripMenuItem
+            // 
+            this.hủyToolStripMenuItem.Name = "hủyToolStripMenuItem";
+            this.hủyToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.hủyToolStripMenuItem.Text = "Hủy";
+            // 
+            // thanhToánToolStripMenuItem
+            // 
+            this.thanhToánToolStripMenuItem.Name = "thanhToánToolStripMenuItem";
+            this.thanhToánToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.thanhToánToolStripMenuItem.Text = "Thanh toán";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Silver;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.txbTimkiem);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Location = new System.Drawing.Point(608, 36);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(519, 37);
+            this.panel1.TabIndex = 19;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.linkLabel1);
+            this.panel4.Location = new System.Drawing.Point(0, 657);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1350, 33);
+            this.panel4.TabIndex = 20;
             // 
             // fMain
             // 
             this.AccessibleName = "flpBan";
             this.AllowDrop = true;
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MintCream;
-            this.ClientSize = new System.Drawing.Size(1350, 681);
-            this.Controls.Add(this.txbTimkiem);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.linkLabel1);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
+            this.ClientSize = new System.Drawing.Size(1350, 691);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.btnThemban);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.pnlTable);
             this.Controls.Add(this.menuStrip1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
-            this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "fMain";
-            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.RightToLeftLayout = true;
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Phần mềm quản lý quán cà phê";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.fMain_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.fMain_FormClosed);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
+            this.pnlTable.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.cmsTable.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -377,9 +442,8 @@ namespace QL_QuanCF
         private System.Windows.Forms.ToolStripMenuItem thựcĐơnToolStripMenuItem;
         private System.Windows.Forms.Button btnThemban;
         private System.Windows.Forms.ToolStripMenuItem chuyểnTàiKhoảnToolStripMenuItem;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnBar;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnlTable;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnTakeAway;
         private System.Windows.Forms.Button btnReser;
@@ -387,6 +451,15 @@ namespace QL_QuanCF
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txbTimkiem;
-        private System.Windows.Forms.FlowLayoutPanel flpBan;
+        private System.Windows.Forms.FlowLayoutPanel flpTable;
+        private System.Windows.Forms.ContextMenuStrip cmsTable;
+        private System.Windows.Forms.ToolStripMenuItem chuyểnBànToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gộpBànToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem inHóaĐơnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hủyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem thanhToánToolStripMenuItem;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.ToolStripMenuItem giúpĐỡToolStripMenuItem;
     }
 }

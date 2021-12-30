@@ -47,8 +47,14 @@ namespace QL_QuanCF
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnDoneAndPrint = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.lbAmountBill = new System.Windows.Forms.Label();
+            this.lbAllBill = new System.Windows.Forms.Label();
             this.btnDone = new System.Windows.Forms.Button();
+            this.btnChosePromotion = new System.Windows.Forms.Button();
+            this.btnDropPromotion = new System.Windows.Forms.Button();
+            this.lbDiscount = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lbAmount = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -74,7 +80,7 @@ namespace QL_QuanCF
             // lbCheckOut
             // 
             this.lbCheckOut.AutoSize = true;
-            this.lbCheckOut.Location = new System.Drawing.Point(311, 83);
+            this.lbCheckOut.Location = new System.Drawing.Point(325, 83);
             this.lbCheckOut.Name = "lbCheckOut";
             this.lbCheckOut.Size = new System.Drawing.Size(70, 25);
             this.lbCheckOut.TabIndex = 7;
@@ -83,7 +89,7 @@ namespace QL_QuanCF
             // lbCheckIn
             // 
             this.lbCheckIn.AutoSize = true;
-            this.lbCheckIn.Location = new System.Drawing.Point(311, 36);
+            this.lbCheckIn.Location = new System.Drawing.Point(325, 36);
             this.lbCheckIn.Name = "lbCheckIn";
             this.lbCheckIn.Size = new System.Drawing.Size(70, 25);
             this.lbCheckIn.TabIndex = 6;
@@ -92,7 +98,7 @@ namespace QL_QuanCF
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(213, 83);
+            this.label4.Location = new System.Drawing.Point(227, 83);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(76, 25);
             this.label4.TabIndex = 5;
@@ -101,7 +107,7 @@ namespace QL_QuanCF
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(213, 36);
+            this.label3.Location = new System.Drawing.Point(227, 36);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(92, 25);
             this.label3.TabIndex = 4;
@@ -112,7 +118,7 @@ namespace QL_QuanCF
             this.txtAmountTable.Location = new System.Drawing.Point(115, 78);
             this.txtAmountTable.Name = "txtAmountTable";
             this.txtAmountTable.ReadOnly = true;
-            this.txtAmountTable.Size = new System.Drawing.Size(57, 31);
+            this.txtAmountTable.Size = new System.Drawing.Size(106, 31);
             this.txtAmountTable.TabIndex = 3;
             this.txtAmountTable.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -121,7 +127,7 @@ namespace QL_QuanCF
             this.txtTableName.Location = new System.Drawing.Point(115, 33);
             this.txtTableName.Name = "txtTableName";
             this.txtTableName.ReadOnly = true;
-            this.txtTableName.Size = new System.Drawing.Size(57, 31);
+            this.txtTableName.Size = new System.Drawing.Size(106, 31);
             this.txtTableName.TabIndex = 2;
             this.txtTableName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -199,21 +205,22 @@ namespace QL_QuanCF
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancel.Location = new System.Drawing.Point(254, 459);
+            this.btnCancel.Location = new System.Drawing.Point(259, 586);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(103, 40);
             this.btnCancel.TabIndex = 0;
-            this.btnCancel.Text = "Hủy";
+            this.btnCancel.Text = "Trở về";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnDoneAndPrint
             // 
             this.btnDoneAndPrint.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnDoneAndPrint.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnDoneAndPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDoneAndPrint.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDoneAndPrint.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDoneAndPrint.Location = new System.Drawing.Point(472, 459);
+            this.btnDoneAndPrint.Location = new System.Drawing.Point(477, 586);
             this.btnDoneAndPrint.Name = "btnDoneAndPrint";
             this.btnDoneAndPrint.Size = new System.Drawing.Size(137, 40);
             this.btnDoneAndPrint.TabIndex = 2;
@@ -225,21 +232,21 @@ namespace QL_QuanCF
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 466);
+            this.label5.Location = new System.Drawing.Point(324, 465);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(120, 27);
+            this.label5.Size = new System.Drawing.Size(114, 27);
             this.label5.TabIndex = 3;
-            this.label5.Text = "Tổng tiền:";
+            this.label5.Text = "Tạm tính:";
             // 
-            // lbAmountBill
+            // lbAllBill
             // 
-            this.lbAmountBill.AutoSize = true;
-            this.lbAmountBill.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbAmountBill.Location = new System.Drawing.Point(130, 466);
-            this.lbAmountBill.Name = "lbAmountBill";
-            this.lbAmountBill.Size = new System.Drawing.Size(77, 27);
-            this.lbAmountBill.TabIndex = 4;
-            this.lbAmountBill.Text = "label6";
+            this.lbAllBill.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAllBill.Location = new System.Drawing.Point(477, 465);
+            this.lbAllBill.Name = "lbAllBill";
+            this.lbAllBill.Size = new System.Drawing.Size(132, 27);
+            this.lbAllBill.TabIndex = 4;
+            this.lbAllBill.Text = "all";
+            this.lbAllBill.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnDone
             // 
@@ -247,13 +254,83 @@ namespace QL_QuanCF
             this.btnDone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDone.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDone.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDone.Location = new System.Drawing.Point(363, 459);
+            this.btnDone.Location = new System.Drawing.Point(368, 586);
             this.btnDone.Name = "btnDone";
             this.btnDone.Size = new System.Drawing.Size(103, 40);
             this.btnDone.TabIndex = 1;
             this.btnDone.Text = "Đóng";
             this.btnDone.UseVisualStyleBackColor = false;
             this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
+            // 
+            // btnChosePromotion
+            // 
+            this.btnChosePromotion.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnChosePromotion.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnChosePromotion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChosePromotion.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChosePromotion.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnChosePromotion.Location = new System.Drawing.Point(7, 586);
+            this.btnChosePromotion.Name = "btnChosePromotion";
+            this.btnChosePromotion.Size = new System.Drawing.Size(125, 40);
+            this.btnChosePromotion.TabIndex = 5;
+            this.btnChosePromotion.Text = "Chọn KM";
+            this.btnChosePromotion.UseVisualStyleBackColor = false;
+            this.btnChosePromotion.Click += new System.EventHandler(this.btnChosePromotion_Click);
+            // 
+            // btnDropPromotion
+            // 
+            this.btnDropPromotion.BackColor = System.Drawing.Color.Orange;
+            this.btnDropPromotion.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnDropPromotion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDropPromotion.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDropPromotion.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDropPromotion.Location = new System.Drawing.Point(138, 586);
+            this.btnDropPromotion.Name = "btnDropPromotion";
+            this.btnDropPromotion.Size = new System.Drawing.Size(115, 40);
+            this.btnDropPromotion.TabIndex = 6;
+            this.btnDropPromotion.Text = "Hủy KM";
+            this.btnDropPromotion.UseVisualStyleBackColor = false;
+            this.btnDropPromotion.Click += new System.EventHandler(this.btnDropPromotion_Click);
+            // 
+            // lbDiscount
+            // 
+            this.lbDiscount.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDiscount.Location = new System.Drawing.Point(477, 502);
+            this.lbDiscount.Name = "lbDiscount";
+            this.lbDiscount.Size = new System.Drawing.Size(132, 27);
+            this.lbDiscount.TabIndex = 8;
+            this.lbDiscount.Text = "discount";
+            this.lbDiscount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(324, 502);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(147, 27);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "Khuyến mãi:";
+            // 
+            // lbAmount
+            // 
+            this.lbAmount.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAmount.Location = new System.Drawing.Point(477, 538);
+            this.lbAmount.Name = "lbAmount";
+            this.lbAmount.Size = new System.Drawing.Size(132, 27);
+            this.lbAmount.TabIndex = 10;
+            this.lbAmount.Text = "Amount";
+            this.lbAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(324, 538);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(134, 27);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "Thành tiền:";
             // 
             // fPayment
             // 
@@ -262,9 +339,15 @@ namespace QL_QuanCF
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CadetBlue;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(624, 508);
+            this.ClientSize = new System.Drawing.Size(626, 638);
+            this.Controls.Add(this.lbAmount);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.lbDiscount);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.btnDropPromotion);
+            this.Controls.Add(this.btnChosePromotion);
             this.Controls.Add(this.btnDone);
-            this.Controls.Add(this.lbAmountBill);
+            this.Controls.Add(this.lbAllBill);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnDoneAndPrint);
             this.Controls.Add(this.btnCancel);
@@ -302,8 +385,14 @@ namespace QL_QuanCF
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnDoneAndPrint;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lbAmountBill;
+        private System.Windows.Forms.Label lbAllBill;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.Button btnDone;
+        private System.Windows.Forms.Button btnChosePromotion;
+        private System.Windows.Forms.Button btnDropPromotion;
+        private System.Windows.Forms.Label lbDiscount;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lbAmount;
+        private System.Windows.Forms.Label label9;
     }
 }

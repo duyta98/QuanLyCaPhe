@@ -33,12 +33,12 @@
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnDangNhap = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lbForgotPassword = new System.Windows.Forms.LinkLabel();
             this.txbPassword = new System.Windows.Forms.TextBox();
             this.lPassword = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txbUser = new System.Windows.Forms.TextBox();
             this.lUser = new System.Windows.Forms.Label();
-            this.lbForgotPassword = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -120,6 +120,16 @@
             this.panel3.Size = new System.Drawing.Size(424, 87);
             this.panel3.TabIndex = 1;
             // 
+            // lbForgotPassword
+            // 
+            this.lbForgotPassword.AutoSize = true;
+            this.lbForgotPassword.Location = new System.Drawing.Point(332, 54);
+            this.lbForgotPassword.Name = "lbForgotPassword";
+            this.lbForgotPassword.Size = new System.Drawing.Size(80, 13);
+            this.lbForgotPassword.TabIndex = 6;
+            this.lbForgotPassword.TabStop = true;
+            this.lbForgotPassword.Text = "Quên mật khẩu";
+            // 
             // txbPassword
             // 
             this.txbPassword.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
@@ -172,16 +182,6 @@
             this.lUser.TabIndex = 0;
             this.lUser.Text = "Tên đăng nhập:";
             // 
-            // lbForgotPassword
-            // 
-            this.lbForgotPassword.AutoSize = true;
-            this.lbForgotPassword.Location = new System.Drawing.Point(332, 54);
-            this.lbForgotPassword.Name = "lbForgotPassword";
-            this.lbForgotPassword.Size = new System.Drawing.Size(80, 13);
-            this.lbForgotPassword.TabIndex = 6;
-            this.lbForgotPassword.TabStop = true;
-            this.lbForgotPassword.Text = "Quên mật khẩu";
-            // 
             // fLogin
             // 
             this.AcceptButton = this.btnDangNhap;
@@ -191,6 +191,9 @@
             this.CancelButton = this.btnThoat;
             this.ClientSize = new System.Drawing.Size(453, 215);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "fLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng Nhập";
