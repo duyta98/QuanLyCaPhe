@@ -8,10 +8,10 @@ namespace QL_QuanCF.GraphicUserInterface
 {
     public partial class fPromotions : Form
     {
-        private BillDTO Bill;
+        private Bill Bill;
         public fPayment frmPay;
         private float percent;
-        public fPromotions(BillDTO billDTO)
+        public fPromotions(Bill billDTO)
         {
             InitializeComponent();
             Bill = billDTO;

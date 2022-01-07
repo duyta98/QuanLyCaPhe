@@ -33,7 +33,13 @@ namespace QL_QuanCF
             if (IsCorrectAccount(txbUser.Text, txbPassword.Text))
             {
                 fMain f = new fMain(txbUser.Text);
-                f.idShift = getIDShiftFromUser(txbUser.Text);
+                int IDShift = getIDShiftFromUser(txbUser.Text);
+                while (IDShift == -1)
+                {
+                    ShiftDAO.Instance.insertShift(txbUser.Text);
+                    IDShift = getIDShiftFromUser(txbUser.Text);
+                }
+                f.idShift = IDShift;
                 Hide();
                 f.parent = this;
                 f.Show();
@@ -45,8 +51,7 @@ namespace QL_QuanCF
 
         private int getIDShiftFromUser(string user)
         {
-            int id = Shift.Instance.getIDShiftFromUser(user);
-            return id;
+            return ShiftDAO.Instance.getIDShiftFromUser(user);
         }
 
         private bool IsCorrectAccount(string pID, string pPass)

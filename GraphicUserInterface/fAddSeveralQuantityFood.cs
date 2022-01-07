@@ -16,8 +16,8 @@ namespace QL_QuanCF
     {
         
         public fBill_Info parent { get; set; }
-        private FoodDTO food;
-        public fAddSeveralQuantityFood(FoodDTO foodDTO)
+        private Food food;
+        public fAddSeveralQuantityFood(Food foodDTO)
         {
             InitializeComponent();
             food = foodDTO;

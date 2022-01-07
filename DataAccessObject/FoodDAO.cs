@@ -4,28 +4,28 @@ using System.Data;
 
 namespace QL_QuanCF.DataAccessObject
 {
-    public class Food
+    public class FoodDAO
     {
-        private static Food instance;
+        private static FoodDAO instance;
 
-        public static Food Instance
+        public static FoodDAO Instance
         {
-            get { if (instance == null) instance = new Food(); return Food.instance; }
+            get { if (instance == null) instance = new FoodDAO(); return FoodDAO.instance; }
             private set => instance = value;
         }
 
         public static int Height = 120;
         public static int Width = 120;
 
-        private Food() { }
+        private FoodDAO() { }
 
-        public List<FoodDTO> LoadFoodLists()
+        public List<Food> LoadFoodLists()
         {
-            List<FoodDTO> FoodLists = new List<FoodDTO>();
+            List<Food> FoodLists = new List<Food>();
             DataTable dt = Provider.Instance.ExecuteQuery("dbo.spGetAllFood");
             foreach (DataRow dataRow in dt.Rows)
             {
-                FoodDTO mon = new FoodDTO(dataRow);
+                Food mon = new Food(dataRow);
                 FoodLists.Add(mon);
             }
             return FoodLists;
@@ -35,25 +35,25 @@ namespace QL_QuanCF.DataAccessObject
         /// </summary>
         /// <param name="id">ID category</param>
         /// <returns></returns>
-        public List<FoodDTO> LoadFoodListsByIDCate(int id)
+        public List<Food> LoadFoodListsByIDCate(int id)
         {
-            List<FoodDTO> FoodLists = new List<FoodDTO>();
+            List<Food> FoodLists = new List<Food>();
             DataTable dt = Provider.Instance.ExecuteQuery("dbo.spGetAllFoodByIDCate "+id);
             foreach (DataRow dataRow in dt.Rows)
             {
-                FoodDTO mon = new FoodDTO(dataRow);
+                Food mon = new Food(dataRow);
                 FoodLists.Add(mon);
             }
             return FoodLists;
         }
 
-        public List<FoodDTO> LoadFoodListsBySearch(string text)
+        public List<Food> LoadFoodListsBySearch(string text)
         {
-            List<FoodDTO> FoodLists = new List<FoodDTO>();
+            List<Food> FoodLists = new List<Food>();
             DataTable dt = Provider.Instance.ExecuteQuery("dbo.spGetAllFoodBySearch N'" + text + "'");
             foreach (DataRow dataRow in dt.Rows)
             {
-                FoodDTO mon = new FoodDTO(dataRow);
+                Food mon = new Food(dataRow);
                 FoodLists.Add(mon);
             }
             return FoodLists;

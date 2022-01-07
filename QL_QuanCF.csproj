@@ -48,18 +48,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataAccessObject\Category.cs" />
-    <Compile Include="DataAccessObject\Shift.cs" />
-    <Compile Include="DataTransferObject\CategoryDTO.cs" />
-    <Compile Include="DataTransferObject\ListBillInfoDTO.cs" />
-    <Compile Include="DataAccessObject\Table.cs" />
-    <Compile Include="DataAccessObject\Bill.cs" />
-    <Compile Include="DataAccessObject\ListBillInfo.cs" />
-    <Compile Include="DataAccessObject\Food.cs" />
-    <Compile Include="DataTransferObject\ShiftDTO.cs" />
-    <Compile Include="DataTransferObject\TableDTO.cs" />
-    <Compile Include="DataTransferObject\BillDTO.cs" />
-    <Compile Include="DataTransferObject\FoodDTO.cs" />
+    <Compile Include="DataAccessObject\CategoryDAO.cs" />
+    <Compile Include="DataAccessObject\ShiftDAO.cs" />
+    <Compile Include="DataTransferObject\Category.cs" />
+    <Compile Include="DataTransferObject\ListBillInfo.cs" />
+    <Compile Include="DataAccessObject\TableDAO.cs" />
+    <Compile Include="DataAccessObject\BillDAO.cs" />
+    <Compile Include="DataAccessObject\ListBillInfoDAO.cs" />
+    <Compile Include="DataAccessObject\FoodDAO.cs" />
+    <Compile Include="DataTransferObject\Shift.cs" />
+    <Compile Include="DataTransferObject\Table.cs" />
+    <Compile Include="DataTransferObject\Bill.cs" />
+    <Compile Include="DataTransferObject\Food.cs" />
     <Compile Include="GraphicUserInterface\fAddSeveralQuantityFood.cs">
       <SubType>Form</SubType>
     </Compile>

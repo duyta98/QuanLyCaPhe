@@ -8,27 +8,27 @@ using System.Threading.Tasks;
 
 namespace QL_QuanCF.DataAccessObject
 {
-    public class Category
+    public class CategoryDAO
     {
-        private static Category instance;
+        private static CategoryDAO instance;
 
-        public Category()
+        public CategoryDAO()
         {
         }
 
-        public static Category Instance
+        public static CategoryDAO Instance
         {
-            get { if (instance == null) instance = new Category(); return Category.instance; } 
+            get { if (instance == null) instance = new CategoryDAO(); return CategoryDAO.instance; } 
             private set { instance = value; }
         }
-        public List<CategoryDTO> GetCategoryDTOs()
+        public List<Category> GetCategoryDTOs()
         {
-            List<CategoryDTO> categoryDTOs = new List<CategoryDTO>();
+            List<Category> categoryDTOs = new List<Category>();
             string query = "SELECT * FROM dbo.FOODCATEGORY";
             DataTable dt = Provider.Instance.ExecuteQuery(query);
             foreach (DataRow item in dt.Rows)
             {
-                CategoryDTO category = new CategoryDTO(item);
+                Category category = new Category(item);
                 categoryDTOs.Add(category);
             }
             return categoryDTOs;

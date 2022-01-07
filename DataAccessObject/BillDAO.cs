@@ -3,16 +3,16 @@ using System.Data;
 
 namespace QL_QuanCF.DataAccessObject
 {
-    public class Bill
+    public class BillDAO
     {
-        private static Bill instance;
+        private static BillDAO instance;
 
-        public static Bill Instance 
+        public static BillDAO Instance 
         {
-            get { if (instance == null) instance = new Bill(); return instance; }
+            get { if (instance == null) instance = new BillDAO(); return instance; }
             private set { instance = value; }
         }
-        private Bill() { }
+        private BillDAO() { }
         /// <summary>
         /// Thành công  bill ID
         /// Thất bại -1;
@@ -24,14 +24,14 @@ namespace QL_QuanCF.DataAccessObject
             DataTable dt = Provider.Instance.ExecuteQuery("Select * FROM BILL where IDTAB = " + id + " and STATUSBILL = 0");
             if(dt.Rows.Count>0)
             {
-                BillDTO b = new BillDTO(dt.Rows[0]);
+                Bill b = new Bill(dt.Rows[0]);
                 return b.ID;
             }    
             return -1;
         }
-        public void insertBill(int idTab, string user, int idShift)
+        public void insertBill(int idTab, string user)
         {
-            Provider.Instance.ExecuteNonQuery("spInsertBill @idTable , @user , @idShift", new object[] { idTab, user, idShift});
+            Provider.Instance.ExecuteNonQuery("spInsertBill @idTable , @user", new object[] { idTab, user});
         }
         /// <summary>
         /// Update Amount Quest in a Table

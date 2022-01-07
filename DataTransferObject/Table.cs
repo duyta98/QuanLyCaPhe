@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QL_QuanCF.DataTransferObject
 {
-    public class TableDTO
+    public class Table
     {
         public int ID { get => id; set => id = value; }
         public string TabName { get => tabName; set => tabName = value; }
@@ -22,7 +22,7 @@ namespace QL_QuanCF.DataTransferObject
         private int amount;
         
 
-        public TableDTO(DataRow dr)
+        public Table(DataRow dr)
         {
             id = int.Parse(dr[0].ToString());
             tabName =dr[1].ToString();
@@ -31,13 +31,17 @@ namespace QL_QuanCF.DataTransferObject
             amount = int.Parse(dr[4].ToString());
         }
 
-        public TableDTO(string tabName, string status, int id, int tabType, int amount)
+        public Table(string tabName, string status, int id, int tabType, int amount)
         {
             this.tabName = tabName;
             this.status = status;
             this.id = id;
             this.tabType = tabType;
             this.amount = amount;
+        }
+
+        public Table()
+        {
         }
     }
 }

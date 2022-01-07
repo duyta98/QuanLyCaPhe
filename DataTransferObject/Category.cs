@@ -7,21 +7,21 @@ using System.Threading.Tasks;
 
 namespace QL_QuanCF.DataTransferObject
 {
-    public class CategoryDTO
+    public class Category
     {
         private int id;
         private string name;
 
-        public CategoryDTO()
+        public Category()
         {
         }
 
-        public CategoryDTO(int id, string name)
+        public Category(int id, string name)
         {
             this.id = id;
             this.name = name;
         }
-        public CategoryDTO(DataRow row)
+        public Category(DataRow row)
         {
             this.id = (int)row["ID"];
             this.name = row["NAMECATE"].ToString();

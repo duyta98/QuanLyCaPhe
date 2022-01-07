@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using QL_QuanCF.DataTransferObject;
 using QL_QuanCF.DataAccessObject;
@@ -15,19 +10,19 @@ namespace QL_QuanCF
 {
     public partial class fPayment : Form
     {
-        
-        private BillDTO bill;
-        private TableDTO table;
+        public int idShift;
+        private Bill bill;
+        private Table table;
         public fBill_Info frmbi;
         private double amountTemp;
         private double discount;
-        public fPayment(TableDTO item)
+        public fPayment(Table item)
         {
             InitializeComponent();
             table = item;
             DataTable dt = Provider.Instance.ExecuteQuery("spGetBillFromIDTable " + table.ID);
             if(dt.Rows.Count > 0)
-                bill = new BillDTO(dt.Rows[0]);
+                bill = new Bill(dt.Rows[0]);
         }
 
         private void fPayment_Load(object sender, EventArgs e)
@@ -69,9 +64,9 @@ namespace QL_QuanCF
         public void loadBillInfo(int billID)
         {
             lsv.Items.Clear();
-            List<ListBillInfoDTO> list = ListBillInfo.Instance.GetAllBillInfo(billID);
+            List<ListBillInfo> list = ListBillInfoDAO.Instance.GetAllBillInfo(billID);
             int i = 0;
-            foreach (ListBillInfoDTO item in list)
+            foreach (ListBillInfo item in list)
             {
                 i++;
                 ListViewItem lsvitem = new ListViewItem(i.ToString());
@@ -81,24 +76,24 @@ namespace QL_QuanCF
                 lsv.Items.Add(lsvitem);
             }
         }
-        private void checkOut(int idBill)
+        private void checkOut(int idBill , int idShift)
         {
             string query;
 
             if (bill.IdPromotion == 0)
             {
-                query = "UPDATE dbo.BILL SET DATECHECKOUT = GETDATE(), STATUSBILL = 1, IDPROMOTION = null WHERE ID = " + idBill;
+                query = "UPDATE dbo.BILL SET DATECHECKOUT = GETDATE(), STATUSBILL = 1, IDPROMOTION = null, IDSHIFT = " + idShift + " WHERE ID = " + idBill;
             }
             else
             {
-                query = "UPDATE dbo.BILL SET DATECHECKOUT = GETDATE(), STATUSBILL = 1, IDPROMOTION = "+bill.IdPromotion+" WHERE ID = " + idBill;
+                query = "UPDATE dbo.BILL SET DATECHECKOUT = GETDATE(), STATUSBILL = 1, IDPROMOTION = " + bill.IdPromotion + ", IDSHIFT = " + idShift + " WHERE ID = " + idBill;
             }
 
             Provider.Instance.ExecuteNonQuery(query);
         }
         private void btnDone_Click(object sender, EventArgs e)
         {
-            checkOut(bill.ID);
+            checkOut(bill.ID, idShift);
             frmbi.ChangePropBtnTabToCheckOut();
             frmbi.Close();
             Close();

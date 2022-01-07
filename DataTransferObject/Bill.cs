@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QL_QuanCF.DataTransferObject
 {
-    public class BillDTO
+    public class Bill
     {
         private int id;
         private DateTime? checkIn;//(?) allow null
@@ -19,7 +19,7 @@ namespace QL_QuanCF.DataTransferObject
         private int idPromotion;
         private int idShift;
 
-        public BillDTO(DataRow dataRow )
+        public Bill(DataRow dataRow )
         {
             id = (int)dataRow["ID"];
             checkIn = (DateTime)dataRow["DATECHECKIN"];
@@ -31,10 +31,11 @@ namespace QL_QuanCF.DataTransferObject
             status = (int)dataRow["STATUSBILL"];
             if (dataRow["IDPROMOTION"].ToString() != "")
                 idPromotion = int.Parse(dataRow["IDPROMOTION"].ToString());
-            idShift = (int)dataRow["IDSHIFT"];
+            if (dataRow["IDSHIFT"].ToString() != "")
+                idShift = (int)dataRow["IDSHIFT"];
         }
 
-        public BillDTO(int ID, DateTime? checkIn, DateTime? checkOut, int idTable, string idAcc, double amount, int status, int idShift)
+        public Bill(int ID, DateTime? checkIn, DateTime? checkOut, int idTable, string idAcc, double amount, int status, int idShift)
         {
             id = ID;
             this.checkIn = checkIn;

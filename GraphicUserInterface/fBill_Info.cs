@@ -13,28 +13,22 @@ namespace QL_QuanCF
     {
         #region Object
         private Control ctrl;
-        FoodDTO food;
+        Food food;
         public fMain parent { get; set; }
         public Button btParent { get; set; }
-        private List<ListBillInfo> listBillInfo;
-        List<FoodDTO> foods;
-        private TableDTO table;
+        List<Food> foods;
+        private Table table;
         private int billID;
         private readonly string user;
         public int idShift;
 
         #endregion
         #region Method
-        private void SetListBillInfo(List<ListBillInfo> value)
-        {
-            listBillInfo = value;
-        }
 
-        public fBill_Info(TableDTO item, string userName)
+        public fBill_Info(Table tb, string userName)
         {
             InitializeComponent();
-            SetListBillInfo(new List<ListBillInfo>());
-            table = item;
+            table = TableDAO.Instance.GetTable(tb.ID);
             user = userName;
 
         }
@@ -45,10 +39,10 @@ namespace QL_QuanCF
         public void LoadBillInfo(int id)
         {
             lsvBillInfo.Items.Clear();
-            billID = Bill.Instance.getIDBillUncheckOutByIDTable(table.ID);
-            List<ListBillInfoDTO> list = ListBillInfo.Instance.GetAllBillInfo(billID);
+            billID = BillDAO.Instance.getIDBillUncheckOutByIDTable(table.ID);
+            List<ListBillInfo> list = ListBillInfoDAO.Instance.GetAllBillInfo(billID);
             int i = 0;
-            foreach (ListBillInfoDTO item in list)
+            foreach (ListBillInfo item in list)
             {
                 i++;
                 ListViewItem lsvitem = new ListViewItem(i.ToString());
@@ -61,8 +55,8 @@ namespace QL_QuanCF
         }
         private void LoadCbbCate()
         {
-            List<CategoryDTO> cates = Category.Instance.GetCategoryDTOs();
-            CategoryDTO allCate = new CategoryDTO();
+            List<Category> cates = CategoryDAO.Instance.GetCategoryDTOs();
+            Category allCate = new Category();
             allCate.Name = "Tất cả";
             allCate.Id = 0;
             cates.Add(allCate);
@@ -77,11 +71,11 @@ namespace QL_QuanCF
         /// Tạo control button món ăn
         /// </summary>
         /// <param name="list">Danh sách món ăn <List></param>
-        private void CreateButton(List<FoodDTO> list)
+        private void CreateButton(List<Food> list)
         {
-            foreach (FoodDTO item in list)
+            foreach (Food item in list)
             {
-                Button btn = new Button() { Width = Food.Width, Height = Food.Height };
+                Button btn = new Button() { Width = FoodDAO.Width, Height = FoodDAO.Height };
                 btn.Text = item.NameFood + Environment.NewLine + item.Price.ToString("#,#");
                 btn.Tag = item;
                 btn.ContextMenuStrip = cmsFoodFLP;
@@ -111,7 +105,7 @@ namespace QL_QuanCF
                     }
                     if (isExist == false)
                     {
-                        ListBillInfoDTO billInfo = new ListBillInfoDTO();
+                        ListBillInfo billInfo = new ListBillInfo();
                         billInfo.Name = item.NameFood;
                         billInfo.Quantity = 1;
                         billInfo.Price = item.Price;
@@ -151,10 +145,10 @@ namespace QL_QuanCF
             {
                 int idFood = int.Parse(lsvi.Tag.ToString());
                 int count = int.Parse(lsvi.SubItems[2].Text.ToString());
-                ListBillInfo.Instance.insertBillInfo(billID, idFood, count);
+                ListBillInfoDAO.Instance.insertBillInfo(billID, idFood, count);
             }
         }
-        public void AddMoreFoodQuantity(FoodDTO item, int newcount)
+        public void AddMoreFoodQuantity(Food item, int newcount)
         {
             int i = 0;
             bool isExist = false;
@@ -174,7 +168,7 @@ namespace QL_QuanCF
             }
             if (isExist == false)
             {
-                ListBillInfoDTO billInfo = new ListBillInfoDTO();
+                ListBillInfo billInfo = new ListBillInfo();
                 billInfo.Name = item.NameFood;
                 billInfo.Quantity = newcount;
                 billInfo.Price = item.Price;
@@ -213,18 +207,18 @@ namespace QL_QuanCF
                     return;
                 }
 
-                Bill.Instance.insertBill(table.ID, user,idShift);
-                billID = Bill.Instance.getIDBillUncheckOutByIDTable(table.ID);//Get new Bill ID
-                Table.Instance.updateTableWhenCreateBill(int.Parse(txtAmountTab.Text), table.ID);
+                BillDAO.Instance.insertBill(table.ID, user);
+                billID = BillDAO.Instance.getIDBillUncheckOutByIDTable(table.ID);//Get new Bill ID
+                TableDAO.Instance.updateTableWhenCreateBill(int.Parse(txtAmountTab.Text), table.ID);
             }
             else//Nếu không thì xóa hết các bản ghi để thêm mới lại
             {
-                ListBillInfo.Instance.dellAllBillInfo(billID);
+                ListBillInfoDAO.Instance.dellAllBillInfo(billID);
             }
             UpdateBillInfoFromListViewToDataBase();//Thêm mới lại các chi tiết hóa đơn
-            Bill.Instance.updateAmountQuest(int.Parse(txtAmountTab.Text), table.ID);
+            BillDAO.Instance.updateAmountQuest(int.Parse(txtAmountTab.Text), table.ID);
 
-            Bill.Instance.CalAmountBill(billID);
+            BillDAO.Instance.CalAmountBill(billID);
             
             ChangePropBtnTabToCheckIn();
             
@@ -235,7 +229,7 @@ namespace QL_QuanCF
             LoadCbbCate();
             txtTableNumber.Text = table.TabName;
             txtAmountTab.Text = table.Amount.ToString();
-            billID = Bill.Instance.getIDBillUncheckOutByIDTable(table.ID);
+            billID = BillDAO.Instance.getIDBillUncheckOutByIDTable(table.ID);
             lsvBillInfo.ContextMenuStrip = cmsFoodListview;
         }
 
@@ -252,6 +246,7 @@ namespace QL_QuanCF
             
             fPayment payment = new fPayment(table);
             payment.frmbi = this;
+            payment.idShift = idShift;
             Hide();
             payment.Show();
         }
@@ -260,15 +255,15 @@ namespace QL_QuanCF
         {
             if (cbbCate.SelectedValue == null)
                 return;
-            int idCate = (cbbCate.SelectedItem as CategoryDTO).Id;
+            int idCate = (cbbCate.SelectedItem as Category).Id;
 
             if (idCate == 0)
             {
-                foods = Food.Instance.LoadFoodLists();
+                foods = FoodDAO.Instance.LoadFoodLists();
             }
             else
             {
-                foods = Food.Instance.LoadFoodListsByIDCate(idCate);
+                foods = FoodDAO.Instance.LoadFoodListsByIDCate(idCate);
             }
             flpViewFood.Controls.Clear();
             CreateButton(foods);
@@ -311,16 +306,16 @@ namespace QL_QuanCF
         private void btnSearch_Click(object sender, EventArgs e)
         {
             if (txtSearch.Text.Trim() == "")
-                foods = Food.Instance.LoadFoodLists();
+                foods = FoodDAO.Instance.LoadFoodLists();
             else
-                foods = Food.Instance.LoadFoodListsBySearch(txtSearch.Text.Trim());
+                foods = FoodDAO.Instance.LoadFoodListsBySearch(txtSearch.Text.Trim());
             flpViewFood.Controls.Clear();
             CreateButton(foods);
         }
 
         private void thêmNhiềuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            food = ctrl.Tag as FoodDTO;
+            food = ctrl.Tag as Food;
             fAddSeveralQuantityFood frm = new fAddSeveralQuantityFood(food);
             frm.parent = this;
             frm.ShowDialog();

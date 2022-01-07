@@ -15,8 +15,8 @@ namespace QL_QuanCF
         public Control btn1;
         public Control btn2;
         private string userName;
-        private TableDTO tab1;
-        private TableDTO tab2;
+        private Table tab1;
+        private Table tab2;
         private int idfirstBill;
         public int idShift;
         public fMain(string user)
@@ -77,18 +77,24 @@ namespace QL_QuanCF
                 }
             }
         }
-
+        
         private void ĐăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult dlr = MessageBox.Show("Bạn có muốn đóng ca làm việc hay không?", "Thông báo", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-            if (dlr == DialogResult.Yes)
+            if (!isCloseShift(userName))
             {
-                fShiftClose f = new fShiftClose();
-                f.ShowDialog();
-            }
-            else if (dlr == DialogResult.No)
-            {
-                this.Close();
+                DialogResult dr = MessageBox.Show("Chưa đóng ca làm việc, Bạn có muốn đóng không?", "Thông báo", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                
+                if (dr == DialogResult.Yes)
+                {
+                    FShiftClose frm = new FShiftClose();
+                    frm.idShift = idShift;
+                    frm.parent = this;
+                    frm.ShowDialog();
+                }
+                else if (dr == DialogResult.No)
+                {
+                    Close();
+                }
             }
         }
 
@@ -132,15 +138,15 @@ namespace QL_QuanCF
                 frm.ShowDialog();
                 if (btn2 == null)
                     return;
-                tab2 = btn2.Tag as TableDTO;
-                int idsecondBill = Bill.Instance.getIDBillUncheckOutByIDTable(tab2.ID);
+                tab2 = btn2.Tag as Table;
+                int idsecondBill = BillDAO.Instance.getIDBillUncheckOutByIDTable(tab2.ID);
                 if (idsecondBill == -1)
                 {
                     swapTable(tab1.ID, tab2.ID);
                     string name = btn2.Name;
                     var btn = flpTable.Controls.OfType<Button>().Where(x => x.Name == name).FirstOrDefault();
                     btn.BackColor = Color.BlueViolet;
-                    tab2 = btn.Tag as TableDTO;
+                    tab2 = btn.Tag as Table;
                     tab2.Status = "Có người";
                     tab1.Status = "Trống";
                     btn1.BackColor = Color.White;
@@ -159,8 +165,8 @@ namespace QL_QuanCF
         private void cmsTable_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
             btn1 = ((ContextMenuStrip)sender).SourceControl;
-            tab1 = btn1.Tag as TableDTO;
-            idfirstBill = Bill.Instance.getIDBillUncheckOutByIDTable(tab1.ID);
+            tab1 = btn1.Tag as Table;
+            idfirstBill = BillDAO.Instance.getIDBillUncheckOutByIDTable(tab1.ID);
 
             foreach (var item in cmsTable.Items)
             {
@@ -178,8 +184,8 @@ namespace QL_QuanCF
 
         private void gộpBànToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tab1 = btn1.Tag as TableDTO;
-            int idfirstBill = Bill.Instance.getIDBillUncheckOutByIDTable(tab1.ID);
+            tab1 = btn1.Tag as Table;
+            int idfirstBill = BillDAO.Instance.getIDBillUncheckOutByIDTable(tab1.ID);
             if (idfirstBill == -1)
             {
                 MessageBox.Show("Bàn trống!");
@@ -197,7 +203,7 @@ namespace QL_QuanCF
                 string name = btn2.Name;
                 var btn = flpTable.Controls.OfType<Button>().Where(x => x.Name == name).FirstOrDefault();
                 btn.BackColor = Color.BlueViolet;
-                tab2 = btn.Tag as TableDTO;
+                tab2 = btn.Tag as Table;
                 tab2.Status = "Trống";
                 btn.Text = tab2.TabName + Environment.NewLine + tab2.Status;
                 MergeTable(tab1.ID, tab2.ID);
@@ -208,11 +214,12 @@ namespace QL_QuanCF
 
         private void fMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Bạn có chắc chắn muốn thoát?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dr == DialogResult.No)
+            if(e.CloseReason == CloseReason.UserClosing)
             {
-                e.Cancel = true;
-            }
+                DialogResult dr = MessageBox.Show("Bạn chắc chắn muốn thoát chứ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.No)
+                    e.Cancel = true;
+            }    
         }
         private void fMain_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -224,11 +231,11 @@ namespace QL_QuanCF
         public void loadTable(int tabType)//tabType = 1: tại chỗ, 2: Mang về, 3: Đặt chỗ, 4: Giao hàng
         {
             flpTable.Controls.Clear();
-            List<TableDTO> ListTables = Table.Instance.LoadTable(tabType);
+            List<Table> ListTables = TableDAO.Instance.LoadTable(tabType);
             
-            foreach (TableDTO item in ListTables)
+            foreach (Table item in ListTables)
             {
-                Button btn = new Button() { Width = Table.BanWidth, Height = Table.BanWidth };
+                Button btn = new Button() { Width = TableDAO.BanWidth, Height = TableDAO.BanWidth };
                 btn.Text = item.TabName + Environment.NewLine + item.Status;
                 btn.Tag = item;
                 btn.Name = item.ID.ToString();
@@ -238,17 +245,17 @@ namespace QL_QuanCF
                 btn.ContextMenuStrip = cmsTable;
                 btn.MouseHover += (s, e) =>
                 {
-                    btn.BackColor = Color.Yellow;
+                    btn.BackColor = Color.Orange;
                 };
                 btn.MouseLeave += (s, e) =>
                 {
-                    if(item.Status == "Trống")
+                    Table tb = TableDAO.Instance.GetTable(item.ID);
+                    if (tb.Status == "Trống")
                         btn.BackColor = Color.White;
                     else
                         btn.BackColor = Color.BlueViolet;
                 };
                 btn.Click += (s, e) =>
-                
                 {
                     fBill_Info f = new fBill_Info(item,userName);
                     f.idShift = idShift;
@@ -274,11 +281,11 @@ namespace QL_QuanCF
         }
         private void loadTable(string text)
         {
-            List<TableDTO> ListTables = Table.Instance.LoadTable(text);
+            List<Table> ListTables = TableDAO.Instance.LoadTable(text);
 
-            foreach (TableDTO item in ListTables)
+            foreach (Table item in ListTables)
             {
-                Button btn = new Button() { Width = Table.BanWidth, Height = Table.BanWidth };
+                Button btn = new Button() { Width = TableDAO.BanWidth, Height = TableDAO.BanWidth };
                 btn.Text = item.TabName + Environment.NewLine + item.Status;
                 btn.Tag = item;
                 btn.Name = item.ID.ToString();
@@ -286,20 +293,19 @@ namespace QL_QuanCF
                 btn.FlatStyle = FlatStyle.Standard;
                 btn.Margin = new Padding(20);
                 btn.ContextMenuStrip = cmsTable;
-
                 btn.MouseHover += (s, e) =>
                 {
-                    btn.BackColor = Color.Yellow;
+                    btn.BackColor = Color.Orange;
                 };
                 btn.MouseLeave += (s, e) =>
                 {
-                    if (item.Status == "Trống")
+                    Table tb = TableDAO.Instance.GetTable(item.ID);
+                    if(tb.Status == "Trống")
                         btn.BackColor = Color.White;
                     else
                         btn.BackColor = Color.BlueViolet;
                 };
                 btn.Click += (s, e) =>
-
                 {
                     fBill_Info f = new fBill_Info(item, userName);
                     f.idShift = idShift;
@@ -325,14 +331,24 @@ namespace QL_QuanCF
         }
         private void swapTable(int idTab1, int idTab2)
         {
-            ListBillInfo.Instance.switchTable(idTab1, idTab2);
+            ListBillInfoDAO.Instance.switchTable(idTab1, idTab2);
         }
         
         private void MergeTable(int idTab1, int idTab2)
         {
-            ListBillInfo.Instance.MergeTable(idTab1, idTab2);
+            ListBillInfoDAO.Instance.MergeTable(idTab1, idTab2);
         }
 
+        private bool isCloseShift(string user)
+        {
+            object ob = Provider.Instance.ExecuteScalar("SELECT COUNT(ID) FROM dbo.SHIFTWORK WHERE STATUSSHIFT = 0 AND USERNAMEOFSHIFT = @user ", new object[] { user });
+            int count = int.Parse(ob.ToString());
+            if (count > 0)
+            {
+                return false;
+            }
+            return true;
+        }
 
         #endregion
 

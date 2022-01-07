@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QL_QuanCF.DataTransferObject
 {
-    public class FoodDTO
+    public class Food
     {
         private string idFood;
         private string nameFood;
@@ -15,11 +15,11 @@ namespace QL_QuanCF.DataTransferObject
         private double price;
         private string idCate;
 
-        public FoodDTO()
+        public Food()
         {
         }
 
-        public FoodDTO(DataRow dr)
+        public Food(DataRow dr)
         {
             idFood = dr[0].ToString();
             nameFood = dr[1].ToString();
@@ -28,7 +28,7 @@ namespace QL_QuanCF.DataTransferObject
             unit = dr[4].ToString();
         }
 
-        public FoodDTO(string idFood, string nameFood, string unit, int price, string idCate)
+        public Food(string idFood, string nameFood, string unit, int price, string idCate)
         {
             this.idFood = idFood;
             this.nameFood = nameFood;
@@ -43,7 +43,7 @@ namespace QL_QuanCF.DataTransferObject
         public double Price { get => price; set => price = value; }
         public string IdCate { get => idCate; set => idCate = value; }
 
-        public static implicit operator List<object>(FoodDTO v)
+        public static implicit operator List<object>(Food v)
         {
             throw new NotImplementedException();
         }

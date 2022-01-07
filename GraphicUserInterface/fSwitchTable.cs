@@ -24,12 +24,12 @@ namespace QL_QuanCF.GraphicUserInterface
         public void loadTable(int tabType)//tabType = 1: tại chỗ, 2: Mang về, 3: Đặt chỗ, 4: Giao hàng
         {
             flpTable.Controls.Clear();
-            List<TableDTO> DSBan = Table.Instance.LoadTable(tabType);
+            List<Table> DSBan = TableDAO.Instance.LoadTable(tabType);
 
-            foreach (TableDTO item in DSBan)
+            foreach (Table item in DSBan)
             {
                 
-                Button btn = new Button() { Width = Table.BanWidth, Height = Table.BanWidth };
+                Button btn = new Button() { Width = TableDAO.BanWidth, Height = TableDAO.BanWidth };
                 btn.Text = item.TabName + Environment.NewLine + item.Status;
                 btn.Tag = item;
                 btn.Name = item.ID.ToString();
@@ -70,11 +70,11 @@ namespace QL_QuanCF.GraphicUserInterface
         }
         private void loadTable(string text)
         {
-            List<TableDTO> DSBan = Table.Instance.LoadTable(text);
+            List<Table> ListTables = TableDAO.Instance.LoadTable(text);
 
-            foreach (TableDTO item in DSBan)
+            foreach (Table item in ListTables)
             {
-                Button btn = new Button() { Width = Table.BanWidth, Height = Table.BanWidth };
+                Button btn = new Button() { Width = TableDAO.BanWidth, Height = TableDAO.BanWidth };
                 btn.Text = item.TabName + Environment.NewLine + item.Status;
                 btn.Tag = item;
                 btn.Name = item.ID.ToString();
@@ -114,13 +114,13 @@ namespace QL_QuanCF.GraphicUserInterface
             }
             
         }
-        public void LoadCheckInTable(int id)
+        public void LoadCheckInTable()
         {
-            List<TableDTO> DSBan = Table.Instance.LoadTable(id);
+            List<Table> DSBan = TableDAO.Instance.LoadTableUnCheckOut();
 
-            foreach (TableDTO item in DSBan)
+            foreach (Table item in DSBan)
             {
-                Button btn = new Button() { Width = Table.BanWidth, Height = Table.BanWidth };
+                Button btn = new Button() { Width = TableDAO.BanWidth, Height = TableDAO.BanWidth };
                 btn.Text = item.TabName + Environment.NewLine + item.Status;
                 btn.Tag = item;
                 btn.Name = item.ID.ToString();
@@ -174,7 +174,7 @@ namespace QL_QuanCF.GraphicUserInterface
                     loadTable(1);
                     break;
                 case 2:
-                    LoadCheckInTable(1);
+                    LoadCheckInTable();
                     break;
                 default:
                     break;

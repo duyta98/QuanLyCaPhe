@@ -187,7 +187,7 @@
             this.AcceptButton = this.btnDangNhap;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BackColor = System.Drawing.Color.Gold;
             this.CancelButton = this.btnThoat;
             this.ClientSize = new System.Drawing.Size(453, 215);
             this.Controls.Add(this.panel1);

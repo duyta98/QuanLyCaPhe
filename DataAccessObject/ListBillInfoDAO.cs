@@ -4,26 +4,26 @@ using System.Data;
 
 namespace QL_QuanCF.DataAccessObject
 {
-    public class ListBillInfo
+    public class ListBillInfoDAO
     {
-        private static ListBillInfo instance;
+        private static ListBillInfoDAO instance;
 
-        public ListBillInfo()
+        public ListBillInfoDAO()
         {
         }
 
-        public static ListBillInfo Instance
+        public static ListBillInfoDAO Instance
         {
-            get { if (instance == null) instance = new ListBillInfo(); return instance; }
+            get { if (instance == null) instance = new ListBillInfoDAO(); return instance; }
             private set => instance = value;
         }
-        public List<ListBillInfoDTO> GetAllBillInfo(int idBill)
+        public List<ListBillInfo> GetAllBillInfo(int idBill)
         {
-            List<ListBillInfoDTO> lists = new List<ListBillInfoDTO>();
+            List<ListBillInfo> lists = new List<ListBillInfo>();
             DataTable dt = Provider.Instance.ExecuteQuery("spGetAllBillInfoByID " + idBill);
             foreach (DataRow item in dt.Rows)
             {
-                ListBillInfoDTO BillInfo = new ListBillInfoDTO(item);
+                ListBillInfo BillInfo = new ListBillInfo(item);
                 lists.Add(BillInfo);
             }
             return lists;

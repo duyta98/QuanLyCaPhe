@@ -4,18 +4,18 @@ using System.Windows.Forms;
 
 namespace QL_QuanCF.DataTransferObject
 {
-    public class ListBillInfoDTO
+    public class ListBillInfo
     {
         private int id;
         private string name;
         private int quantity;
         private double price;
 
-        public ListBillInfoDTO()
+        public ListBillInfo()
         {
         }
 
-        public ListBillInfoDTO(int id,string name, int quantity, double price)
+        public ListBillInfo(int id,string name, int quantity, double price)
         {
             this.id = id;
             this.name = name;
@@ -28,7 +28,7 @@ namespace QL_QuanCF.DataTransferObject
         public double Price { get => price; set => price = value; }
         public int Id { get => id; set => id = value; }
 
-        public ListBillInfoDTO(DataRow row)
+        public ListBillInfo(DataRow row)
         {
             id= int.Parse(row[0].ToString());
             name = row[1].ToString();
