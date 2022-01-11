@@ -1,10 +1,6 @@
 ﻿using QL_QuanCF.DataTransferObject;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace QL_QuanCF.DataAccessObject
 {
@@ -18,7 +14,7 @@ namespace QL_QuanCF.DataAccessObject
 
         public static CategoryDAO Instance
         {
-            get { if (instance == null) instance = new CategoryDAO(); return CategoryDAO.instance; } 
+            get { if (instance == null) instance = new CategoryDAO(); return CategoryDAO.instance; }
             private set { instance = value; }
         }
         public List<Category> GetCategoryDTOs()

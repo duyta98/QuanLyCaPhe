@@ -1,5 +1,4 @@
 ﻿using QL_QuanCF.DataAccessObject;
-using QL_QuanCF.DataTransferObject;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -12,7 +11,7 @@ namespace QL_QuanCF
         public fStaffManager()
         {
             InitializeComponent();
-            
+
         }
 
         private void FNhanVien_Load()
@@ -57,7 +56,7 @@ namespace QL_QuanCF
 
         private void Button4_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void Button2_Click(object sender, EventArgs e)
@@ -81,7 +80,7 @@ namespace QL_QuanCF
                 sqlCommand.ExecuteNonQuery();
                 sqlConnection.Close();
                 FNhanVien_Load();
-                MessageBox.Show("Thực hiện hành công","Thông báo");
+                MessageBox.Show("Thực hiện hành công", "Thông báo");
             }
             catch (Exception ex)
             {
@@ -127,14 +126,14 @@ namespace QL_QuanCF
         {
             string cnnStr = "Data Source = DUYPC; Initial Catalog = QLCF; Integrated Security = True";
             SqlConnection sqlConnection = new SqlConnection(cnnStr);
-            if(sqlConnection.State == ConnectionState.Closed)
+            if (sqlConnection.State == ConnectionState.Closed)
             {
                 sqlConnection.Open();
             }
             string sqlString = "SELECT * FROM NHANVIEN WHERE ID = '" + idNV + "'";
             SqlCommand sqlCommand = new SqlCommand(sqlString, sqlConnection);
             SqlDataReader rd = sqlCommand.ExecuteReader();
-            if(rd.HasRows)
+            if (rd.HasRows)
             {
                 rd.Close();
                 sqlConnection.Close();

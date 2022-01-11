@@ -38,7 +38,7 @@ namespace QL_QuanCF.DataAccessObject
         public List<Food> LoadFoodListsByIDCate(int id)
         {
             List<Food> FoodLists = new List<Food>();
-            DataTable dt = Provider.Instance.ExecuteQuery("dbo.spGetAllFoodByIDCate "+id);
+            DataTable dt = Provider.Instance.ExecuteQuery("dbo.spGetAllFoodByIDCate " + id);
             foreach (DataRow dataRow in dt.Rows)
             {
                 Food mon = new Food(dataRow);

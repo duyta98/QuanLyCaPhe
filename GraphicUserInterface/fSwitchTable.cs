@@ -2,12 +2,8 @@
 using QL_QuanCF.DataTransferObject;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QL_QuanCF.GraphicUserInterface
@@ -28,7 +24,7 @@ namespace QL_QuanCF.GraphicUserInterface
 
             foreach (Table item in DSBan)
             {
-                
+
                 Button btn = new Button() { Width = TableDAO.BanWidth, Height = TableDAO.BanWidth };
                 btn.Text = item.TabName + Environment.NewLine + item.Status;
                 btn.Tag = item;
@@ -66,7 +62,7 @@ namespace QL_QuanCF.GraphicUserInterface
                 if (btn.Text.Contains(parent.btn1.Text))
                     flpTable.Controls.Remove(btn);
             }
-            
+
         }
         private void loadTable(string text)
         {
@@ -81,7 +77,7 @@ namespace QL_QuanCF.GraphicUserInterface
                 btn.Font = new Font("Arial", 18);
                 btn.FlatStyle = FlatStyle.Standard;
                 btn.Margin = new Padding(20);
-                
+
                 btn.MouseHover += (s, e) =>
                 {
                     btn.BackColor = Color.Yellow;
@@ -112,7 +108,7 @@ namespace QL_QuanCF.GraphicUserInterface
                 if (btn.Text.Contains(parent.btn1.Text))
                     flpTable.Controls.Remove(btn);
             }
-            
+
         }
         public void LoadCheckInTable()
         {
@@ -179,7 +175,7 @@ namespace QL_QuanCF.GraphicUserInterface
                 default:
                     break;
             }
-            
+
             loadccbTabType();
         }
         private void btnSearch_Click(object sender, EventArgs e)
@@ -189,10 +185,10 @@ namespace QL_QuanCF.GraphicUserInterface
 
         private void btnSearch_KeyUp(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 btnSearch_Click(sender, e);
-            }    
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)

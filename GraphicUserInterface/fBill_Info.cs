@@ -1,10 +1,9 @@
-﻿using System;
+﻿using QL_QuanCF.DataAccessObject;
+using QL_QuanCF.DataTransferObject;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using QL_QuanCF.DataAccessObject;
-using QL_QuanCF.DataTransferObject;
-using QL_QuanCF.GraphicUserInterface;
 
 namespace QL_QuanCF
 {
@@ -164,7 +163,7 @@ namespace QL_QuanCF
                     return;
                 }
                 i++;
-                
+
             }
             if (isExist == false)
             {
@@ -219,9 +218,9 @@ namespace QL_QuanCF
             BillDAO.Instance.updateAmountQuest(int.Parse(txtAmountTab.Text), table.ID);
 
             BillDAO.Instance.CalAmountBill(billID);
-            
+
             ChangePropBtnTabToCheckIn();
-            
+
         }
         private void fBill_Info_Load(object sender, System.EventArgs e)
         {
@@ -238,12 +237,13 @@ namespace QL_QuanCF
 
         private void btnPay_Click(object sender, EventArgs e)
         {
+
             if (IsEmpty())
                 return;
             Pay();
             if (billID == -1)
                 return;
-            
+
             fPayment payment = new fPayment(table);
             payment.frmbi = this;
             payment.idShift = idShift;
@@ -274,7 +274,7 @@ namespace QL_QuanCF
             if (IsEmpty())
                 return;
             Pay();
-            
+
             Close();
         }
         public void ChangePropBtnTabToCheckIn()

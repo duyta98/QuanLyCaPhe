@@ -77,13 +77,13 @@ namespace QL_QuanCF
                 }
             }
         }
-        
+
         private void ĐăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!isCloseShift(userName))
             {
                 DialogResult dr = MessageBox.Show("Chưa đóng ca làm việc, Bạn có muốn đóng không?", "Thông báo", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                
+
                 if (dr == DialogResult.Yes)
                 {
                     FShiftClose frm = new FShiftClose();
@@ -125,7 +125,7 @@ namespace QL_QuanCF
         }
         private void chuyểnBànToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
             if (idfirstBill == -1)
             {
                 MessageBox.Show("Bàn trống!");
@@ -179,7 +179,7 @@ namespace QL_QuanCF
                 {
                     tsmi.Enabled = true;
                 }
-            } 
+            }
         }
 
         private void gộpBànToolStripMenuItem_Click(object sender, EventArgs e)
@@ -199,7 +199,7 @@ namespace QL_QuanCF
 
                 if (btn2 == null)
                     return;
-                
+
                 string name = btn2.Name;
                 var btn = flpTable.Controls.OfType<Button>().Where(x => x.Name == name).FirstOrDefault();
                 btn.BackColor = Color.BlueViolet;
@@ -207,19 +207,19 @@ namespace QL_QuanCF
                 tab2.Status = "Trống";
                 btn.Text = tab2.TabName + Environment.NewLine + tab2.Status;
                 MergeTable(tab1.ID, tab2.ID);
-                
+
             }
 
         }
 
         private void fMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(e.CloseReason == CloseReason.UserClosing)
+            if (e.CloseReason == CloseReason.UserClosing)
             {
                 DialogResult dr = MessageBox.Show("Bạn chắc chắn muốn thoát chứ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dr == DialogResult.No)
                     e.Cancel = true;
-            }    
+            }
         }
         private void fMain_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -232,7 +232,7 @@ namespace QL_QuanCF
         {
             flpTable.Controls.Clear();
             List<Table> ListTables = TableDAO.Instance.LoadTable(tabType);
-            
+
             foreach (Table item in ListTables)
             {
                 Button btn = new Button() { Width = TableDAO.BanWidth, Height = TableDAO.BanWidth };
@@ -257,7 +257,7 @@ namespace QL_QuanCF
                 };
                 btn.Click += (s, e) =>
                 {
-                    fBill_Info f = new fBill_Info(item,userName);
+                    fBill_Info f = new fBill_Info(item, userName);
                     f.idShift = idShift;
                     f.parent = this;//Thiết lập ràng buộc với form con
                     f.btParent = btn;//Thiết lập ràng buộc với form con
@@ -277,7 +277,7 @@ namespace QL_QuanCF
                         break;
                 }
 
-            }  
+            }
         }
         private void loadTable(string text)
         {
@@ -300,7 +300,7 @@ namespace QL_QuanCF
                 btn.MouseLeave += (s, e) =>
                 {
                     Table tb = TableDAO.Instance.GetTable(item.ID);
-                    if(tb.Status == "Trống")
+                    if (tb.Status == "Trống")
                         btn.BackColor = Color.White;
                     else
                         btn.BackColor = Color.BlueViolet;
@@ -312,9 +312,9 @@ namespace QL_QuanCF
                     f.parent = this;//Thiết lập ràng buộc với form con
                     f.btParent = btn;//Thiết lập ràng buộc với form con
                     f.Text = item.TabName;
-                    
+
                     f.ShowDialog();
-                    
+
                 };
                 switch (item.Status)
                 {
@@ -333,7 +333,7 @@ namespace QL_QuanCF
         {
             ListBillInfoDAO.Instance.switchTable(idTab1, idTab2);
         }
-        
+
         private void MergeTable(int idTab1, int idTab2)
         {
             ListBillInfoDAO.Instance.MergeTable(idTab1, idTab2);
@@ -350,8 +350,17 @@ namespace QL_QuanCF
             return true;
         }
 
+
         #endregion
 
-        
+        private void hóaĐơnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fBillManager frm = new fBillManager();
+            frm.idShift = idShift;
+            frm.formParent = this;
+            Hide();
+            frm.Show();
+
+        }
     }
 }

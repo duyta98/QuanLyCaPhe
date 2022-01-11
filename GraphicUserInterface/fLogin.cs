@@ -1,20 +1,18 @@
-﻿using System;
+﻿using QL_QuanCF.DataAccessObject;
+using System;
 using System.Data;
-using System.Data.SqlClient;
 using System.Windows.Forms;
-using QL_QuanCF.DataAccessObject;
-using QL_QuanCF.DataTransferObject;
 
 namespace QL_QuanCF
 {
-    
+
     public partial class fLogin : Form
     {
-        
+
         public fLogin()
         {
             InitializeComponent();
-            
+
         }
 
         private void BtnThoat_Click(object sender, EventArgs e)
@@ -24,7 +22,7 @@ namespace QL_QuanCF
 
         private void FLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Bạn có muốn thoát hay không?", "Thông báo", MessageBoxButtons.OKCancel,MessageBoxIcon.Question) != System.Windows.Forms.DialogResult.OK)
+            if (MessageBox.Show("Bạn có muốn thoát hay không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) != System.Windows.Forms.DialogResult.OK)
                 e.Cancel = true;
         }
 
@@ -43,10 +41,10 @@ namespace QL_QuanCF
                 Hide();
                 f.parent = this;
                 f.Show();
-                
+
             }
             else
-                MessageBox.Show("Sai tên tài khoản hoặc mật khẩu.","Thông báo",MessageBoxButtons.OK);
+                MessageBox.Show("Sai tên tài khoản hoặc mật khẩu.", "Thông báo", MessageBoxButtons.OK);
         }
 
         private int getIDShiftFromUser(string user)
@@ -59,7 +57,7 @@ namespace QL_QuanCF
             string query = "spLogin @username , @password";
             DataTable dt = Provider.Instance.ExecuteQuery(query, new object[] { pID, pPass });
             return dt.Rows.Count > 0;
-            
+
         }
 
     }

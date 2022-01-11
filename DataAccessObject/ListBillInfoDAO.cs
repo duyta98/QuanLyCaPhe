@@ -38,11 +38,23 @@ namespace QL_QuanCF.DataAccessObject
         }
         public void switchTable(int idTab1, int idTab2)
         {
-            Provider.Instance.ExecuteNonQuery("uspSwitchTable @idTab1 , @idTab2", new object[] { idTab1,idTab2 });
+            Provider.Instance.ExecuteNonQuery("uspSwitchTable @idTab1 , @idTab2", new object[] { idTab1, idTab2 });
         }
         public void MergeTable(int idTab1, int idTab2)
         {
             Provider.Instance.ExecuteNonQuery("uspMergeTable @idTab1 , @idTab2", new object[] { idTab1, idTab2 });
+        }
+        public List<BillInfoCheckOut> LoadBillInfoCheckOut(int idBill)
+        {
+            List<BillInfoCheckOut> listBillInfo = new List<BillInfoCheckOut>();
+            DataTable dt = Provider.Instance.ExecuteQuery("uspGetBillInfoCheckOut @idBill", new object[] { idBill });
+            foreach (DataRow dataRow in dt.Rows)
+            {
+                BillInfoCheckOut billInfo = new BillInfoCheckOut(dataRow);
+
+                listBillInfo.Add(billInfo);
+            }
+            return listBillInfo;
         }
     }
 }

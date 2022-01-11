@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 
 namespace QL_QuanCF.DataTransferObject
 {
@@ -20,12 +15,12 @@ namespace QL_QuanCF.DataTransferObject
         private int id;
         private int tabType;
         private int amount;
-        
+
 
         public Table(DataRow dr)
         {
             id = int.Parse(dr[0].ToString());
-            tabName =dr[1].ToString();
+            tabName = dr[1].ToString();
             status = dr[2].ToString();
             tabType = int.Parse(dr[3].ToString());
             amount = int.Parse(dr[4].ToString());

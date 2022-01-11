@@ -121,16 +121,6 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="quảnLýToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAAANJJREFUOE+N0c0KQUEYxvGTKMUetyFLNyQWXIINlmwUYimXQNm5BkTK0tLSysf/
-        qZkT4zDz1K/mvGfeM3Nmoh8pYYqzobFqQcnjiKfjBL3zpga32arDmwmSmmUGb0ZIahadhTfaZlKzNOBN
-        ATe4zaoVEZQ23A+oFpwUdrDNB1MLTg5d3A2Ns/CmijW20IpzLMxYtRU05ytpDPGA3XYfWl21gamJnsfI
-        IE4HdkKoHuJskDTpH/XEaeJ9+z6a28JHytCvLKErvOBqaLyHDlE3UgGJohfF4XWc041lmAAAAABJRU5E
-        rkJggg==
-</value>
-  </data>
   <data name="doanhThuToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -140,6 +130,16 @@
         TWAde+yNU90zyLhHP3ENT3AGhzDHHnvTJ1az1nlAv+Qc30xk2GNvfOKWQY0N9LB2cQFvMcee6r7EL3UU
         YdCDj2huCS/wHSvMx9srnDmnH8eKMJjGgSL8pqnnCO8wDuUPrLH5OFYZXlXnHI9Va9yzptVVD2bR2Tz9
         V5wsNTbnnjVtGUT/ohF8KjU2515GSl/1CTCRmaws9gAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="quảnLýToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAANJJREFUOE+N0c0KQUEYxvGTKMUetyFLNyQWXIINlmwUYimXQNm5BkTK0tLSysf/
+        qZkT4zDz1K/mvGfeM3Nmoh8pYYqzobFqQcnjiKfjBL3zpga32arDmwmSmmUGb0ZIahadhTfaZlKzNOBN
+        ATe4zaoVEZQ23A+oFpwUdrDNB1MLTg5d3A2Ns/CmijW20IpzLMxYtRU05ytpDPGA3XYfWl21gamJnsfI
+        IE4HdkKoHuJskDTpH/XEaeJ9+z6a28JHytCvLKErvOBqaLyHDlE3UgGJohfF4XWc041lmAAAAABJRU5E
+        rkJggg==
 </value>
   </data>
   <data name="TaikhoanToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

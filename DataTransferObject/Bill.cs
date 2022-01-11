@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace QL_QuanCF.DataTransferObject
 {
@@ -19,11 +15,15 @@ namespace QL_QuanCF.DataTransferObject
         private int idPromotion;
         private int idShift;
 
-        public Bill(DataRow dataRow )
+        public Bill()
+        {
+        }
+
+        public Bill(DataRow dataRow)
         {
             id = (int)dataRow["ID"];
             checkIn = (DateTime)dataRow["DATECHECKIN"];
-            if(dataRow["DATECHECKOUT"].ToString() != "")
+            if (dataRow["DATECHECKOUT"].ToString() != "")
                 checkOut = (DateTime)dataRow["DATECHECKOUT"];
             idTable = (int)dataRow["IDTAB"];
             idAcc = dataRow["IDACC"].ToString();

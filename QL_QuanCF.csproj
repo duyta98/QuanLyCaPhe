@@ -50,6 +50,9 @@
   <ItemGroup>
     <Compile Include="DataAccessObject\CategoryDAO.cs" />
     <Compile Include="DataAccessObject\ShiftDAO.cs" />
+    <Compile Include="DataTransferObject\BillCheckOut.cs" />
+    <Compile Include="DataTransferObject\BillCheckOutBase.cs" />
+    <Compile Include="DataTransferObject\BillInfoCheckOut.cs" />
     <Compile Include="DataTransferObject\Category.cs" />
     <Compile Include="DataTransferObject\ListBillInfo.cs" />
     <Compile Include="DataAccessObject\TableDAO.cs" />
@@ -65,6 +68,12 @@
     </Compile>
     <Compile Include="GraphicUserInterface\fAddSeveralQuantityFood.Designer.cs">
       <DependentUpon>fAddSeveralQuantityFood.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GraphicUserInterface\fBillManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GraphicUserInterface\fBillManager.Designer.cs">
+      <DependentUpon>fBillManager.cs</DependentUpon>
     </Compile>
     <Compile Include="GraphicUserInterface\fModifyQuantityFood.cs">
       <SubType>Form</SubType>
@@ -96,6 +105,12 @@
     </Compile>
     <Compile Include="GraphicUserInterface\fPromotions.Designer.cs">
       <DependentUpon>fPromotions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GraphicUserInterface\fReasonCancel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GraphicUserInterface\fReasonCancel.Designer.cs">
+      <DependentUpon>fReasonCancel.cs</DependentUpon>
     </Compile>
     <Compile Include="GraphicUserInterface\fShiftClose.cs">
       <SubType>Form</SubType>
@@ -144,6 +159,9 @@
     <EmbeddedResource Include="GraphicUserInterface\fAddSeveralQuantityFood.resx">
       <DependentUpon>fAddSeveralQuantityFood.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GraphicUserInterface\fBillManager.resx">
+      <DependentUpon>fBillManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GraphicUserInterface\fModifyQuantityFood.resx">
       <DependentUpon>fModifyQuantityFood.cs</DependentUpon>
     </EmbeddedResource>
@@ -152,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GraphicUserInterface\fPromotions.resx">
       <DependentUpon>fPromotions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphicUserInterface\fReasonCancel.resx">
+      <DependentUpon>fReasonCancel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GraphicUserInterface\fShiftClose.resx">
       <DependentUpon>fShiftClose.cs</DependentUpon>

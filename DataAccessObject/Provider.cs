@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace QL_QuanCF.DataAccessObject
 {
     public class Provider
     {
 
-        
+
         public static string cnnStr = "Data Source =localhost;Integrated security = true; Initial Catalog = QuanLyQuanCafe";
         private static Provider instance;
 
@@ -24,10 +19,8 @@ namespace QL_QuanCF.DataAccessObject
         private Provider() { }
         public DataTable ExecuteQuery(string Query, object[] parameter = null)
         {
-            
             DataTable dt = new DataTable();
             using (SqlConnection sqlConnection = new SqlConnection(cnnStr))
-
             {
                 if (sqlConnection.State == ConnectionState.Closed)
                 {
@@ -58,7 +51,6 @@ namespace QL_QuanCF.DataAccessObject
         }
         public int ExecuteNonQuery(string Query, object[] parameter = null)
         {
-
             int data = 0;
             using (SqlConnection sqlConnection = new SqlConnection(cnnStr))
 

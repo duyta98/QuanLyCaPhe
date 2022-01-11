@@ -1,6 +1,4 @@
-﻿using System;
-using System.Data;
-using System.Windows.Forms;
+﻿using System.Data;
 
 namespace QL_QuanCF.DataTransferObject
 {
@@ -15,7 +13,7 @@ namespace QL_QuanCF.DataTransferObject
         {
         }
 
-        public ListBillInfo(int id,string name, int quantity, double price)
+        public ListBillInfo(int id, string name, int quantity, double price)
         {
             this.id = id;
             this.name = name;
@@ -30,12 +28,12 @@ namespace QL_QuanCF.DataTransferObject
 
         public ListBillInfo(DataRow row)
         {
-            id= int.Parse(row[0].ToString());
+            id = int.Parse(row[0].ToString());
             name = row[1].ToString();
             quantity = int.Parse(row[2].ToString());
             price = double.Parse(row[3].ToString());
         }
 
-        
+
     }
 }

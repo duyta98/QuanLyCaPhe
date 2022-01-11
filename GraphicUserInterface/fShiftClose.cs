@@ -1,13 +1,8 @@
 ﻿using QL_QuanCF.DataAccessObject;
 using QL_QuanCF.DataTransferObject;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QL_QuanCF
@@ -22,7 +17,7 @@ namespace QL_QuanCF
         public FShiftClose()
         {
             InitializeComponent();
-            
+
         }
         #region Events
         private void txt5xxk_KeyUp(object sender, KeyEventArgs e)
@@ -228,6 +223,57 @@ namespace QL_QuanCF
             getAllSalesByFood(idShift);
 
         }
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+
+            Close();
+        }
+
+        private void btnCloseAndPrint_Click(object sender, EventArgs e)
+        {
+            btnPrint_Click(sender, e);
+            closeShift(shift.IdShift);
+            parent.Close();
+            Close();
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSumMoney_TextChanged(object sender, EventArgs e)
+        {
+            double.TryParse(txtCash.Text, out double cash);
+            double.TryParse(txtSumMoney.Text, out double sumMoney);
+            deviant = sumMoney - cash;
+            txtDeviant.Text = deviant.ToString("#,#");
+
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+            if (btnSave.Text == "Lưu")
+            {
+                foreach (Control item in pnlQuantity.Controls)
+                {
+                    item.Enabled = false;
+                }
+                btnSave.Text = "Sửa";
+                btnSave.BackColor = Color.Orange;
+            }
+            else
+            {
+                foreach (Control item in pnlQuantity.Controls)
+                {
+                    item.Enabled = true;
+                }
+                btnSave.Text = "Lưu";
+                btnSave.BackColor = Color.Blue;
+            }
+
+        }
         #endregion
         #region Methods
         private void sumQuantity()
@@ -240,7 +286,7 @@ namespace QL_QuanCF
                     TextBox txt = (TextBox)item;
                     if (txt.Text != "")
                         sum += int.Parse(txt.Text);
-                }    
+                }
 
             }
             txtSumQuantity.Text = sum.ToString("#,#");
@@ -309,56 +355,6 @@ namespace QL_QuanCF
         }
         #endregion
 
-        private void btnReturn_Click(object sender, EventArgs e)
-        {
-            
-            Close();
-        }
 
-        private void btnCloseAndPrint_Click(object sender, EventArgs e)
-        {
-            btnPrint_Click(sender, e);
-            closeShift(shift.IdShift);
-            parent.Close();
-            Close();
-        }
-
-        private void btnPrint_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtSumMoney_TextChanged(object sender, EventArgs e)
-        {
-            double.TryParse(txtCash.Text, out double cash);
-            double.TryParse(txtSumMoney.Text,out double sumMoney);
-            deviant = sumMoney - cash;
-            txtDeviant.Text = deviant.ToString("#,#");
-
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-
-            if (btnSave.Text == "Lưu")
-            {
-                foreach (Control item in pnlQuantity.Controls)
-                {
-                    item.Enabled = false;
-                }
-                btnSave.Text = "Sửa";
-                btnSave.BackColor = Color.Orange;
-            }
-            else
-            {
-                foreach (Control item in pnlQuantity.Controls)
-                {
-                    item.Enabled = true;
-                }
-                btnSave.Text = "Lưu";
-                btnSave.BackColor = Color.Blue;
-            }
-            
-        }
     }
 }

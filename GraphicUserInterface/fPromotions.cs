@@ -23,7 +23,7 @@ namespace QL_QuanCF.GraphicUserInterface
             cbbPromotions.DataSource = dt;
             cbbPromotions.DisplayMember = "NOTE";
             cbbPromotions.ValueMember = "ID";
-            
+
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -31,14 +31,14 @@ namespace QL_QuanCF.GraphicUserInterface
 
             double discount = Bill.Amount * percent;
             double amount = Bill.Amount - discount;
-            frmPay.changeLbPromotion(discount,amount);
+            frmPay.changeLbPromotion(discount, amount);
             int idPro = int.Parse(cbbPromotions.SelectedValue.ToString());
             frmPay.setIDPro(idPro);
             Close();
         }
-        
 
-        
+
+
 
         private void cbbPromotions_SelectionChangeCommitted(object sender, EventArgs e)
         {

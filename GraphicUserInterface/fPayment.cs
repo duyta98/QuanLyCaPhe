@@ -1,10 +1,10 @@
-﻿using System;
+﻿using QL_QuanCF.DataAccessObject;
+using QL_QuanCF.DataTransferObject;
+using QL_QuanCF.GraphicUserInterface;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
-using QL_QuanCF.DataTransferObject;
-using QL_QuanCF.DataAccessObject;
-using QL_QuanCF.GraphicUserInterface;
 
 namespace QL_QuanCF
 {
@@ -21,13 +21,13 @@ namespace QL_QuanCF
             InitializeComponent();
             table = item;
             DataTable dt = Provider.Instance.ExecuteQuery("spGetBillFromIDTable " + table.ID);
-            if(dt.Rows.Count > 0)
+            if (dt.Rows.Count > 0)
                 bill = new Bill(dt.Rows[0]);
         }
 
         private void fPayment_Load(object sender, EventArgs e)
         {
-            
+
             txtTableName.Text = table.TabName.ToString();
             txtAmountTable.Text = table.Amount.ToString();
             object ob = Provider.Instance.ExecuteScalar("SELECT SUM(f.PRICE*bi.QUANTITY) " +
@@ -76,7 +76,7 @@ namespace QL_QuanCF
                 lsv.Items.Add(lsvitem);
             }
         }
-        private void checkOut(int idBill , int idShift)
+        private void checkOut(int idBill, int idShift)
         {
             string query;
 
