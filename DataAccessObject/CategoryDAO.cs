@@ -17,17 +17,17 @@ namespace QL_QuanCF.DataAccessObject
             get { if (instance == null) instance = new CategoryDAO(); return CategoryDAO.instance; }
             private set { instance = value; }
         }
-        public List<Category> GetCategoryDTOs()
+        public List<Category> GetCategory()
         {
-            List<Category> categoryDTOs = new List<Category>();
+            List<Category> categorys = new List<Category>();
             string query = "SELECT * FROM dbo.FOODCATEGORY";
             DataTable dt = Provider.Instance.ExecuteQuery(query);
             foreach (DataRow item in dt.Rows)
             {
                 Category category = new Category(item);
-                categoryDTOs.Add(category);
+                categorys.Add(category);
             }
-            return categoryDTOs;
+            return categorys;
         }
     }
 }

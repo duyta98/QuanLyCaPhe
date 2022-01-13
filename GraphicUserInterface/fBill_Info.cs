@@ -54,7 +54,7 @@ namespace QL_QuanCF
         }
         private void LoadCbbCate()
         {
-            List<Category> cates = CategoryDAO.Instance.GetCategoryDTOs();
+            List<Category> cates = CategoryDAO.Instance.GetCategory();
             Category allCate = new Category();
             allCate.Name = "Tất cả";
             allCate.Id = 0;
@@ -64,8 +64,6 @@ namespace QL_QuanCF
             cbbCate.ValueMember = "id";
             cbbCate.SelectedValue = 0;
         }
-
-
         /// <summary>
         /// Tạo control button món ăn
         /// </summary>
@@ -162,6 +160,10 @@ namespace QL_QuanCF
                     isExist = true;
                     return;
                 }
+                else
+                {
+                    isExist = false;
+                }
                 i++;
 
             }
@@ -230,8 +232,25 @@ namespace QL_QuanCF
             txtAmountTab.Text = table.Amount.ToString();
             billID = BillDAO.Instance.getIDBillUncheckOutByIDTable(table.ID);
             lsvBillInfo.ContextMenuStrip = cmsFoodListview;
+            string querySearchFood = "SELECT NAMEFOOD FROM dbo.FOOD";
+            txtSearch.loadDataAutoComplete(Provider.cnnStr, querySearchFood, "NAMEFOOD");
+            foods = FoodDAO.Instance.LoadFoodLists();
+            CreateButton(foods);
         }
-
+        private void deleteBill(int idBill)
+        {
+            Provider.Instance.ExecuteNonQuery("spDelAllBillInfo @idBill", new object[] { idBill });
+            Provider.Instance.ExecuteNonQuery("uspDeleteBill @idBill", new object[] { idBill });
+        }
+        private void btnDropTable_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Bạn có chắc chắn muốn hủy bàn trên không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dr == DialogResult.OK)
+            {
+                deleteBill(billID);
+                Close();
+            }
+        }
         #endregion
         #region Events
 
@@ -251,23 +270,6 @@ namespace QL_QuanCF
             payment.Show();
         }
 
-        private void cbbCate_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbbCate.SelectedValue == null)
-                return;
-            int idCate = (cbbCate.SelectedItem as Category).Id;
-
-            if (idCate == 0)
-            {
-                foods = FoodDAO.Instance.LoadFoodLists();
-            }
-            else
-            {
-                foods = FoodDAO.Instance.LoadFoodListsByIDCate(idCate);
-            }
-            flpViewFood.Controls.Clear();
-            CreateButton(foods);
-        }
 
         private void btnSaveBill_Click(object sender, EventArgs e)
         {
@@ -358,7 +360,29 @@ namespace QL_QuanCF
             parent.Show();
         }
 
+
         #endregion
 
+        private void cbbCate_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            
+            int idCate = (cbbCate.SelectedItem as Category).Id;
+
+            if (idCate == 0)
+            {
+                foods = FoodDAO.Instance.LoadFoodLists();
+            }
+            else
+            {
+                foods = FoodDAO.Instance.LoadFoodListsByIDCate(idCate);
+            }
+            flpViewFood.Controls.Clear();
+            CreateButton(foods);
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -49,8 +49,8 @@ namespace QL_QuanCF
             this.btnPrint = new System.Windows.Forms.Button();
             this.btnDropTable = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.txtSearch = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtSearch = new QL_QuanCF.TextBoxAutoComplete();
             this.label3 = new System.Windows.Forms.Label();
             this.cbbCate = new System.Windows.Forms.ComboBox();
             this.cmsFoodFLP = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -113,6 +113,7 @@ namespace QL_QuanCF
             this.txtTableNumber.Font = new System.Drawing.Font("Arial", 16F);
             this.txtTableNumber.Location = new System.Drawing.Point(94, 27);
             this.txtTableNumber.Name = "txtTableNumber";
+            this.txtTableNumber.ReadOnly = true;
             this.txtTableNumber.Size = new System.Drawing.Size(100, 32);
             this.txtTableNumber.TabIndex = 2;
             this.txtTableNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -249,6 +250,7 @@ namespace QL_QuanCF
             this.btnPrint.TabIndex = 7;
             this.btnPrint.Text = "In HĐ";
             this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // btnDropTable
             // 
@@ -261,6 +263,7 @@ namespace QL_QuanCF
             this.btnDropTable.TabIndex = 6;
             this.btnDropTable.Text = "Hủy Bàn";
             this.btnDropTable.UseVisualStyleBackColor = false;
+            this.btnDropTable.Click += new System.EventHandler(this.btnDropTable_Click);
             // 
             // btnSearch
             // 
@@ -277,28 +280,27 @@ namespace QL_QuanCF
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // txtSearch
-            // 
-            this.txtSearch.Font = new System.Drawing.Font("Arial", 18F);
-            this.txtSearch.Location = new System.Drawing.Point(141, 5);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(361, 35);
-            this.txtSearch.TabIndex = 1;
-            this.txtSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyUp);
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.cbbCate);
-            this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Location = new System.Drawing.Point(1, -2);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(726, 85);
             this.panel1.TabIndex = 1;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Arial", 18F);
+            this.txtSearch.Location = new System.Drawing.Point(167, 5);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(340, 35);
+            this.txtSearch.TabIndex = 4;
+            this.txtSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyUp);
             // 
             // label3
             // 
@@ -319,7 +321,7 @@ namespace QL_QuanCF
             this.cbbCate.Name = "cbbCate";
             this.cbbCate.Size = new System.Drawing.Size(200, 35);
             this.cbbCate.TabIndex = 2;
-            this.cbbCate.SelectedIndexChanged += new System.EventHandler(this.cbbCate_SelectedIndexChanged);
+            this.cbbCate.SelectionChangeCommitted += new System.EventHandler(this.cbbCate_SelectionChangeCommitted);
             // 
             // cmsFoodFLP
             // 
@@ -395,7 +397,6 @@ namespace QL_QuanCF
         private System.Windows.Forms.FlowLayoutPanel flpViewFood;
         private System.Windows.Forms.Panel panelBill;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel1;
@@ -420,5 +421,6 @@ namespace QL_QuanCF
         private System.Windows.Forms.ToolStripMenuItem xóaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem thayĐổiSốLượngToolStripMenuItem;
         private System.Windows.Forms.Button btnCancel;
+        private TextBoxAutoComplete txtSearch;
     }
 }

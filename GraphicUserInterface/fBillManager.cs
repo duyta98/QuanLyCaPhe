@@ -119,13 +119,14 @@ namespace QL_QuanCF.GraphicUserInterface
             int idBill = (lsvBill.SelectedItems[0].Tag as BillCheckOut).ID;
             cancelBill(idBill);
             int index = lsvBill.SelectedItems[0].Index;
-            lsvBill.Items.RemoveAt(index);
+            lsvBill.Items[index].SubItems[6].Text = "Hủy";
         }
         #endregion
         #region Events
         private void fBillManager_Load(object sender, EventArgs e)
         {
             loadListBill(idShift, 1);//1 -- invoice status has done
+            cbbBillType.SelectedIndex = 2;
         }
 
         private void fBillManager_FormClosing(object sender, FormClosingEventArgs e)
@@ -147,12 +148,22 @@ namespace QL_QuanCF.GraphicUserInterface
                 txtAmount.Text = (amountTemp - dPromo).ToString("#,#");
                 txtDateIn.Text = bill.DateIn.Value.ToString("dd'/'MM'/'yyyy hh:mm:ss");
                 txtDateOut.Text = bill.DateOut.Value.ToString("dd'/'MM'/'yyyy hh:mm:ss");
+                if (bill.Status == 1)
+                {
+                    btnDel.Enabled = true;
+                }
+                else
+                {
+                    btnDel.Enabled = false;
+                }
             }
             else
             {
                 txtAmount.Text = txtPromo.Text = txtTempAmount.Text = "";
                 lsvBillInfo.Items.Clear();
+                txtDateIn.Text = txtDateOut.Text = "";
             }
+            
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -213,13 +224,16 @@ namespace QL_QuanCF.GraphicUserInterface
             lsvBill.Items.Clear();
             if (cbbBillType.Text == "Hóa đơn đã bán")
             {
-                btnDel.Enabled = true;
+                
                 loadListBill(idShift, 1);//1 -- invoice status has done
+            }
+            else if (cbbBillType.Text == "Hóa đơn đã hủy")
+            {
+                loadListBill(idShift, 2);//2 -- invoice status has been canceled
             }
             else
             {
-                btnDel.Enabled = false;
-                loadListBill(idShift, 2);//2 -- invoice status has been canceled
+                loadListBill(idShift, "");//"" -- get all bill
             }
         }
 
@@ -227,8 +241,55 @@ namespace QL_QuanCF.GraphicUserInterface
         {
             Close();
         }
-        #endregion
+        private void lsvBill_DoubleClick(object sender, EventArgs e)
+        {
+            
+        }
+        private void thôngTinHóaĐơnHủyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lsvBill.SelectedItems.Count > 0)
+            {
+                ListViewItem lvi = lsvBill.SelectedItems[0];
+                BillCheckOut bill = lvi.Tag as BillCheckOut;
+                if (bill.Status == 2)
+                {
+                    DataTable dt = Provider.Instance.ExecuteQuery("SELECT rc.NOTE, bc.DATECANCEL FROM " +
+                        "BILLCANCEL bc INNER JOIN dbo.REASONCANCEL rc " +
+                        "ON rc.ID = bc.REASON WHERE bc.ID = @id", new object[] { bill.ID });
+                    if (dt.Rows.Count > 0)
+                    {
+                        DataRow dr = dt.Rows[0];
+                        string reason = dr["NOTE"].ToString();
+                        string date = ((DateTime)dr["DATECANCEL"]).ToString("dd'/'MM'/'yyyy hh:mm:ss");
+                        MessageBox.Show("Lý do hủy: " + reason + "\nThời gian hủy: " + date, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
 
+
+
+
+        }
+        private void cmsCancelDetail_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (lsvBill.SelectedItems.Count > 0)
+            {
+                ListViewItem lvi = lsvBill.SelectedItems[0];
+                BillCheckOut bill = lvi.Tag as BillCheckOut;
+                if (bill.Status == 2)
+                {
+                    cmsCancelDetail.Enabled = true;
+                }
+                else
+                    cmsCancelDetail.Enabled = false;
+            }
+            else
+            {
+                cmsCancelDetail.Enabled = false;
+            }
+
+        }
+        #endregion
 
 
     }

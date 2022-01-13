@@ -156,6 +156,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\TextBoxAutoComplete.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\TextBoxAutoComplete.Designer.cs">
+      <DependentUpon>TextBoxAutoComplete.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="GraphicUserInterface\fAddSeveralQuantityFood.resx">
       <DependentUpon>fAddSeveralQuantityFood.cs</DependentUpon>
     </EmbeddedResource>
@@ -213,6 +219,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\TextBoxAutoComplete.resx">
+      <DependentUpon>TextBoxAutoComplete.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

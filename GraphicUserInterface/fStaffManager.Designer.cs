@@ -114,7 +114,6 @@
             this.dtgvNhanVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgvNhanVien.Size = new System.Drawing.Size(947, 567);
             this.dtgvNhanVien.TabIndex = 0;
-            this.dtgvNhanVien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgvNhanVien_CellClick);
             // 
             // Column1
             // 
@@ -406,7 +405,6 @@
             this.btnSave.TabIndex = 10;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.Button4_Click);
             // 
             // btnAdd
             // 
@@ -421,7 +419,6 @@
             this.btnAdd.TabIndex = 9;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnModify
             // 
@@ -436,7 +433,6 @@
             this.btnModify.TabIndex = 7;
             this.btnModify.Text = "Sửa";
             this.btnModify.UseVisualStyleBackColor = false;
-            this.btnModify.Click += new System.EventHandler(this.Button2_Click);
             // 
             // btnDelete
             // 
@@ -451,7 +447,6 @@
             this.btnDelete.TabIndex = 8;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = false;
-            this.btnDelete.Click += new System.EventHandler(this.Button3_Click);
             // 
             // label9
             // 
@@ -522,7 +517,6 @@
             this.Name = "fStaffManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý nhân viên";
-            this.Load += new System.EventHandler(this.fStaffManager_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvNhanVien)).EndInit();
             this.panel2.ResumeLayout(false);

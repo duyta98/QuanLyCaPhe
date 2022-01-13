@@ -29,6 +29,7 @@ namespace QL_QuanCF.GraphicUserInterface
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lsvBill = new System.Windows.Forms.ListView();
@@ -65,12 +66,15 @@ namespace QL_QuanCF.GraphicUserInterface
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.cbbBillType = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.cmsCancelDetail = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.thôngTinHóaĐơnHủyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.pnlNavigate.SuspendLayout();
+            this.cmsCancelDetail.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMain
@@ -130,6 +134,7 @@ namespace QL_QuanCF.GraphicUserInterface
             this.Promotion,
             this.Amount,
             this.columnHeader6});
+            this.lsvBill.ContextMenuStrip = this.cmsCancelDetail;
             this.lsvBill.Font = new System.Drawing.Font("Cascadia Code", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lsvBill.FullRowSelect = true;
             this.lsvBill.GridLines = true;
@@ -145,6 +150,7 @@ namespace QL_QuanCF.GraphicUserInterface
             this.lsvBill.UseCompatibleStateImageBehavior = false;
             this.lsvBill.View = System.Windows.Forms.View.Details;
             this.lsvBill.SelectedIndexChanged += new System.EventHandler(this.lsvBill_SelectedIndexChanged);
+            this.lsvBill.DoubleClick += new System.EventHandler(this.lsvBill_DoubleClick);
             // 
             // Pos
             // 
@@ -153,8 +159,8 @@ namespace QL_QuanCF.GraphicUserInterface
             // 
             // IDBill
             // 
-            this.IDBill.Text = "Mã hóa đơn";
-            this.IDBill.Width = 141;
+            this.IDBill.Text = "Mã HĐ";
+            this.IDBill.Width = 86;
             // 
             // TAB
             // 
@@ -461,7 +467,8 @@ namespace QL_QuanCF.GraphicUserInterface
             this.cbbBillType.FormattingEnabled = true;
             this.cbbBillType.Items.AddRange(new object[] {
             "Hóa đơn đã bán",
-            "Hóa đơn đã hủy"});
+            "Hóa đơn đã hủy",
+            "Tất cả hóa đơn"});
             this.cbbBillType.Location = new System.Drawing.Point(604, 12);
             this.cbbBillType.Name = "cbbBillType";
             this.cbbBillType.Size = new System.Drawing.Size(216, 32);
@@ -479,6 +486,21 @@ namespace QL_QuanCF.GraphicUserInterface
             this.label1.Size = new System.Drawing.Size(226, 33);
             this.label1.TabIndex = 0;
             this.label1.Text = "QUẢN LÝ HÓA ĐƠN";
+            // 
+            // cmsCancelDetail
+            // 
+            this.cmsCancelDetail.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.thôngTinHóaĐơnHủyToolStripMenuItem});
+            this.cmsCancelDetail.Name = "cmsCancelDetail";
+            this.cmsCancelDetail.Size = new System.Drawing.Size(196, 48);
+            this.cmsCancelDetail.Opening += new System.ComponentModel.CancelEventHandler(this.cmsCancelDetail_Opening);
+            // 
+            // thôngTinHóaĐơnHủyToolStripMenuItem
+            // 
+            this.thôngTinHóaĐơnHủyToolStripMenuItem.Name = "thôngTinHóaĐơnHủyToolStripMenuItem";
+            this.thôngTinHóaĐơnHủyToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.thôngTinHóaĐơnHủyToolStripMenuItem.Text = "Thông tin hóa đơn hủy";
+            this.thôngTinHóaĐơnHủyToolStripMenuItem.Click += new System.EventHandler(this.thôngTinHóaĐơnHủyToolStripMenuItem_Click);
             // 
             // fBillManager
             // 
@@ -503,6 +525,7 @@ namespace QL_QuanCF.GraphicUserInterface
             this.splitContainer1.ResumeLayout(false);
             this.pnlNavigate.ResumeLayout(false);
             this.pnlNavigate.PerformLayout();
+            this.cmsCancelDetail.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -545,5 +568,7 @@ namespace QL_QuanCF.GraphicUserInterface
         private System.Windows.Forms.ComboBox cbbBillType;
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ContextMenuStrip cmsCancelDetail;
+        private System.Windows.Forms.ToolStripMenuItem thôngTinHóaĐơnHủyToolStripMenuItem;
     }
 }

@@ -44,3 +44,5 @@ C:\Users\Duy\Desktop\QuanLyCaPhe\obj\Debug\vi-VN\QL_QuanCF.resources.dll
 C:\Users\Duy\Desktop\QuanLyCaPhe\obj\Debug\QL_QuanCF.exe
 C:\Users\Duy\Desktop\QuanLyCaPhe\obj\Debug\QL_QuanCF.pdb
 C:\Users\Duy\Desktop\QuanLyCaPhe\obj\Debug\QL_QuanCF.GraphicUserInterface.fReasonCancel.resources
+C:\Users\Duy\Desktop\QuanLyCaPhe\obj\Debug\QL_QuanCF.csproj.SuggestedBindingRedirects.cache
+C:\Users\Duy\Desktop\QuanLyCaPhe\obj\Debug\QL_QuanCF.TextBoxAutoComplete.resources

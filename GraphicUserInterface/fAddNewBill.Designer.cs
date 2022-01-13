@@ -28,28 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.btnThanhToan = new System.Windows.Forms.Button();
-            this.btnHuybo = new System.Windows.Forms.Button();
-            this.btnGopban = new System.Windows.Forms.Button();
-            this.btnLuuban = new System.Windows.Forms.Button();
+            this.pnlButton = new System.Windows.Forms.Panel();
+            this.btnReturn = new System.Windows.Forms.Button();
+            this.btnPay = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.pnlID = new System.Windows.Forms.Panel();
+            this.txtTabName = new QL_QuanCF.TextBoxAutoComplete();
             this.lbIDBan = new System.Windows.Forms.Label();
             this.txbSoNguoi = new System.Windows.Forms.TextBox();
-            this.txbSoBan = new System.Windows.Forms.TextBox();
             this.lbSoNguoi = new System.Windows.Forms.Label();
             this.lbSoBan = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lsvBillInfo = new System.Windows.Forms.ListView();
+            this.pos = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.quantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Price = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnHaydung = new System.Windows.Forms.Button();
-            this.btnMonan = new System.Windows.Forms.Button();
-            this.btnDouong = new System.Windows.Forms.Button();
-            this.btnKhac = new System.Windows.Forms.Button();
+            this.txtSearchFood = new QL_QuanCF.TextBoxAutoComplete();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.flpViewFood = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnEtc = new System.Windows.Forms.Button();
+            this.btnDrink = new System.Windows.Forms.Button();
+            this.btnFood = new System.Windows.Forms.Button();
+            this.btnMostUsed = new System.Windows.Forms.Button();
+            this.cmsFoodFLP = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.thêmNhiềuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.pnlButton.SuspendLayout();
             this.pnlID.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.cmsFoodFLP.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -57,78 +67,79 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.panel4);
+            this.panel2.Controls.Add(this.pnlButton);
             this.panel2.Controls.Add(this.pnlID);
-            this.panel2.Controls.Add(this.listView1);
+            this.panel2.Controls.Add(this.lsvBillInfo);
             this.panel2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(938, 0);
+            this.panel2.Location = new System.Drawing.Point(875, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(412, 694);
+            this.panel2.Size = new System.Drawing.Size(475, 694);
             this.panel2.TabIndex = 3;
             // 
-            // panel4
+            // pnlButton
             // 
-            this.panel4.Controls.Add(this.btnThanhToan);
-            this.panel4.Controls.Add(this.btnHuybo);
-            this.panel4.Controls.Add(this.btnGopban);
-            this.panel4.Controls.Add(this.btnLuuban);
-            this.panel4.Location = new System.Drawing.Point(0, 640);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(405, 43);
-            this.panel4.TabIndex = 1;
+            this.pnlButton.Controls.Add(this.btnReturn);
+            this.pnlButton.Controls.Add(this.btnPay);
+            this.pnlButton.Controls.Add(this.btnSave);
+            this.pnlButton.Location = new System.Drawing.Point(0, 632);
+            this.pnlButton.Name = "pnlButton";
+            this.pnlButton.Size = new System.Drawing.Size(475, 62);
+            this.pnlButton.TabIndex = 1;
             // 
-            // btnThanhToan
+            // btnReturn
             // 
-            this.btnThanhToan.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnThanhToan.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThanhToan.Location = new System.Drawing.Point(282, 0);
-            this.btnThanhToan.Name = "btnThanhToan";
-            this.btnThanhToan.Size = new System.Drawing.Size(123, 43);
-            this.btnThanhToan.TabIndex = 6;
-            this.btnThanhToan.Text = "Thanh toán";
-            this.btnThanhToan.UseVisualStyleBackColor = false;
+            this.btnReturn.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReturn.Location = new System.Drawing.Point(130, 9);
+            this.btnReturn.Name = "btnReturn";
+            this.btnReturn.Size = new System.Drawing.Size(99, 43);
+            this.btnReturn.TabIndex = 0;
+            this.btnReturn.Text = "Trở về";
+            this.btnReturn.UseVisualStyleBackColor = true;
             // 
-            // btnHuybo
+            // btnPay
             // 
-            this.btnHuybo.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHuybo.Location = new System.Drawing.Point(97, 0);
-            this.btnHuybo.Name = "btnHuybo";
-            this.btnHuybo.Size = new System.Drawing.Size(102, 43);
-            this.btnHuybo.TabIndex = 4;
-            this.btnHuybo.Text = "Hủy bàn";
-            this.btnHuybo.UseVisualStyleBackColor = true;
+            this.btnPay.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnPay.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPay.Location = new System.Drawing.Point(340, 9);
+            this.btnPay.Name = "btnPay";
+            this.btnPay.Size = new System.Drawing.Size(123, 43);
+            this.btnPay.TabIndex = 2;
+            this.btnPay.Text = "Thanh toán";
+            this.btnPay.UseVisualStyleBackColor = false;
+            this.btnPay.Click += new System.EventHandler(this.btnPay_Click);
             // 
-            // btnGopban
+            // btnSave
             // 
-            this.btnGopban.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGopban.Location = new System.Drawing.Point(198, 0);
-            this.btnGopban.Name = "btnGopban";
-            this.btnGopban.Size = new System.Drawing.Size(84, 43);
-            this.btnGopban.TabIndex = 5;
-            this.btnGopban.Text = "Gộp bàn";
-            this.btnGopban.UseVisualStyleBackColor = true;
-            // 
-            // btnLuuban
-            // 
-            this.btnLuuban.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLuuban.Location = new System.Drawing.Point(0, 0);
-            this.btnLuuban.Name = "btnLuuban";
-            this.btnLuuban.Size = new System.Drawing.Size(99, 43);
-            this.btnLuuban.TabIndex = 3;
-            this.btnLuuban.Text = "Lưu bàn";
-            this.btnLuuban.UseVisualStyleBackColor = true;
+            this.btnSave.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(235, 8);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(99, 43);
+            this.btnSave.TabIndex = 1;
+            this.btnSave.Text = "Lưu bàn";
+            this.btnSave.UseVisualStyleBackColor = true;
             // 
             // pnlID
             // 
+            this.pnlID.Controls.Add(this.txtTabName);
             this.pnlID.Controls.Add(this.lbIDBan);
             this.pnlID.Controls.Add(this.txbSoNguoi);
-            this.pnlID.Controls.Add(this.txbSoBan);
             this.pnlID.Controls.Add(this.lbSoNguoi);
             this.pnlID.Controls.Add(this.lbSoBan);
+            this.pnlID.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlID.Location = new System.Drawing.Point(0, 0);
             this.pnlID.Name = "pnlID";
-            this.pnlID.Size = new System.Drawing.Size(412, 45);
+            this.pnlID.Size = new System.Drawing.Size(475, 45);
             this.pnlID.TabIndex = 0;
+            // 
+            // txtTabName
+            // 
+            this.txtTabName.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTabName.Location = new System.Drawing.Point(62, 6);
+            this.txtTabName.Name = "txtTabName";
+            this.txtTabName.Size = new System.Drawing.Size(136, 32);
+            this.txtTabName.TabIndex = 0;
+            this.txtTabName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTabName.Leave += new System.EventHandler(this.txtTabName_Leave);
             // 
             // lbIDBan
             // 
@@ -136,115 +147,179 @@
             this.lbIDBan.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbIDBan.Location = new System.Drawing.Point(3, 13);
             this.lbIDBan.Name = "lbIDBan";
-            this.lbIDBan.Size = new System.Drawing.Size(21, 20);
+            this.lbIDBan.Size = new System.Drawing.Size(0, 20);
             this.lbIDBan.TabIndex = 3;
-            this.lbIDBan.Text = "ID";
             this.lbIDBan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txbSoNguoi
             // 
             this.txbSoNguoi.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txbSoNguoi.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbSoNguoi.Location = new System.Drawing.Point(362, 10);
+            this.txbSoNguoi.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbSoNguoi.Location = new System.Drawing.Point(356, 6);
             this.txbSoNguoi.Name = "txbSoNguoi";
             this.txbSoNguoi.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txbSoNguoi.Size = new System.Drawing.Size(43, 26);
-            this.txbSoNguoi.TabIndex = 2;
+            this.txbSoNguoi.Size = new System.Drawing.Size(49, 32);
+            this.txbSoNguoi.TabIndex = 1;
+            this.txbSoNguoi.Text = "0";
             this.txbSoNguoi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txbSoBan
-            // 
-            this.txbSoBan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txbSoBan.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbSoBan.Location = new System.Drawing.Point(129, 9);
-            this.txbSoBan.Name = "txbSoBan";
-            this.txbSoBan.Size = new System.Drawing.Size(111, 26);
-            this.txbSoBan.TabIndex = 1;
-            this.txbSoBan.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbSoNguoi
             // 
             this.lbSoNguoi.AutoSize = true;
-            this.lbSoNguoi.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSoNguoi.Location = new System.Drawing.Point(278, 14);
+            this.lbSoNguoi.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSoNguoi.Location = new System.Drawing.Point(247, 9);
             this.lbSoNguoi.Name = "lbSoNguoi";
-            this.lbSoNguoi.Size = new System.Drawing.Size(87, 19);
+            this.lbSoNguoi.Size = new System.Drawing.Size(103, 24);
             this.lbSoNguoi.TabIndex = 1;
             this.lbSoNguoi.Text = "Số người:";
             // 
             // lbSoBan
             // 
             this.lbSoBan.AutoSize = true;
-            this.lbSoBan.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSoBan.Location = new System.Drawing.Point(54, 14);
+            this.lbSoBan.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSoBan.Location = new System.Drawing.Point(3, 9);
             this.lbSoBan.Name = "lbSoBan";
-            this.lbSoBan.Size = new System.Drawing.Size(69, 19);
+            this.lbSoBan.Size = new System.Drawing.Size(53, 24);
             this.lbSoBan.TabIndex = 0;
-            this.lbSoBan.Text = "Số bàn:";
+            this.lbSoBan.Text = "Bàn:";
             // 
-            // listView1
+            // lsvBillInfo
             // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(0, 51);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(405, 583);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.lsvBillInfo.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.pos,
+            this.name,
+            this.quantity,
+            this.Price});
+            this.lsvBillInfo.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lsvBillInfo.GridLines = true;
+            this.lsvBillInfo.HideSelection = false;
+            this.lsvBillInfo.Location = new System.Drawing.Point(0, 49);
+            this.lsvBillInfo.MultiSelect = false;
+            this.lsvBillInfo.Name = "lsvBillInfo";
+            this.lsvBillInfo.Size = new System.Drawing.Size(475, 585);
+            this.lsvBillInfo.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.lsvBillInfo.TabIndex = 0;
+            this.lsvBillInfo.UseCompatibleStateImageBehavior = false;
+            this.lsvBillInfo.View = System.Windows.Forms.View.Details;
+            // 
+            // pos
+            // 
+            this.pos.Text = "STT";
+            this.pos.Width = 52;
+            // 
+            // name
+            // 
+            this.name.Text = "Tên món";
+            this.name.Width = 221;
+            // 
+            // quantity
+            // 
+            this.quantity.Text = "SL";
+            this.quantity.Width = 43;
+            // 
+            // Price
+            // 
+            this.Price.Text = "Đơn giá";
+            this.Price.Width = 150;
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel1.Controls.Add(this.btnKhac);
-            this.panel1.Controls.Add(this.btnDouong);
-            this.panel1.Controls.Add(this.btnMonan);
-            this.panel1.Controls.Add(this.btnHaydung);
+            this.panel1.Controls.Add(this.txtSearchFood);
+            this.panel1.Controls.Add(this.btnSearch);
+            this.panel1.Controls.Add(this.flpViewFood);
+            this.panel1.Controls.Add(this.btnEtc);
+            this.panel1.Controls.Add(this.btnDrink);
+            this.panel1.Controls.Add(this.btnFood);
+            this.panel1.Controls.Add(this.btnMostUsed);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(932, 694);
+            this.panel1.Size = new System.Drawing.Size(876, 694);
             this.panel1.TabIndex = 4;
             // 
-            // btnHaydung
+            // txtSearchFood
             // 
-            this.btnHaydung.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHaydung.Location = new System.Drawing.Point(0, 0);
-            this.btnHaydung.Name = "btnHaydung";
-            this.btnHaydung.Size = new System.Drawing.Size(99, 43);
-            this.btnHaydung.TabIndex = 4;
-            this.btnHaydung.Text = "Hay dùng";
-            this.btnHaydung.UseVisualStyleBackColor = true;
+            this.txtSearchFood.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchFood.Location = new System.Drawing.Point(550, 10);
+            this.txtSearchFood.Name = "txtSearchFood";
+            this.txtSearchFood.Size = new System.Drawing.Size(199, 31);
+            this.txtSearchFood.TabIndex = 10;
             // 
-            // btnMonan
+            // btnSearch
             // 
-            this.btnMonan.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMonan.Location = new System.Drawing.Point(194, 0);
-            this.btnMonan.Name = "btnMonan";
-            this.btnMonan.Size = new System.Drawing.Size(99, 43);
-            this.btnMonan.TabIndex = 5;
-            this.btnMonan.Text = "Món ăn";
-            this.btnMonan.UseVisualStyleBackColor = true;
+            this.btnSearch.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(746, 8);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(126, 36);
+            this.btnSearch.TabIndex = 9;
+            this.btnSearch.Text = "Tìm kiếm";
+            this.btnSearch.UseVisualStyleBackColor = true;
             // 
-            // btnDouong
+            // flpViewFood
             // 
-            this.btnDouong.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDouong.Location = new System.Drawing.Point(96, 0);
-            this.btnDouong.Name = "btnDouong";
-            this.btnDouong.Size = new System.Drawing.Size(99, 43);
-            this.btnDouong.TabIndex = 6;
-            this.btnDouong.Text = "Đồ uống";
-            this.btnDouong.UseVisualStyleBackColor = true;
+            this.flpViewFood.AutoScroll = true;
+            this.flpViewFood.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.flpViewFood.Location = new System.Drawing.Point(0, 49);
+            this.flpViewFood.Name = "flpViewFood";
+            this.flpViewFood.Size = new System.Drawing.Size(876, 645);
+            this.flpViewFood.TabIndex = 8;
             // 
-            // btnKhac
+            // btnEtc
             // 
-            this.btnKhac.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnKhac.Location = new System.Drawing.Point(292, 0);
-            this.btnKhac.Name = "btnKhac";
-            this.btnKhac.Size = new System.Drawing.Size(99, 43);
-            this.btnKhac.TabIndex = 7;
-            this.btnKhac.Text = "Khác";
-            this.btnKhac.UseVisualStyleBackColor = true;
+            this.btnEtc.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEtc.Location = new System.Drawing.Point(401, 8);
+            this.btnEtc.Name = "btnEtc";
+            this.btnEtc.Size = new System.Drawing.Size(126, 35);
+            this.btnEtc.TabIndex = 7;
+            this.btnEtc.Text = "Khác";
+            this.btnEtc.UseVisualStyleBackColor = true;
             // 
-            // FThemBan
+            // btnDrink
+            // 
+            this.btnDrink.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDrink.Location = new System.Drawing.Point(137, 8);
+            this.btnDrink.Name = "btnDrink";
+            this.btnDrink.Size = new System.Drawing.Size(126, 35);
+            this.btnDrink.TabIndex = 6;
+            this.btnDrink.Text = "Đồ uống";
+            this.btnDrink.UseVisualStyleBackColor = true;
+            // 
+            // btnFood
+            // 
+            this.btnFood.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFood.Location = new System.Drawing.Point(269, 8);
+            this.btnFood.Name = "btnFood";
+            this.btnFood.Size = new System.Drawing.Size(126, 35);
+            this.btnFood.TabIndex = 5;
+            this.btnFood.Text = "Món ăn";
+            this.btnFood.UseVisualStyleBackColor = true;
+            // 
+            // btnMostUsed
+            // 
+            this.btnMostUsed.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMostUsed.Location = new System.Drawing.Point(5, 8);
+            this.btnMostUsed.Name = "btnMostUsed";
+            this.btnMostUsed.Size = new System.Drawing.Size(126, 35);
+            this.btnMostUsed.TabIndex = 4;
+            this.btnMostUsed.Text = "Hay dùng";
+            this.btnMostUsed.UseVisualStyleBackColor = true;
+            this.btnMostUsed.Click += new System.EventHandler(this.btnMostUsed_Click);
+            // 
+            // cmsFoodFLP
+            // 
+            this.cmsFoodFLP.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.thêmNhiềuToolStripMenuItem});
+            this.cmsFoodFLP.Name = "cmsFoodFLP";
+            this.cmsFoodFLP.Size = new System.Drawing.Size(138, 26);
+            // 
+            // thêmNhiềuToolStripMenuItem
+            // 
+            this.thêmNhiềuToolStripMenuItem.Name = "thêmNhiềuToolStripMenuItem";
+            this.thêmNhiềuToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.thêmNhiềuToolStripMenuItem.Text = "Thêm nhiều";
+            // 
+            // fAddNewBill
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(1350, 696);
@@ -253,14 +328,17 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FThemBan";
+            this.Name = "fAddNewBill";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thêm bàn";
+            this.Load += new System.EventHandler(this.fAddNewBill_Load);
             this.panel2.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
+            this.pnlButton.ResumeLayout(false);
             this.pnlID.ResumeLayout(false);
             this.pnlID.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.cmsFoodFLP.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -268,22 +346,30 @@
         #endregion
 
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button btnThanhToan;
-        private System.Windows.Forms.Button btnHuybo;
-        private System.Windows.Forms.Button btnGopban;
-        private System.Windows.Forms.Button btnLuuban;
+        private System.Windows.Forms.Panel pnlButton;
+        private System.Windows.Forms.Button btnPay;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Panel pnlID;
         private System.Windows.Forms.TextBox txbSoNguoi;
-        private System.Windows.Forms.TextBox txbSoBan;
         private System.Windows.Forms.Label lbSoNguoi;
         private System.Windows.Forms.Label lbSoBan;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lsvBillInfo;
         private System.Windows.Forms.Label lbIDBan;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnKhac;
-        private System.Windows.Forms.Button btnDouong;
-        private System.Windows.Forms.Button btnMonan;
-        private System.Windows.Forms.Button btnHaydung;
+        private System.Windows.Forms.Button btnEtc;
+        private System.Windows.Forms.Button btnDrink;
+        private System.Windows.Forms.Button btnFood;
+        private System.Windows.Forms.Button btnMostUsed;
+        private System.Windows.Forms.Button btnReturn;
+        private System.Windows.Forms.FlowLayoutPanel flpViewFood;
+        private System.Windows.Forms.Button btnSearch;
+        private TextBoxAutoComplete txtTabName;
+        private TextBoxAutoComplete txtSearchFood;
+        private System.Windows.Forms.ColumnHeader pos;
+        private System.Windows.Forms.ColumnHeader name;
+        private System.Windows.Forms.ColumnHeader quantity;
+        private System.Windows.Forms.ColumnHeader Price;
+        private System.Windows.Forms.ContextMenuStrip cmsFoodFLP;
+        private System.Windows.Forms.ToolStripMenuItem thêmNhiềuToolStripMenuItem;
     }
 }

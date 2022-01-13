@@ -1,159 +1,78 @@
 ﻿using QL_QuanCF.DataAccessObject;
+using QL_QuanCF.DataTransferObject;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace QL_QuanCF
 {
     public partial class fFoodManager : Form
-    {
+    {                  
+        private string hint = "Nhập tên món ...";
 
-        #region Events
-        private void btnThem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string strThem = "INSERT INTO dbo.MON (ID,TENMON,DVT,GiA,IDLOAIMON)" + "VALUES(@id, @ten, @dvt, @gia, @idLoai)";
-                string cnnStr = "Data Source = DUYPC; Initial Catalog = QLCF; Integrated Security = True";
-                SqlConnection sqlConnection = new SqlConnection(cnnStr);
-                if (sqlConnection.State == ConnectionState.Closed)
-                {
-                    sqlConnection.Open();
-                }
-
-                SqlCommand sqlCommand = new SqlCommand(strThem, sqlConnection);
-                sqlCommand.Parameters.AddWithValue("@id", txbIDFood.Text);
-                sqlCommand.Parameters.AddWithValue("@ten", txbName.Text);
-                sqlCommand.Parameters.AddWithValue("@dvt", cbbUnit.SelectedItem.ToString());
-                sqlCommand.Parameters.AddWithValue("@gia", txbCost.Text);
-                sqlCommand.Parameters.AddWithValue("@idLoai", cbbFoodCate.SelectedItem.ToString());
-                sqlCommand.ExecuteNonQuery();
-                sqlConnection.Close();
-                FThucDon_Load();
-                MessageBox.Show("Thực hiện hành công", "Thông báo");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void BtnXem_Click(object sender, EventArgs e)
-        {
-            FThucDon_Load();
-        }
-
-        private void BtnSua_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string strSua = "UPDATE dbo.MON SET ID = @id, TENMON = @ten, DVT = @dvt, GIA = @gia, IDLOAIMON = @idloai WHERE ID = @id";
-                string cnnStr = "Data Source = DUYPC; Initial Catalog = QLCF; Integrated Security = True";
-                SqlConnection sqlConnection = new SqlConnection(cnnStr);
-                if (sqlConnection.State == ConnectionState.Closed)
-                {
-                    sqlConnection.Open();
-                }
-
-                SqlCommand sqlCommand = new SqlCommand(strSua, sqlConnection);
-                sqlCommand.Parameters.AddWithValue("@id", txbIDFood.Text);
-                sqlCommand.Parameters.AddWithValue("@ten", txbName.Text);
-                sqlCommand.Parameters.AddWithValue("@dvt", cbbUnit.SelectedItem.ToString());
-                sqlCommand.Parameters.AddWithValue("@gia", txbCost.Text);
-                sqlCommand.Parameters.AddWithValue("@idLoai", cbbFoodCate.SelectedItem.ToString());
-
-                sqlCommand.ExecuteNonQuery();
-                sqlConnection.Close();
-                FThucDon_Load();
-                MessageBox.Show("Thực hiện hành công", "Thông báo");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void BtnXoa_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string strXoa = "DELETE dbo.MON WHERE ID = @id";
-                string cnnStr = "Data Source = DUYPC; Initial Catalog = QLCF; Integrated Security = True";
-                SqlConnection sqlConnection = new SqlConnection(cnnStr);
-                if (sqlConnection.State == ConnectionState.Closed)
-                {
-                    sqlConnection.Open();
-                }
-
-                SqlCommand sqlCommand = new SqlCommand(strXoa, sqlConnection);
-
-                sqlCommand.ExecuteNonQuery();
-                sqlConnection.Close();
-                FThucDon_Load();
-                MessageBox.Show("Thực hiện hành công", "Thông báo");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-
-        private void DtgvMon_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            txbIDFood.Text = dtgvMon.CurrentRow.Cells[0].Value.ToString();
-            txbName.Text = dtgvMon.CurrentRow.Cells[1].Value.ToString();
-            cbbUnit.Text = dtgvMon.CurrentRow.Cells[2].Value.ToString();
-            txbCost.Text = dtgvMon.CurrentRow.Cells[3].Value.ToString();
-            cbbFoodCate.Text = dtgvMon.CurrentRow.Cells[4].Value.ToString();
-        }
-        #endregion
-
-        #region Method
+        
 
         public fFoodManager()
         {
             InitializeComponent();
-            FThucDon_Load();
-            load();
         }
-
-        private void FThucDon_Load()
+        private void LoadCbbCate()
         {
-            string sqlString = "SELECT ID AS [Mã món], TENMON AS [Tên món], DVT AS [Đơn vị tính], GIA AS [Giá], IDLOAIMON AS [Mã loại] FROM dbo.MON";
-
-            dtgvMon.DataSource = Provider.Instance.ExecuteQuery(sqlString);
-
-
+            List<Category> cates = CategoryDAO.Instance.GetCategory();
+            cbbFoodCate.DataSource = cates;
+            Category cate = new Category();
+            cate.Name = "Tất cả";
+            cate.Id = 0;
+            cates.Add(cate);
+            cbbCate.DataSource = cates;
+            cbbCate.DisplayMember =  "name";
+            cbbCate.ValueMember = cbbFoodCate.ValueMember = "id";
+            cbbCate.SelectedValue = 0;
         }
-        private void load()
+        private void LoadCbbFoodCate()
         {
-            cbbDVT_Load();
-            cbbIDLoai_Load();
-            cbbDanhmuc_Load();
+            List<Category> cates = CategoryDAO.Instance.GetCategory();
+            cbbFoodCate.DataSource = cates;
+            cbbFoodCate.ValueMember = "id";
+            cbbFoodCate.DisplayMember = "name";
         }
 
-        private void cbbDVT_Load()
+        private void fFoodManager_Load(object sender, EventArgs e)
         {
-            string sqlString = "SELECT DISTINCT DVT FROM dbo.MON";
-            cbbUnit.DataSource = Provider.Instance.ExecuteQuery(sqlString);
-            cbbUnit.DisplayMember = "DVT";
-        }
-        private void cbbIDLoai_Load()
-        {
-            string sqlString = "SELECT DISTINCT IDLOAIMON FROM dbo.MON";
-            cbbFoodCate.DataSource = Provider.Instance.ExecuteQuery(sqlString);
-            cbbFoodCate.DisplayMember = "IDLOAIMON";
+            LoadCbbCate();
+            LoadCbbFoodCate();
+            txtSearch.Text = hint;
+            txtSearch.ForeColor = Color.Gray;
         }
 
-        private void cbbDanhmuc_Load()
+        private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string sqlString = "SELECT TENLOAI FROM dbo.LOAIMON";
-            cbbDanhmuc.DataSource = Provider.Instance.ExecuteQuery(sqlString);
-            cbbDanhmuc.DisplayMember = "TENLOAI";
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+                e.Handled = true;
         }
-        #endregion
 
+        private void txtSearch_Leave(object sender, EventArgs e)
+        {
+            if (txtSearch.Text.Trim() == "")
+            {
+                txtSearch.Text = hint;
+                txtSearch.ForeColor = Color.Gray;
+            }
+        }
+
+        private void txtSearch_Enter(object sender, EventArgs e)
+        {
+            if (txtSearch.Text == hint)
+            {
+                txtSearch.Clear();
+                txtSearch.ForeColor = Color.Black;
+            }    
+                
+        }
+
+       
     }
 }
