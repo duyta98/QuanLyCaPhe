@@ -61,6 +61,17 @@ namespace QL_QuanCF.DataAccessObject
             }
             return DSBan;
         }
+        public Table getTableById(int id)
+        {
+            DataTable dt = Provider.Instance.ExecuteQuery("uspGetTableByID @id", new object[] { id });
+            Table tb = new Table();
+            if (dt.Rows.Count>0)
+            {
+                DataRow dr = dt.Rows[0];
+                tb = new Table(dr);
+            }
+            return tb;
+        }
         public void updateTableWhenCreateBill(int amountPeople, int idTable)
         {
             Provider.Instance.ExecuteNonQuery("EXEC spUpdateTabWhenCreateBill @tabCountPeople , @idTab", new object[] { amountPeople, idTable });

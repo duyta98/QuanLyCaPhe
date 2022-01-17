@@ -139,11 +139,9 @@
             this.lsvFood.FullRowSelect = true;
             this.lsvFood.GridLines = true;
             this.lsvFood.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.lsvFood.HideSelection = false;
             this.lsvFood.Location = new System.Drawing.Point(3, 31);
             this.lsvFood.Name = "lsvFood";
             this.lsvFood.Size = new System.Drawing.Size(611, 432);
-            this.lsvFood.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.lsvFood.TabIndex = 0;
             this.lsvFood.UseCompatibleStateImageBehavior = false;
             this.lsvFood.View = System.Windows.Forms.View.Details;
@@ -235,7 +233,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(293, 72);
+            this.label24.Location = new System.Drawing.Point(313, 72);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(119, 24);
             this.label24.TabIndex = 48;
@@ -276,7 +274,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(293, 34);
+            this.label21.Location = new System.Drawing.Point(313, 34);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(120, 24);
             this.label21.TabIndex = 44;
@@ -351,7 +349,7 @@
             this.label1.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(236, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(139, 32);
+            this.label1.Size = new System.Drawing.Size(138, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Thống kê";
             // 
@@ -831,7 +829,7 @@
             this.label2.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(100, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(150, 32);
+            this.label2.Size = new System.Drawing.Size(149, 32);
             this.label2.TabIndex = 0;
             this.label2.Text = "Kiểm đếm";
             // 

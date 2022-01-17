@@ -1,4 +1,5 @@
 ﻿using QL_QuanCF.DataAccessObject;
+using QL_QuanCF.GraphicUserInterface;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -60,5 +61,12 @@ namespace QL_QuanCF
 
         }
 
+        private void btnSignUp_Click(object sender, EventArgs e)
+        {
+            fSignUp frm = new fSignUp();
+            frm.parentForm = this;
+            Hide();
+            frm.Show();
+        }
     }
 }

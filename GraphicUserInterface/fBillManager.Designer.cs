@@ -40,6 +40,8 @@ namespace QL_QuanCF.GraphicUserInterface
             this.Promotion = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Amount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cmsCancelDetail = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.thôngTinHóaĐơnHủyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
             this.btnReturn = new System.Windows.Forms.Button();
             this.txtDateOut = new System.Windows.Forms.TextBox();
@@ -66,15 +68,13 @@ namespace QL_QuanCF.GraphicUserInterface
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.cbbBillType = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cmsCancelDetail = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.thôngTinHóaĐơnHủyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.pnlNavigate.SuspendLayout();
             this.cmsCancelDetail.SuspendLayout();
+            this.pnlNavigate.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMain
@@ -149,8 +149,7 @@ namespace QL_QuanCF.GraphicUserInterface
             this.lsvBill.TabIndex = 1;
             this.lsvBill.UseCompatibleStateImageBehavior = false;
             this.lsvBill.View = System.Windows.Forms.View.Details;
-            this.lsvBill.SelectedIndexChanged += new System.EventHandler(this.lsvBill_SelectedIndexChanged);
-            this.lsvBill.DoubleClick += new System.EventHandler(this.lsvBill_DoubleClick);
+            this.lsvBill.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lsvBill_MouseClick);
             // 
             // Pos
             // 
@@ -189,6 +188,21 @@ namespace QL_QuanCF.GraphicUserInterface
             this.columnHeader6.Text = "Trạng thái";
             this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader6.Width = 123;
+            // 
+            // cmsCancelDetail
+            // 
+            this.cmsCancelDetail.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.thôngTinHóaĐơnHủyToolStripMenuItem});
+            this.cmsCancelDetail.Name = "cmsCancelDetail";
+            this.cmsCancelDetail.Size = new System.Drawing.Size(196, 26);
+            this.cmsCancelDetail.Opening += new System.ComponentModel.CancelEventHandler(this.cmsCancelDetail_Opening);
+            // 
+            // thôngTinHóaĐơnHủyToolStripMenuItem
+            // 
+            this.thôngTinHóaĐơnHủyToolStripMenuItem.Name = "thôngTinHóaĐơnHủyToolStripMenuItem";
+            this.thôngTinHóaĐơnHủyToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.thôngTinHóaĐơnHủyToolStripMenuItem.Text = "Thông tin hóa đơn hủy";
+            this.thôngTinHóaĐơnHủyToolStripMenuItem.Click += new System.EventHandler(this.thôngTinHóaĐơnHủyToolStripMenuItem_Click);
             // 
             // label2
             // 
@@ -487,21 +501,6 @@ namespace QL_QuanCF.GraphicUserInterface
             this.label1.TabIndex = 0;
             this.label1.Text = "QUẢN LÝ HÓA ĐƠN";
             // 
-            // cmsCancelDetail
-            // 
-            this.cmsCancelDetail.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.thôngTinHóaĐơnHủyToolStripMenuItem});
-            this.cmsCancelDetail.Name = "cmsCancelDetail";
-            this.cmsCancelDetail.Size = new System.Drawing.Size(196, 48);
-            this.cmsCancelDetail.Opening += new System.ComponentModel.CancelEventHandler(this.cmsCancelDetail_Opening);
-            // 
-            // thôngTinHóaĐơnHủyToolStripMenuItem
-            // 
-            this.thôngTinHóaĐơnHủyToolStripMenuItem.Name = "thôngTinHóaĐơnHủyToolStripMenuItem";
-            this.thôngTinHóaĐơnHủyToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
-            this.thôngTinHóaĐơnHủyToolStripMenuItem.Text = "Thông tin hóa đơn hủy";
-            this.thôngTinHóaĐơnHủyToolStripMenuItem.Click += new System.EventHandler(this.thôngTinHóaĐơnHủyToolStripMenuItem_Click);
-            // 
             // fBillManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -523,9 +522,9 @@ namespace QL_QuanCF.GraphicUserInterface
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.cmsCancelDetail.ResumeLayout(false);
             this.pnlNavigate.ResumeLayout(false);
             this.pnlNavigate.PerformLayout();
-            this.cmsCancelDetail.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

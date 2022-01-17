@@ -9,16 +9,14 @@ namespace QL_QuanCF
 {
     public partial class FShiftClose : Form
     {
+        #region Object
+        public bool isCloseShift;
         public int idShift;
         public fMain parent;
         private double deviant;
         private double sumAmount;
         public Shift shift;
-        public FShiftClose()
-        {
-            InitializeComponent();
-
-        }
+        #endregion
         #region Events
         private void txt5xxk_KeyUp(object sender, KeyEventArgs e)
         {
@@ -216,8 +214,8 @@ namespace QL_QuanCF
                 sumAmount = double.Parse(ob.ToString());
             txtSales.Text = txtCash.Text = sumAmount.ToString("#,#");
             shift = ShiftDAO.Instance.getShift(idShift);
-            lbDateIn.Text = ((DateTime)shift.DateIn).ToString("dd'/'MM'/'yyyy hh:mm:ss");
-            lbDateout.Text = DateTime.Now.ToString("dd'/'MM'/'yyyy hh:mm:ss");
+            lbDateIn.Text = ((DateTime)shift.DateIn).ToString("dd'/'MM'/'yyyy HH:mm:ss");
+            lbDateout.Text = DateTime.Now.ToString("dd'/'MM'/'yyyy HH:mm:ss");
             txtCountBill.Text = getCountBill(idShift).ToString();
             txtPromotion.Text = (getSalesBeforePromotion(idShift) - sumAmount).ToString("#,#");
             getAllSalesByFood(idShift);
@@ -225,7 +223,6 @@ namespace QL_QuanCF
         }
         private void btnReturn_Click(object sender, EventArgs e)
         {
-
             Close();
         }
 
@@ -233,7 +230,7 @@ namespace QL_QuanCF
         {
             btnPrint_Click(sender, e);
             closeShift(shift.IdShift);
-            parent.Close();
+            isCloseShift = true;
             Close();
         }
 
@@ -276,6 +273,11 @@ namespace QL_QuanCF
         }
         #endregion
         #region Methods
+        public FShiftClose()
+        {
+            InitializeComponent();
+
+        }
         private void sumQuantity()
         {
             int sum = 0;
@@ -354,7 +356,5 @@ namespace QL_QuanCF
             return sum;
         }
         #endregion
-
-
     }
 }

@@ -116,9 +116,10 @@ namespace QL_QuanCF.GraphicUserInterface
         }
         public void ClearBill()
         {
-            int idBill = (lsvBill.SelectedItems[0].Tag as BillCheckOut).ID;
-            cancelBill(idBill);
+            BillCheckOut bill = lsvBill.SelectedItems[0].Tag as BillCheckOut;
+            cancelBill(bill.ID);
             int index = lsvBill.SelectedItems[0].Index;
+            bill.Status = 2;
             lsvBill.Items[index].SubItems[6].Text = "Hủy";
         }
         #endregion
@@ -132,38 +133,6 @@ namespace QL_QuanCF.GraphicUserInterface
         private void fBillManager_FormClosing(object sender, FormClosingEventArgs e)
         {
             formParent.Show();
-        }
-
-        private void lsvBill_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            lsvBillInfo.Items.Clear();
-            if (lsvBill.SelectedItems.Count > 0)
-            {
-                BillCheckOut bill = lsvBill.SelectedItems[0].Tag as BillCheckOut;
-                int idBill = int.Parse(bill.ID.ToString());
-                loadListBillInfo(idBill);
-                txtTempAmount.Text = amountTemp.ToString("#,#");
-                double dPromo = double.Parse(bill.PromoPercent.ToString()) * amountTemp / 100;
-                txtPromo.Text = dPromo.ToString("#,#");
-                txtAmount.Text = (amountTemp - dPromo).ToString("#,#");
-                txtDateIn.Text = bill.DateIn.Value.ToString("dd'/'MM'/'yyyy hh:mm:ss");
-                txtDateOut.Text = bill.DateOut.Value.ToString("dd'/'MM'/'yyyy hh:mm:ss");
-                if (bill.Status == 1)
-                {
-                    btnDel.Enabled = true;
-                }
-                else
-                {
-                    btnDel.Enabled = false;
-                }
-            }
-            else
-            {
-                txtAmount.Text = txtPromo.Text = txtTempAmount.Text = "";
-                lsvBillInfo.Items.Clear();
-                txtDateIn.Text = txtDateOut.Text = "";
-            }
-            
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -183,7 +152,11 @@ namespace QL_QuanCF.GraphicUserInterface
                 fReasonCancel frm = new fReasonCancel();
                 frm.parent = this;
                 frm.idBill = idBill;
-                frm.ShowDialog();
+                
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    btnDel.Enabled = false;
+                }
             }
         }
 
@@ -241,10 +214,7 @@ namespace QL_QuanCF.GraphicUserInterface
         {
             Close();
         }
-        private void lsvBill_DoubleClick(object sender, EventArgs e)
-        {
-            
-        }
+        
         private void thôngTinHóaĐơnHủyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (lsvBill.SelectedItems.Count > 0)
@@ -288,6 +258,36 @@ namespace QL_QuanCF.GraphicUserInterface
                 cmsCancelDetail.Enabled = false;
             }
 
+        }
+        private void lsvBill_MouseClick(object sender, MouseEventArgs e)
+        {
+            lsvBillInfo.Items.Clear();
+            if (lsvBill.SelectedItems.Count > 0)
+            {
+                BillCheckOut bill = lsvBill.SelectedItems[0].Tag as BillCheckOut;
+                int idBill = int.Parse(bill.ID.ToString());
+                loadListBillInfo(idBill);
+                txtTempAmount.Text = amountTemp.ToString("#,#");
+                double dPromo = double.Parse(bill.PromoPercent.ToString()) * amountTemp / 100;
+                txtPromo.Text = dPromo.ToString("#,#");
+                txtAmount.Text = (amountTemp - dPromo).ToString("#,#");
+                txtDateIn.Text = bill.DateIn.Value.ToString("dd'/'MM'/'yyyy hh:mm:ss");
+                txtDateOut.Text = bill.DateOut.Value.ToString("dd'/'MM'/'yyyy hh:mm:ss");
+                if (bill.Status == 1)
+                {
+                    btnDel.Enabled = true;
+                }
+                else
+                {
+                    btnDel.Enabled = false;
+                }
+            }
+            else
+            {
+                txtAmount.Text = txtPromo.Text = txtTempAmount.Text = "";
+                lsvBillInfo.Items.Clear();
+                txtDateIn.Text = txtDateOut.Text = "";
+            }
         }
         #endregion
 

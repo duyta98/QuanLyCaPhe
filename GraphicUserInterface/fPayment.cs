@@ -10,12 +10,16 @@ namespace QL_QuanCF
 {
     public partial class fPayment : Form
     {
+        #region Object
         public int idShift;
         private Bill bill;
         private Table table;
         public fBill_Info frmbi;
         private double amountTemp;
         private double discount;
+        public fAddNewBill fNewBill;
+        #endregion
+        #region Methods
         public fPayment(Table item)
         {
             InitializeComponent();
@@ -24,43 +28,10 @@ namespace QL_QuanCF
             if (dt.Rows.Count > 0)
                 bill = new Bill(dt.Rows[0]);
         }
-
-        private void fPayment_Load(object sender, EventArgs e)
-        {
-
-            txtTableName.Text = table.TabName.ToString();
-            txtAmountTable.Text = table.Amount.ToString();
-            object ob = Provider.Instance.ExecuteScalar("SELECT SUM(f.PRICE*bi.QUANTITY) " +
-                "FROM dbo.BILLINFO bi JOIN dbo.BILL b ON  b.ID = bi.IDBILL " +
-                "JOIN dbo.FOOD f ON f.ID = bi.IDFOOD WHERE b.ID = @id", new object[] { bill.ID });
-            amountTemp = double.Parse(ob.ToString());
-            lbAllBill.Text = amountTemp.ToString("#,#");
-            lbCheckIn.Text = ((DateTime)bill.CheckIn).ToString("dd'/'MM'/'yyyy hh:mm:ss");
-            lbCheckOut.Text = DateTime.Now.ToString("dd'/'MM'/'yyyy hh:mm:ss");
-            ob = Provider.Instance.ExecuteScalar("SELECT p.DISCOUNT FROM " +
-                "dbo.PROMOTION p JOIN dbo.BILL b ON b.IDPROMOTION = p.ID WHERE b.ID = @id", new object[] { bill.ID });
-            if (ob == null)
-                lbDiscount.Text = "";
-            else
-            {
-                discount = double.Parse(ob.ToString());
-                lbDiscount.Text = (discount * amountTemp).ToString("#,#");
-            }
-            lbAmount.Text = (amountTemp - discount).ToString("#,#");
-            loadBillInfo(bill.ID);
-        }
-
         internal void setIDPro(int id)
         {
             bill.IdPromotion = id;
         }
-
-        internal void changeLbPromotion(double discount, double amount)
-        {
-            lbDiscount.Text = discount.ToString("#,#");
-            lbAmount.Text = amount.ToString("#,##0");
-        }
-
         public void loadBillInfo(int billID)
         {
             lsv.Items.Clear();
@@ -91,11 +62,50 @@ namespace QL_QuanCF
 
             Provider.Instance.ExecuteNonQuery(query);
         }
+        internal void changeLbPromotion(double discount, double amount)
+        {
+            lbDiscount.Text = discount.ToString("#,#");
+            lbAmount.Text = amount.ToString("#,##0");
+        }
+        #endregion
+        #region Events
+        private void fPayment_Load(object sender, EventArgs e)
+        {
+
+            txtTableName.Text = table.TabName.ToString();
+            txtAmountTable.Text = table.Amount.ToString();
+            object ob = Provider.Instance.ExecuteScalar("SELECT SUM(f.PRICE*bi.QUANTITY) " +
+                "FROM dbo.BILLINFO bi JOIN dbo.BILL b ON  b.ID = bi.IDBILL " +
+                "JOIN dbo.FOOD f ON f.ID = bi.IDFOOD WHERE b.ID = @id", new object[] { bill.ID });
+            amountTemp = double.Parse(ob.ToString());
+            lbAllBill.Text = amountTemp.ToString("#,#");
+            lbCheckIn.Text = ((DateTime)bill.CheckIn).ToString("dd'/'MM'/'yyyy HH:mm:ss");
+            lbCheckOut.Text = DateTime.Now.ToString("dd'/'MM'/'yyyy HH:mm:ss");
+            ob = Provider.Instance.ExecuteScalar("SELECT p.DISCOUNT FROM " +
+                "dbo.PROMOTION p JOIN dbo.BILL b ON b.IDPROMOTION = p.ID WHERE b.ID = @id", new object[] { bill.ID });
+            if (ob == null)
+                lbDiscount.Text = "";
+            else
+            {
+                discount = double.Parse(ob.ToString());
+                lbDiscount.Text = (discount * amountTemp).ToString("#,#");
+            }
+            lbAmount.Text = (amountTemp - discount).ToString("#,#");
+            loadBillInfo(bill.ID);
+        }
+
         private void btnDone_Click(object sender, EventArgs e)
         {
             checkOut(bill.ID, idShift);
-            frmbi.ChangePropBtnTabToCheckOut();
-            frmbi.Close();
+            if (frmbi != null)
+            {
+                frmbi.ChangePropBtnTabToCheckOut();
+                frmbi.Close();
+            }
+            if (fNewBill != null)
+            {
+                fNewBill.Close();
+            }
             Close();
         }
 
@@ -108,7 +118,15 @@ namespace QL_QuanCF
         private void btnCancel_Click(object sender, EventArgs e)
         {
             frmbi.ChangePropBtnTabToCheckIn();
-            frmbi.Show();
+            if (frmbi != null)
+            {
+                frmbi.Show();
+            }
+
+            if (fNewBill != null)
+            {
+                fNewBill.Show();
+            }
             Close();
         }
 
@@ -126,5 +144,6 @@ namespace QL_QuanCF
             lbDiscount.Text = "";
             lbAmount.Text = amountTemp.ToString("#,#");
         }
+        #endregion
     }
 }

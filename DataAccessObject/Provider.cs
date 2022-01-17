@@ -12,7 +12,7 @@ namespace QL_QuanCF.DataAccessObject
 
         public static Provider Instance
         {
-            get { if (instance == null) instance = new Provider(); return Provider.instance; }
+            get { if (instance == null) instance = new Provider(); return instance; }
             private set { instance = value; }
         }
 

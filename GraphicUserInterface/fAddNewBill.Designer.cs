@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fAddNewBill));
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnlButton = new System.Windows.Forms.Panel();
             this.btnReturn = new System.Windows.Forms.Button();
@@ -37,7 +38,7 @@
             this.pnlID = new System.Windows.Forms.Panel();
             this.txtTabName = new QL_QuanCF.TextBoxAutoComplete();
             this.lbIDBan = new System.Windows.Forms.Label();
-            this.txbSoNguoi = new System.Windows.Forms.TextBox();
+            this.txtAmountPeople = new System.Windows.Forms.TextBox();
             this.lbSoNguoi = new System.Windows.Forms.Label();
             this.lbSoBan = new System.Windows.Forms.Label();
             this.lsvBillInfo = new System.Windows.Forms.ListView();
@@ -46,13 +47,12 @@
             this.quantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Price = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnMostUsed = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbbCate = new System.Windows.Forms.ComboBox();
             this.txtSearchFood = new QL_QuanCF.TextBoxAutoComplete();
             this.btnSearch = new System.Windows.Forms.Button();
             this.flpViewFood = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnEtc = new System.Windows.Forms.Button();
-            this.btnDrink = new System.Windows.Forms.Button();
-            this.btnFood = new System.Windows.Forms.Button();
-            this.btnMostUsed = new System.Windows.Forms.Button();
             this.cmsFoodFLP = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.thêmNhiềuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2.SuspendLayout();
@@ -95,6 +95,7 @@
             this.btnReturn.TabIndex = 0;
             this.btnReturn.Text = "Trở về";
             this.btnReturn.UseVisualStyleBackColor = true;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
             // btnPay
             // 
@@ -117,12 +118,13 @@
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Lưu bàn";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // pnlID
             // 
             this.pnlID.Controls.Add(this.txtTabName);
             this.pnlID.Controls.Add(this.lbIDBan);
-            this.pnlID.Controls.Add(this.txbSoNguoi);
+            this.pnlID.Controls.Add(this.txtAmountPeople);
             this.pnlID.Controls.Add(this.lbSoNguoi);
             this.pnlID.Controls.Add(this.lbSoBan);
             this.pnlID.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -151,17 +153,16 @@
             this.lbIDBan.TabIndex = 3;
             this.lbIDBan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txbSoNguoi
+            // txtAmountPeople
             // 
-            this.txbSoNguoi.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txbSoNguoi.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbSoNguoi.Location = new System.Drawing.Point(356, 6);
-            this.txbSoNguoi.Name = "txbSoNguoi";
-            this.txbSoNguoi.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txbSoNguoi.Size = new System.Drawing.Size(49, 32);
-            this.txbSoNguoi.TabIndex = 1;
-            this.txbSoNguoi.Text = "0";
-            this.txbSoNguoi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtAmountPeople.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAmountPeople.Location = new System.Drawing.Point(356, 6);
+            this.txtAmountPeople.Name = "txtAmountPeople";
+            this.txtAmountPeople.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtAmountPeople.Size = new System.Drawing.Size(49, 32);
+            this.txtAmountPeople.TabIndex = 1;
+            this.txtAmountPeople.Text = "0";
+            this.txtAmountPeople.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbSoNguoi
             // 
@@ -226,17 +227,51 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel1.Controls.Add(this.btnMostUsed);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.cbbCate);
             this.panel1.Controls.Add(this.txtSearchFood);
             this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.flpViewFood);
-            this.panel1.Controls.Add(this.btnEtc);
-            this.panel1.Controls.Add(this.btnDrink);
-            this.panel1.Controls.Add(this.btnFood);
-            this.panel1.Controls.Add(this.btnMostUsed);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(876, 694);
             this.panel1.TabIndex = 4;
+            // 
+            // btnMostUsed
+            // 
+            this.btnMostUsed.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMostUsed.Image = ((System.Drawing.Image)(resources.GetObject("btnMostUsed.Image")));
+            this.btnMostUsed.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMostUsed.Location = new System.Drawing.Point(320, 11);
+            this.btnMostUsed.Name = "btnMostUsed";
+            this.btnMostUsed.Size = new System.Drawing.Size(125, 33);
+            this.btnMostUsed.TabIndex = 13;
+            this.btnMostUsed.Text = "Hay dùng";
+            this.btnMostUsed.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnMostUsed.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnMostUsed.UseVisualStyleBackColor = true;
+            this.btnMostUsed.Click += new System.EventHandler(this.btnMostUsed_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(103, 24);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Danh mục";
+            // 
+            // cbbCate
+            // 
+            this.cbbCate.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbCate.FormattingEnabled = true;
+            this.cbbCate.Location = new System.Drawing.Point(121, 9);
+            this.cbbCate.Name = "cbbCate";
+            this.cbbCate.Size = new System.Drawing.Size(193, 35);
+            this.cbbCate.TabIndex = 11;
+            this.cbbCate.SelectionChangeCommitted += new System.EventHandler(this.cbbCate_SelectionChangeCommitted);
             // 
             // txtSearchFood
             // 
@@ -245,6 +280,7 @@
             this.txtSearchFood.Name = "txtSearchFood";
             this.txtSearchFood.Size = new System.Drawing.Size(199, 31);
             this.txtSearchFood.TabIndex = 10;
+            this.txtSearchFood.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearchFood_KeyUp);
             // 
             // btnSearch
             // 
@@ -255,6 +291,7 @@
             this.btnSearch.TabIndex = 9;
             this.btnSearch.Text = "Tìm kiếm";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // flpViewFood
             // 
@@ -264,47 +301,6 @@
             this.flpViewFood.Name = "flpViewFood";
             this.flpViewFood.Size = new System.Drawing.Size(876, 645);
             this.flpViewFood.TabIndex = 8;
-            // 
-            // btnEtc
-            // 
-            this.btnEtc.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEtc.Location = new System.Drawing.Point(401, 8);
-            this.btnEtc.Name = "btnEtc";
-            this.btnEtc.Size = new System.Drawing.Size(126, 35);
-            this.btnEtc.TabIndex = 7;
-            this.btnEtc.Text = "Khác";
-            this.btnEtc.UseVisualStyleBackColor = true;
-            // 
-            // btnDrink
-            // 
-            this.btnDrink.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDrink.Location = new System.Drawing.Point(137, 8);
-            this.btnDrink.Name = "btnDrink";
-            this.btnDrink.Size = new System.Drawing.Size(126, 35);
-            this.btnDrink.TabIndex = 6;
-            this.btnDrink.Text = "Đồ uống";
-            this.btnDrink.UseVisualStyleBackColor = true;
-            // 
-            // btnFood
-            // 
-            this.btnFood.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFood.Location = new System.Drawing.Point(269, 8);
-            this.btnFood.Name = "btnFood";
-            this.btnFood.Size = new System.Drawing.Size(126, 35);
-            this.btnFood.TabIndex = 5;
-            this.btnFood.Text = "Món ăn";
-            this.btnFood.UseVisualStyleBackColor = true;
-            // 
-            // btnMostUsed
-            // 
-            this.btnMostUsed.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMostUsed.Location = new System.Drawing.Point(5, 8);
-            this.btnMostUsed.Name = "btnMostUsed";
-            this.btnMostUsed.Size = new System.Drawing.Size(126, 35);
-            this.btnMostUsed.TabIndex = 4;
-            this.btnMostUsed.Text = "Hay dùng";
-            this.btnMostUsed.UseVisualStyleBackColor = true;
-            this.btnMostUsed.Click += new System.EventHandler(this.btnMostUsed_Click);
             // 
             // cmsFoodFLP
             // 
@@ -331,6 +327,7 @@
             this.Name = "fAddNewBill";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thêm bàn";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.fAddNewBill_FormClosed);
             this.Load += new System.EventHandler(this.fAddNewBill_Load);
             this.panel2.ResumeLayout(false);
             this.pnlButton.ResumeLayout(false);
@@ -350,16 +347,12 @@
         private System.Windows.Forms.Button btnPay;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Panel pnlID;
-        private System.Windows.Forms.TextBox txbSoNguoi;
+        private System.Windows.Forms.TextBox txtAmountPeople;
         private System.Windows.Forms.Label lbSoNguoi;
         private System.Windows.Forms.Label lbSoBan;
         private System.Windows.Forms.ListView lsvBillInfo;
         private System.Windows.Forms.Label lbIDBan;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnEtc;
-        private System.Windows.Forms.Button btnDrink;
-        private System.Windows.Forms.Button btnFood;
-        private System.Windows.Forms.Button btnMostUsed;
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.FlowLayoutPanel flpViewFood;
         private System.Windows.Forms.Button btnSearch;
@@ -371,5 +364,8 @@
         private System.Windows.Forms.ColumnHeader Price;
         private System.Windows.Forms.ContextMenuStrip cmsFoodFLP;
         private System.Windows.Forms.ToolStripMenuItem thêmNhiềuToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbbCate;
+        private System.Windows.Forms.Button btnMostUsed;
     }
 }

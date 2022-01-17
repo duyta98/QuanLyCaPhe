@@ -19,42 +19,38 @@ namespace QL_QuanCF.DataAccessObject
 
         private FoodDAO() { }
 
-        public List<Food> LoadFoodLists()
-        {
-            List<Food> FoodLists = new List<Food>();
-            DataTable dt = Provider.Instance.ExecuteQuery("dbo.spGetAllFood");
-            foreach (DataRow dataRow in dt.Rows)
-            {
-                Food mon = new Food(dataRow);
-                FoodLists.Add(mon);
-            }
-            return FoodLists;
-        }
         /// <summary>
         /// Get all food by ID Cate
         /// </summary>
         /// <param name="id">ID category</param>
         /// <returns></returns>
-        public List<Food> LoadFoodListsByIDCate(int id)
+        
+        
+        /// <summary>
+        /// Get Food list using query with parameter can null
+        /// </summary>
+        /// <param name="query">Query String </param>
+        /// <param name="parameter">list parameter</param>
+        /// <returns></returns>
+        public List<Food> LoadFoodLists(string query, object[] parameter = null)
         {
             List<Food> FoodLists = new List<Food>();
-            DataTable dt = Provider.Instance.ExecuteQuery("dbo.spGetAllFoodByIDCate " + id);
+            DataTable dt = Provider.Instance.ExecuteQuery(query, parameter);
             foreach (DataRow dataRow in dt.Rows)
             {
-                Food mon = new Food(dataRow);
-                FoodLists.Add(mon);
+                Food food = new Food(dataRow);
+                FoodLists.Add(food);
             }
             return FoodLists;
         }
-
-        public List<Food> LoadFoodListsBySearch(string text)
+        public List<FoodManagerObject> LoadFoodListForManager(string query, object[] parameter = null)
         {
-            List<Food> FoodLists = new List<Food>();
-            DataTable dt = Provider.Instance.ExecuteQuery("dbo.spGetAllFoodBySearch N'" + text + "'");
+            List<FoodManagerObject> FoodLists = new List<FoodManagerObject>();
+            DataTable dt = Provider.Instance.ExecuteQuery(query, parameter);
             foreach (DataRow dataRow in dt.Rows)
             {
-                Food mon = new Food(dataRow);
-                FoodLists.Add(mon);
+                FoodManagerObject food = new FoodManagerObject(dataRow);
+                FoodLists.Add(food);
             }
             return FoodLists;
         }

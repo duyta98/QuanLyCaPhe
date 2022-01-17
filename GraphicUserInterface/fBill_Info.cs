@@ -78,7 +78,13 @@ namespace QL_QuanCF
                 btn.ContextMenuStrip = cmsFoodFLP;
                 btn.FlatStyle = FlatStyle.Standard;
                 btn.Margin = new Padding(10);
-                btn.Font = new Font("Arial", 12);
+                btn.Font = new Font("Arial", 13, FontStyle.Regular);
+                btn.ForeColor = Color.Red;
+                if (item.AvatarDir != null)
+                {
+                    btn.BackgroundImage = Image.FromFile(item.AvatarDir);
+                    btn.BackgroundImageLayout = ImageLayout.Stretch;
+                }
                 btn.Click += (s, e) =>
                 {
                     int i = 0;
@@ -116,7 +122,7 @@ namespace QL_QuanCF
                         lsvBillInfo.Items.Add(lsvitem);
                     }
                 };
-                btn.BackColor = Color.White;
+                btn.BackColor = Color.LightYellow;
                 flpViewFood.Controls.Add(btn);
             }
         }
@@ -234,7 +240,7 @@ namespace QL_QuanCF
             lsvBillInfo.ContextMenuStrip = cmsFoodListview;
             string querySearchFood = "SELECT NAMEFOOD FROM dbo.FOOD";
             txtSearch.loadDataAutoComplete(Provider.cnnStr, querySearchFood, "NAMEFOOD");
-            foods = FoodDAO.Instance.LoadFoodLists();
+            foods = FoodDAO.Instance.LoadFoodLists("spGetAllFood");
             CreateButton(foods);
         }
         private void deleteBill(int idBill)
@@ -308,9 +314,9 @@ namespace QL_QuanCF
         private void btnSearch_Click(object sender, EventArgs e)
         {
             if (txtSearch.Text.Trim() == "")
-                foods = FoodDAO.Instance.LoadFoodLists();
+                foods = FoodDAO.Instance.LoadFoodLists("spGetAllFood");
             else
-                foods = FoodDAO.Instance.LoadFoodListsBySearch(txtSearch.Text.Trim());
+                foods = FoodDAO.Instance.LoadFoodLists("spGetAllFoodBySearch @text", new object[] { txtSearch.Text.Trim() });
             flpViewFood.Controls.Clear();
             CreateButton(foods);
         }
@@ -359,22 +365,18 @@ namespace QL_QuanCF
         {
             parent.Show();
         }
-
-
-        #endregion
-
         private void cbbCate_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            
+
             int idCate = (cbbCate.SelectedItem as Category).Id;
 
             if (idCate == 0)
             {
-                foods = FoodDAO.Instance.LoadFoodLists();
+                foods = FoodDAO.Instance.LoadFoodLists("spGetAllFood");
             }
             else
             {
-                foods = FoodDAO.Instance.LoadFoodListsByIDCate(idCate);
+                foods = FoodDAO.Instance.LoadFoodLists("spGetAllFoodByIDCate @id", new object[] { idCate });
             }
             flpViewFood.Controls.Clear();
             CreateButton(foods);
@@ -384,5 +386,9 @@ namespace QL_QuanCF
         {
 
         }
+
+        #endregion
+
+
     }
 }

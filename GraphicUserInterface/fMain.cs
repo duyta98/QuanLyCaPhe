@@ -77,7 +77,7 @@ namespace QL_QuanCF
                 }
             }
         }
-
+        
         private void ĐăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!isCloseShift(userName))
@@ -89,19 +89,24 @@ namespace QL_QuanCF
                     FShiftClose frm = new FShiftClose();
                     frm.idShift = idShift;
                     frm.parent = this;
+
                     frm.ShowDialog();
+                    if (frm.isCloseShift)
+                    {
+                        Close();
+                    }
                 }
-                else if (dr == DialogResult.No)
-                {
-                    Close();
-                }
+                
+                
             }
         }
 
         private void BtnThemban_Click(object sender, EventArgs e)
         {
-            fAddNewBill fThem = new fAddNewBill();
-            fThem.ShowDialog();
+            fAddNewBill frm = new fAddNewBill(userName, idShift);
+            Hide();
+            frm.parentForm = this;
+            frm.Show();
         }
 
         private void ThôngTinTàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
@@ -113,9 +118,9 @@ namespace QL_QuanCF
         private void NhânViênToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fStaffManager f = new fStaffManager();
+            f.parentForm = this;
             Hide();
-            f.ShowDialog();
-            Show();
+            f.Show();
         }
 
         private void ThựcĐơnToolStripMenuItem_Click(object sender, EventArgs e)
@@ -214,12 +219,7 @@ namespace QL_QuanCF
 
         private void fMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                DialogResult dr = MessageBox.Show("Bạn chắc chắn muốn thoát chứ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dr == DialogResult.No)
-                    e.Cancel = true;
-            }
+            
         }
         private void fMain_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -350,7 +350,12 @@ namespace QL_QuanCF
             return true;
         }
 
-
+        public void changeBtnTablePropertiesToCheckIn(string tabName)
+        {
+            var btn = flpTable.Controls.OfType<Button>().Where(x => x.Text.Contains(tabName)).FirstOrDefault();
+            btn.BackColor = Color.BlueViolet;
+            btn.Text = tabName + Environment.NewLine + "Có người";
+        }
         #endregion
 
         private void hóaĐơnToolStripMenuItem_Click(object sender, EventArgs e)
