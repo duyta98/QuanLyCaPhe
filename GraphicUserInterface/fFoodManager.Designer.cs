@@ -44,6 +44,8 @@
             this.btnOpen = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.ptbAvatar = new System.Windows.Forms.PictureBox();
+            this.cmsAvatar = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.cbbUnit = new System.Windows.Forms.ComboBox();
@@ -57,18 +59,16 @@
             this.btnModify = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.txtSearch = new QL_QuanCF.TextBoxAutoComplete();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cbbCate = new System.Windows.Forms.ComboBox();
             this.ofdImage = new System.Windows.Forms.OpenFileDialog();
-            this.cmsAvatar = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtSearch = new QL_QuanCF.TextBoxAutoComplete();
             this.panel1.SuspendLayout();
             this.pnlDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbAvatar)).BeginInit();
-            this.panel3.SuspendLayout();
             this.cmsAvatar.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -215,6 +215,21 @@
             this.ptbAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ptbAvatar.TabIndex = 13;
             this.ptbAvatar.TabStop = false;
+            // 
+            // cmsAvatar
+            // 
+            this.cmsAvatar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.xóaToolStripMenuItem});
+            this.cmsAvatar.Name = "cmsAvatar";
+            this.cmsAvatar.Size = new System.Drawing.Size(95, 26);
+            this.cmsAvatar.Opening += new System.ComponentModel.CancelEventHandler(this.cmsAvatar_Opening);
+            // 
+            // xóaToolStripMenuItem
+            // 
+            this.xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
+            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
+            this.xóaToolStripMenuItem.Text = "Xóa";
+            this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
             // 
             // txtPrice
             // 
@@ -366,17 +381,6 @@
             this.panel3.Size = new System.Drawing.Size(1044, 45);
             this.panel3.TabIndex = 2;
             // 
-            // txtSearch
-            // 
-            this.txtSearch.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(714, 7);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(318, 32);
-            this.txtSearch.TabIndex = 7;
-            this.txtSearch.Enter += new System.EventHandler(this.txtSearch_Enter);
-            this.txtSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyUp);
-            this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -416,20 +420,16 @@
             this.ofdImage.RestoreDirectory = true;
             this.ofdImage.Title = "Chose Image";
             // 
-            // cmsAvatar
+            // txtSearch
             // 
-            this.cmsAvatar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.xóaToolStripMenuItem});
-            this.cmsAvatar.Name = "cmsAvatar";
-            this.cmsAvatar.Size = new System.Drawing.Size(181, 48);
-            this.cmsAvatar.Opening += new System.ComponentModel.CancelEventHandler(this.cmsAvatar_Opening);
-            // 
-            // xóaToolStripMenuItem
-            // 
-            this.xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
-            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.xóaToolStripMenuItem.Text = "Xóa";
-            this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
+            this.txtSearch.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(714, 7);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(318, 32);
+            this.txtSearch.TabIndex = 7;
+            this.txtSearch.Enter += new System.EventHandler(this.txtSearch_Enter);
+            this.txtSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyUp);
+            this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // fFoodManager
             // 
@@ -450,14 +450,16 @@
             this.Name = "fFoodManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý thực đơn";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.fFoodManager_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.fFoodManager_FormClosed);
             this.Load += new System.EventHandler(this.fFoodManager_Load);
             this.panel1.ResumeLayout(false);
             this.pnlDetails.ResumeLayout(false);
             this.pnlDetails.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbAvatar)).EndInit();
+            this.cmsAvatar.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.cmsAvatar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

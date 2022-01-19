@@ -18,7 +18,9 @@ namespace QL_QuanCF
         private List<FoodManagerObject> foods;
         private bool eitherAddOrModify;//True: add, false: Modify
         FoodManagerObject food;
-        private string avatarPath;
+        private string avatarPath = "";
+        private string filePath = "";
+        public fMain parentForm;
         #endregion
         #region Methods
         public fFoodManager()
@@ -111,6 +113,7 @@ namespace QL_QuanCF
             loadAllFood();
 
         }
+        
         #endregion
         #region Events
         private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
@@ -118,7 +121,6 @@ namespace QL_QuanCF
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
                 e.Handled = true;
         }
-
         private void txtSearch_Leave(object sender, EventArgs e)
         {
             if (txtSearch.Text.Trim() == "")
@@ -127,7 +129,6 @@ namespace QL_QuanCF
                 txtSearch.ForeColor = Color.Gray;
             }
         }
-
         private void txtSearch_Enter(object sender, EventArgs e)
         {
             if (txtSearch.Text == hint)
@@ -137,7 +138,6 @@ namespace QL_QuanCF
             }
 
         }
-
         private void cbbCate_SelectionChangeCommitted(object sender, EventArgs e)
         {
             if (int.Parse(cbbCate.SelectedValue.ToString()) == 0)
@@ -152,8 +152,6 @@ namespace QL_QuanCF
 
             loadData(foods);
         }
-
-
         private void txtSearch_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -164,7 +162,6 @@ namespace QL_QuanCF
                 loadData(foods);
             }
         }
-
         private void btnModify_Click(object sender, EventArgs e)
         {
             eitherAddOrModify = false;
@@ -172,24 +169,41 @@ namespace QL_QuanCF
             BtnSave.Enabled = true;
             btnModify.Enabled = false;
         }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show("Bạn chắc chắn muốn xóa món trên không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (dr == DialogResult.OK)
             {
-                Execute("",new object[] {});
+                Execute("uspDeleteFood @id", new object[] {food.IdFood});
                 btnDelete.Enabled = btnModify.Enabled = BtnSave.Enabled = false;
                 refresh();
+                if (food.AvatarDir != null)
+                {
+                    File.Delete(food.AvatarDir);
+                }
+                
             }
 
         }
-
         private void BtnSave_Click(object sender, EventArgs e)
         {
+            if (isEmpty())
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo");
+                return;
+            }
             string query;
             if (eitherAddOrModify)
             {
+                try
+                {
+                    File.Copy(filePath, avatarPath);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
                 query = "uspInsertFood @name , @idcate , @cost , @price , @unit , @avatar";
                 Execute(query, new object[] { txtName.Text, cbbFoodCate.SelectedValue.ToString(), txtCost.Text, txtPrice.Text, cbbUnit.SelectedValue.ToString(), avatarPath });
                 
@@ -197,16 +211,36 @@ namespace QL_QuanCF
                 
             else
             {
+                try
+                {
+                    if (food.AvatarDir == null && avatarPath != "")
+                    {
+                        File.Copy(filePath, avatarPath);
+                    }
+                    else if (food.AvatarDir != null && avatarPath == "")
+                    {
+                        File.Delete(food.AvatarDir);
+                    }
+                    else if (food.AvatarDir != null && avatarPath != "" && food.AvatarDir != avatarPath)
+                    {
+                        File.Copy(filePath, avatarPath);
+                        File.Delete(food.AvatarDir);
+                    }
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
                 query = "uspUpdateFood @name , @idcate , @cost , @price , @unit , @avatar , @id";
                 Execute(query, new object[] { txtName.Text, cbbFoodCate.SelectedValue.ToString(), txtCost.Text, txtPrice.Text, cbbUnit.SelectedValue.ToString(), avatarPath, food.IdFood });
+
             }
             refresh();
             btnDelete.Enabled = btnModify.Enabled = BtnSave.Enabled = false;
             changePropertiesPnlDetailsUnEnabled();
-
+            
         }
-        
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             eitherAddOrModify = true;
@@ -215,13 +249,12 @@ namespace QL_QuanCF
             txtName.Text = txtCost.Text = txtPrice.Text = "";
             ptbAvatar.Image = null;
             btnModify.Enabled = btnDelete.Enabled = false;
+            avatarPath = filePath = null;
         }
         private void lsvFood_MouseClick(object sender, MouseEventArgs e)
         {
             if (lsvFood.SelectedItems.Count > 0)
             {
-                avatarPath = "";
-
                 food = lsvFood.SelectedItems[0].Tag as FoodManagerObject;
                 txtName.Text = food.NameFood;
                 cbbFoodCate.SelectedValue = food.IdCate;
@@ -230,7 +263,29 @@ namespace QL_QuanCF
                 txtPrice.Text = food.Price.ToString("#,#");
                 if (food.AvatarDir != null)
                 {
-                    ptbAvatar.Image = Image.FromFile(food.AvatarDir);
+                    FileStream fs = null;
+                    Image img = null;
+                    if (File.Exists(food.AvatarDir))
+                    {
+                        try
+                        {
+                            fs = new FileStream(food.AvatarDir, FileMode.Open, FileAccess.Read);
+                            img = Image.FromStream(fs);
+                            ptbAvatar.Image = img;
+                            
+                        }
+                        finally
+                        {
+                            fs.Close();
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Unable to load file");
+                    }
+                    
+
                 }
                 else
                 {
@@ -241,10 +296,17 @@ namespace QL_QuanCF
                 BtnSave.Enabled = false;
             }
         }
-
+        private bool isEmpty()
+        {
+            if (txtName.Text == "" || txtCost.Text == "" || txtPrice.Text == "")
+            {
+                return true;
+            }
+            return false;
+        }
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+            string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).FullName;
             string appPath = Path.GetDirectoryName(projectDirectory) + @"\Data\Image\";
             if (Directory.Exists(appPath) == false)
             {
@@ -252,55 +314,71 @@ namespace QL_QuanCF
             }
             if (ofdImage.ShowDialog() == DialogResult.OK)
             {
-                try
+                try  
                 {
                     string iName = ofdImage.SafeFileName;
                     string filepath = ofdImage.FileName;
-                    
-                    Image img = null;
+
+                    Image img;
                     FileStream fs = null;
                     try
                     {
                         FileInfo fi = new FileInfo(filepath);
-                        if (fi.Extension == ".webp")//If extension is webp then change to jpg
+                        if (fi.Extension.ToString() == ".webp")//If extension is webp then change to jpg
                         {
-                            File.Move(filepath, Path.ChangeExtension(filepath, ".jpg"));
-                            filepath = Path.ChangeExtension(filepath, ".jpg");
+                            string newFilePath = Path.ChangeExtension(filepath, ".jpg");
+                            File.Move(filepath, newFilePath);
+                            filepath = newFilePath;
                         }
-                        fs = new FileStream(filepath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-                        img = Image.FromStream(fs);
-                        ptbAvatar.Image = img;
+                        
+                        using (fs = new FileStream(filepath, FileMode.Open, FileAccess.Read))
+                        {
+                            img = Image.FromStream(fs);
+                            ptbAvatar.Image = img;
+                            
+                        } 
                     }
                     finally
                     {
                         fs.Close();
+                        
                     }
                     avatarPath = appPath + iName;
-                    File.Copy(filepath, appPath + iName);
+                    filePath = filepath;
                 }
                 catch (Exception exp)
                 {
                     MessageBox.Show("Unable to open file.\n" + exp.Message);
                 }
-
             }
             else
             {
                 ofdImage.Dispose();
             }
         }
-
-        #endregion
-
         private void cmsAvatar_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            if (ptbAvatar.Image == null)
 
+                cmsAvatar.Enabled = false;
+
+            else
+                cmsAvatar.Enabled = true;
         }
-
         private void xóaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ptbAvatar.Image = null;
+
             avatarPath = "";
         }
+        private void fFoodManager_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            parentForm.Show();
+        }
+        private void fFoodManager_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+        }
+        #endregion
     }
 }

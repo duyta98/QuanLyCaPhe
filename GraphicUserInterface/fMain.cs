@@ -126,7 +126,9 @@ namespace QL_QuanCF
         private void ThựcĐơnToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fFoodManager f = new fFoodManager();
-            f.ShowDialog();
+            f.parentForm = this;
+            Hide();
+            f.Show();
         }
         private void chuyểnBànToolStripMenuItem_Click(object sender, EventArgs e)
         {

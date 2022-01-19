@@ -85,6 +85,11 @@ namespace QL_QuanCF
                     btn.BackgroundImage = Image.FromFile(item.AvatarDir);
                     btn.BackgroundImageLayout = ImageLayout.Stretch;
                 }
+                btn.MouseHover += (s, e) =>
+                {
+                    ToolTip toolTip = new ToolTip();
+                    toolTip.SetToolTip(btn, item.NameFood);
+                };
                 btn.Click += (s, e) =>
                 {
                     int i = 0;

@@ -16,6 +16,12 @@ namespace QL_QuanCF
         public fMain parentForm;
         private List<Staff> listStaff;
         private string hint = "Nhập tên nhân viên, tài khoản, ...";
+#pragma warning disable CS0414 // The field 'fStaffManager.avatarPath' is assigned but its value is never used
+        private string avatarPath;
+#pragma warning restore CS0414 // The field 'fStaffManager.avatarPath' is assigned but its value is never used
+#pragma warning disable CS0414 // The field 'fStaffManager.eitherAddOrModify' is assigned but its value is never used
+        private bool eitherAddOrModify;//true:Add, false: Modify
+#pragma warning restore CS0414 // The field 'fStaffManager.eitherAddOrModify' is assigned but its value is never used
         #endregion
         public fStaffManager()
         {
@@ -204,6 +210,7 @@ namespace QL_QuanCF
             btnSave.Enabled = true;
             btnDelete.Enabled = btnModify.Enabled = false;
             txtNameStaff.Text = txtAddress.Text = txtEmail.Text = txtPhoneNo.Text = "";
+            eitherAddOrModify = true;
         }
         private void save()
         {
@@ -236,6 +243,13 @@ namespace QL_QuanCF
             btnSave.Enabled = true;
             btnModify.Enabled = false;
             changePropertiesPnlDetailsEnabled();
+            eitherAddOrModify = false;
+        }
+
+        private void xóaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            avatarPath = "";
+            ptbAvatar.Image = null;
         }
     }
 }

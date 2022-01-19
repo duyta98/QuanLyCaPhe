@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fStaffManager));
             this.panel1 = new System.Windows.Forms.Panel();
             this.lsvStaff = new System.Windows.Forms.ListView();
@@ -67,11 +68,14 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.cmsAvatar = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.pnlDetaill.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbAvatar)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.cmsAvatar.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -276,6 +280,7 @@
             // ptbAvatar
             // 
             this.ptbAvatar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ptbAvatar.ContextMenuStrip = this.cmsAvatar;
             this.ptbAvatar.Location = new System.Drawing.Point(157, 305);
             this.ptbAvatar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ptbAvatar.Name = "ptbAvatar";
@@ -488,6 +493,20 @@
             this.panel4.Size = new System.Drawing.Size(402, 132);
             this.panel4.TabIndex = 3;
             // 
+            // cmsAvatar
+            // 
+            this.cmsAvatar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.xóaToolStripMenuItem});
+            this.cmsAvatar.Name = "cmsAvatar";
+            this.cmsAvatar.Size = new System.Drawing.Size(181, 48);
+            // 
+            // xóaToolStripMenuItem
+            // 
+            this.xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
+            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.xóaToolStripMenuItem.Text = "Xóa";
+            this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
+            // 
             // fStaffManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -515,6 +534,7 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
+            this.cmsAvatar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -559,5 +579,7 @@
         private System.Windows.Forms.ColumnHeader Phone;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.ContextMenuStrip cmsAvatar;
+        private System.Windows.Forms.ToolStripMenuItem xóaToolStripMenuItem;
     }
 }
